@@ -1,6 +1,6 @@
 ---
 title: "Simulator"
-description: "Use the LocalGen bot simulator to run repeatable bot-vs-bot evaluations without the Qt UI."
+description: "Use the LocalGen bot simulator for reproducible bot-vs-bot testing on random or custom maps, without the Qt UI in the loop."
 date: 2026-04-06T17:54:16+08:00
 draft: false
 weight: 70
@@ -10,7 +10,7 @@ weight: 70
 
 `LocalGen-bot-simulator` is a lightweight command-line tool for **bot-vs-bot evaluation**.
 
-It uses the same core board and game logic as the main application, but removes the Qt user interface so you can focus on benchmarking and comparison.
+It uses the same core board and game logic as the main application, but removes the Qt user interface so you can focus on benchmarking, regression checking, and large-scale comparison runs.
 
 ## What it can do
 
@@ -20,11 +20,33 @@ It uses the same core board and game logic as the main application, but removes 
 - run repeated matches in parallel
 - report aggregate win-rate and TrueSkill-style summaries
 
+## Why contributors use it
+
+The bot contribution guide repeatedly asks for evidence: replays, tests, and performance notes. The simulator is the cleanest way to collect that evidence when you want to compare multiple strategies under consistent settings.
+
 ## Example usage
 
-- `./LocalGen-bot-simulator --games 10 --width 20 --height 20 --steps 600 --bots XiaruizeBot GcBot`
-- `./LocalGen-bot-simulator --games 10 --map maps/arena01.lgmp --steps 600 --bots XiaruizeBot GcBot`
-- `./LocalGen-bot-simulator --games 50 --silent --bots XiaruizeBot GcBot`
+```bash
+./LocalGen-bot-simulator --games 10 --width 20 --height 20 --steps 600 --bots XiaruizeBot GcBot
+./LocalGen-bot-simulator --games 10 --map maps/arena01.lgmp --steps 600 --bots XiaruizeBot GcBot
+./LocalGen-bot-simulator --games 50 --silent --bots XiaruizeBot GcBot
+```
+
+## A simple evaluation formula
+
+When comparing two bots over many games, a first-pass headline metric is still the win rate:
+
+$$
+	ext{win-rate} = \frac{W}{W + L} \times 100\%
+$$
+
+If you keep the map size fixed, a rough experiment budget can be thought of as:
+
+$$
+T_{\text{suite}} \approx G \times S \times T_{\text{turn}}(n)
+$$
+
+where $G$ is the number of games, $S$ is the step limit, and $T_{\text{turn}}(n)$ is the average per-turn bot cost on a board of effective size $n$.
 
 ## Practical notes
 

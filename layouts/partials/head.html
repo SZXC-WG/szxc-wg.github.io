@@ -1,17 +1,49 @@
 {{ $title := cond .IsHome .Site.Title (printf "%s · %s" .Title .Site.Title) }}
 {{ $description := .Description | default .Summary | default .Site.Params.description }}
 {{ $style := resources.Get "css/main.css" | minify | fingerprint }}
+{{ $script := resources.Get "js/site.js" | minify | fingerprint }}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{{ $description }}">
 <meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#07111f">
+<script>
+	(() => {
+		try {
+			const stored = localStorage.getItem("localgen-theme");
+			const theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+			document.documentElement.dataset.theme = theme;
+			document.documentElement.style.colorScheme = theme;
+		} catch (_) {
+			document.documentElement.dataset.theme = "dark";
+		}
+	})();
+</script>
 <title>{{ $title }}</title>
 <link rel="canonical" href="{{ .Permalink }}">
-<link rel="icon" href="{{ "favicon.png" | relURL }}" type="image/png">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="alternate icon" href="{{ "favicon.png" | relURL }}" type="image/png">
+<link rel="apple-touch-icon" href="{{ "favicon.png" | relURL }}">
+<link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+<script>
+	window.MathJax = {
+		tex: {
+			inlineMath: [['$', '$'], ['\\(', '\\)']],
+			displayMath: [['$$', '$$'], ['\\[', '\\]']],
+			processEscapes: true
+		},
+		options: {
+			skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+		}
+	};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:image" content="{{ "favicon.png" | absURL }}">
+<meta property="og:image" content="{{ "img/generated/hero-board.svg" | absURL }}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ "img/generated/hero-board.svg" | absURL }}">
+<script defer src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>

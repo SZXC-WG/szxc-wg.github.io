@@ -1,0 +1,104 @@
+const STORAGE_KEY = "localgen-theme";
+const root = document.documentElement;
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+function resolvedTheme() {
+  const stored = window.localStorage.getItem(STORAGE_KEY);
+  if (stored === "light" || stored === "dark") {
+    return stored;
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function applyTheme(theme) {
+  root.dataset.theme = theme;
+  root.style.colorScheme = theme;
+  if (themeColorMeta) {
+    themeColorMeta.setAttribute("content", theme === "light" ? "#eef4ff" : "#07111f");
+  }
+
+  const toggle = document.querySelector("[data-theme-toggle]");
+  if (!toggle) {
+    return;
+  }
+
+  const icon = toggle.querySelector("[data-theme-icon]");
+  const text = toggle.querySelector("[data-theme-text]");
+  const label = theme === "dark" ? toggle.dataset.labelDark : toggle.dataset.labelLight;
+  const iconGlyph = theme === "dark" ? "🌙" : "☀️";
+  const toggleLabel = toggle.dataset.toggleLabel || toggle.getAttribute("aria-label") || "Toggle theme";
+
+  toggle.setAttribute("aria-pressed", String(theme === "dark"));
+  toggle.setAttribute("data-active-theme", theme);
+  toggle.setAttribute("aria-label", `${toggleLabel} (${label})`);
+  toggle.setAttribute("title", `${toggleLabel} (${label})`);
+  if (icon) {
+    icon.textContent = iconGlyph;
+  }
+  if (text) {
+    text.textContent = label;
+  }
+}
+
+function initThemeToggle() {
+  const toggle = document.querySelector("[data-theme-toggle]");
+  if (!toggle) {
+    return;
+  }
+
+  toggle.addEventListener("click", () => {
+    const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+    window.localStorage.setItem(STORAGE_KEY, nextTheme);
+    applyTheme(nextTheme);
+  });
+}
+
+function initRevealAnimations() {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const revealTargets = document.querySelectorAll(
+    ".hero-panel, .panel, .card, .stat-card, .sidebar-card, .release-card, .contributor-card, .plot-card, .page-sidecar, .prose-panel, .hero-visual-card, .feature-marquee, .metric-strip"
+  );
+
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealTargets.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.16,
+      rootMargin: "0px 0px -8% 0px",
+    }
+  );
+
+  revealTargets.forEach((element, index) => {
+    element.classList.add("reveal-item");
+    element.style.setProperty("--reveal-delay", `${Math.min(index % 8, 6) * 70}ms`);
+    observer.observe(element);
+  });
+}
+
+function initTopicTicker() {
+  const ticker = document.querySelector("[data-marquee]");
+  if (!ticker) {
+    return;
+  }
+
+  const clone = ticker.innerHTML;
+  ticker.insertAdjacentHTML("beforeend", clone);
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  applyTheme(resolvedTheme());
+  initThemeToggle();
+  initRevealAnimations();
+  initTopicTicker();
+});

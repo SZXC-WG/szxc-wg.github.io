@@ -30,6 +30,7 @@ summaryLength = 36
   projectShortName = 'LocalGen'
   projectVersion = '6.0.0'
   license = 'GPL-3.0'
+  websiteLicense = 'GPL-3.0'
   websiteRepo = 'https://github.com/SZXC-WG/szxc-wg.github.io'
   siteUrl = 'https://szxc-wg.github.io/'
   sourceRepo = 'https://github.com/SZXC-WG/LocalGen-new'

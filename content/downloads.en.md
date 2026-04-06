@@ -1,20 +1,27 @@
 ---
 title: "Downloads"
-description: "Find the right LocalGen release, understand stable vs preview builds, and jump straight to GitHub downloads."
+description: "Use the same release guidance the README gives: GitHub Releases first, stable builds for players, and caution around the in-progress v6 branch."
 date: 2026-04-06T17:54:16+08:00
 draft: false
 weight: 20
 ---
 
-## Where to download LocalGen
+## The canonical download source
 
-The canonical place to download LocalGen builds is the upstream GitHub releases page:
+The upstream README sends users straight to the GitHub releases page. That is still the canonical place to download LocalGen builds:
 
 - [Open LocalGen releases on GitHub](https://github.com/SZXC-WG/LocalGen-new/releases)
 
 The [releases section]({{< relref "releases" >}}) on this site mirrors the release timeline and links back to those download pages.
 
-## Which build should you choose?
+## What branch are you looking at?
+
+The README also contains an important warning: **the `master` branch is the active v6 rewrite and is not the same thing as a finished end-user release**.
+
+- If you want something proven and historically downloadable, start with **GitHub Releases**.
+- If you are tracking the future Qt direction, follow **`master` / `v6.x`** and expect active development.
+
+## Stable vs preview builds
 
 ### For most players
 
@@ -31,7 +38,7 @@ Use preview or development releases when you want:
 ## Version lines explained
 
 - **v6 / `master`** — the active Qt rewrite and the main direction of the project
-- **v5.x** — older maintenance line; useful for historical builds and older workflows
+- **v5.x** — the maintenance line behind many historical and older stable downloads
 
 ## Platform notes
 

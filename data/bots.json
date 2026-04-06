@@ -1,0 +1,126 @@
+{
+  "synced_from": "LocalGen-new/src/bots/README.md",
+  "synced_note": "Curated from the upstream built-in bot README and contribution guides.",
+  "types": [
+    {
+      "key": "built-in",
+      "title": "Built-in bots",
+      "summary": "Compiled into the LocalGen executable from src/bots/ for maximum integration and speed."
+    },
+    {
+      "key": "external",
+      "title": "External bots",
+      "summary": "Stand-alone executables that talk to LocalGen through the evolving v6 network protocol."
+    }
+  ],
+  "items": [
+    {
+      "name": "DummyBot",
+      "author": "AppOfficer",
+      "enabled": false,
+      "complexity": "Low",
+      "complexity_score": 1,
+      "time_complexity": "O(n)",
+      "summary": "Example heuristic greedy"
+    },
+    {
+      "name": "SmartRandomBot",
+      "author": "AppOfficer / GoodCoder666",
+      "enabled": true,
+      "complexity": "Low",
+      "complexity_score": 1,
+      "time_complexity": "O(n)",
+      "summary": "Largest-stack greedy baseline"
+    },
+    {
+      "name": "XrzBot",
+      "author": "xiaruize0911",
+      "enabled": false,
+      "complexity": "Low",
+      "complexity_score": 1,
+      "time_complexity": "O(n)",
+      "summary": "Focused random greedy"
+    },
+    {
+      "name": "ZlyBot",
+      "author": "AppOfficer",
+      "enabled": true,
+      "complexity": "Medium",
+      "complexity_score": 2,
+      "time_complexity": "O(n)",
+      "summary": "Single-focus BFS heuristic"
+    },
+    {
+      "name": "ZlyBot v2",
+      "author": "AppOfficer",
+      "enabled": true,
+      "complexity": "Medium",
+      "complexity_score": 2,
+      "time_complexity": "O(n log n)",
+      "summary": "Memory-aware weighted search"
+    },
+    {
+      "name": "ZlyBot v2.1",
+      "author": "AppOfficer",
+      "enabled": true,
+      "complexity": "Medium",
+      "complexity_score": 2,
+      "time_complexity": "O(n log n)",
+      "summary": "Dual-focus defensive search"
+    },
+    {
+      "name": "SzlyBot",
+      "author": "GoodCoder666",
+      "enabled": true,
+      "complexity": "Medium",
+      "complexity_score": 2,
+      "time_complexity": "O(n)",
+      "summary": "Terrain-weighted BFS heuristic"
+    },
+    {
+      "name": "GcBot",
+      "author": "GoodCoder666",
+      "enabled": true,
+      "complexity": "Medium",
+      "complexity_score": 2,
+      "time_complexity": "O(n)",
+      "summary": "Adaptive heuristic BFS"
+    },
+    {
+      "name": "XiaruizeBot",
+      "author": "xiaruize0911",
+      "enabled": true,
+      "complexity": "High",
+      "complexity_score": 3,
+      "time_complexity": "O(kn^2)",
+      "summary": "Multi-source strategic search"
+    },
+    {
+      "name": "KutuBot",
+      "author": "pinkHC",
+      "enabled": true,
+      "complexity": "High",
+      "complexity_score": 3,
+      "time_complexity": "O(n log n)",
+      "summary": "Unified strategic objective planner"
+    },
+    {
+      "name": "LyBot",
+      "author": "pinkHC",
+      "enabled": false,
+      "complexity": "High",
+      "complexity_score": 3,
+      "time_complexity": "O(n^2)",
+      "summary": "Multiplayer objective planner"
+    },
+    {
+      "name": "oimBot",
+      "author": "oimasterkafuu",
+      "enabled": true,
+      "complexity": "High",
+      "complexity_score": 3,
+      "time_complexity": "O(n^3)",
+      "summary": "Stance-based strategic planner"
+    }
+  ]
+}

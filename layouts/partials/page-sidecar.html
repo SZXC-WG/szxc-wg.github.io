@@ -1,0 +1,67 @@
+{{ $project := hugo.Data.project }}
+{{ $slug := "" }}
+{{ with .File }}
+  {{ $slug = .TranslationBaseName }}
+{{ end }}
+
+{{ $visual := "img/generated/project-pillars.svg" | relURL }}
+{{ $visualAlt := i18n "visual_pillars_alt" }}
+{{ $title := i18n "visual_pillars_title" }}
+{{ $caption := i18n "visual_pillars_summary" }}
+{{ $labels := slice (i18n "label_offline_first") (i18n "label_same_lan") $project.version_line }}
+
+{{ if or (eq .Section "releases") (eq $slug "downloads") }}
+  {{ $visual = "img/generated/release-journey.svg" | relURL }}
+  {{ $visualAlt = i18n "visual_release_alt" }}
+  {{ $title = i18n "visual_release_title" }}
+  {{ $caption = i18n "visual_release_summary" }}
+  {{ $labels = slice (i18n "label_stable_builds") (i18n "label_preview_builds") (i18n "label_windows_legacy") }}
+{{ else if or (eq $slug "bots") (eq $slug "simulator") }}
+  {{ $visual = "img/generated/bot-spectrum.svg" | relURL }}
+  {{ $visualAlt = i18n "visual_bots_alt" }}
+  {{ $title = i18n "visual_bots_title" }}
+  {{ $caption = i18n "visual_bots_summary" }}
+  {{ if eq $slug "simulator" }}
+    {{ $labels = slice (i18n "label_cli_tool") ".lgmp" (i18n "label_parallel_runs") }}
+  {{ else }}
+    {{ $labels = slice (i18n "label_built_in") (i18n "label_external") "C++17" }}
+  {{ end }}
+{{ else if or (eq $slug "about") (eq $slug "contribute") (eq .Section "contributors") (eq .Section "docs") }}
+  {{ $visual = "img/generated/project-pillars.svg" | relURL }}
+  {{ $visualAlt = i18n "visual_pillars_alt" }}
+  {{ $title = i18n "visual_pillars_title" }}
+  {{ $caption = i18n "visual_pillars_summary" }}
+  {{ if eq $slug "contribute" }}
+    {{ $labels = slice (i18n "label_pull_requests") (i18n "label_commit_rules") (i18n "label_replays_and_tests") }}
+  {{ else if eq .Section "docs" }}
+    {{ $labels = slice (i18n "label_bilingual") (i18n "label_source_backed") (i18n "label_workflow_docs") }}
+  {{ else }}
+    {{ $labels = slice "C++17" "Qt6" "CMake" (printf "%s" $project.license) }}
+  {{ end }}
+{{ end }}
+
+<aside class="page-sidecar stack-lg">
+  <div class="sidebar-card visual-card hero-visual-card">
+    <p class="eyebrow">{{ $title }}</p>
+    <figure class="visual-figure">
+      <img src="{{ $visual }}" alt="{{ $visualAlt }}" loading="lazy">
+    </figure>
+    <p>{{ $caption }}</p>
+    <div class="label-row">
+      {{ range $labels }}
+        <span class="label">{{ . }}</span>
+      {{ end }}
+    </div>
+  </div>
+
+  {{ if eq .Section "docs" }}
+    <div class="sidebar-card">
+      <h2>{{ i18n "project_docs" }}</h2>
+      <ul class="stacked-links">
+        {{ range .CurrentSection.RegularPages.ByWeight }}
+          <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+  {{ end }}
+</aside>

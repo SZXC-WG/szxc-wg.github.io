@@ -1,15 +1,20 @@
 {{ define "main" }}
   {{ $releases := hugo.Data.releases.items | default (slice) }}
   <section class="page-hero">
-    <div class="container narrow">
-      <p class="eyebrow">{{ i18n "project_downloads" }}</p>
-      <h1>{{ .Title }}</h1>
-      {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow">{{ i18n "project_downloads" }}</p>
+        <h1>{{ .Title }}</h1>
+        {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+      </div>
+      {{ partial "page-sidecar.html" . }}
     </div>
   </section>
   <section class="page-section">
-    <div class="container prose">
-      {{ .Content }}
+    <div class="container">
+      <article class="prose prose-panel">
+        {{ .Content }}
+      </article>
     </div>
   </section>
   <section class="page-section section-muted">

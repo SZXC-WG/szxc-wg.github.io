@@ -1,21 +1,26 @@
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="{{ .Site.Home.RelPermalink }}">
-      <img src="{{ "favicon.png" | relURL }}" alt="LocalGen logo" width="48" height="48">
+      <img class="brand-mark" src="{{ "favicon.png" | relURL }}" alt="LocalGen avatar" width="44" height="44">
       <span>
         <strong>{{ .Site.Params.projectShortName }}</strong>
         <small>{{ .Site.Params.organization }}</small>
       </span>
     </a>
-    <nav class="main-nav" aria-label="Main navigation">
-      {{ range .Site.Menus.main }}
-        {{ $href := .URL }}
-        {{ with .Page }}
-          {{ $href = .RelPermalink }}
+    <div class="header-actions">
+      <nav class="main-nav" aria-label="Main navigation">
+        {{ range .Site.Menus.main }}
+          {{ $href := .URL }}
+          {{ with .Page }}
+            {{ $href = .RelPermalink }}
+          {{ end }}
+          <a href="{{ $href }}" class="{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}is-active{{ end }}">{{ .Name }}</a>
         {{ end }}
-        <a href="{{ $href }}" class="{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}is-active{{ end }}">{{ .Name }}</a>
-      {{ end }}
-    </nav>
-    {{ partial "language-switcher.html" . }}
+      </nav>
+      <div class="utility-cluster">
+        {{ partial "theme-toggle.html" . }}
+        {{ partial "language-switcher.html" . }}
+      </div>
+    </div>
   </div>
 </header>

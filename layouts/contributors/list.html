@@ -1,15 +1,20 @@
 {{ define "main" }}
   {{ $contributors := hugo.Data.contributors.items | default (slice) }}
   <section class="page-hero">
-    <div class="container narrow">
-      <p class="eyebrow">{{ i18n "community" }}</p>
-      <h1>{{ .Title }}</h1>
-      {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow">{{ i18n "community" }}</p>
+        <h1>{{ .Title }}</h1>
+        {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+      </div>
+      {{ partial "page-sidecar.html" . }}
     </div>
   </section>
   <section class="page-section">
-    <div class="container prose">
-      {{ .Content }}
+    <div class="container">
+      <article class="prose prose-panel">
+        {{ .Content }}
+      </article>
     </div>
   </section>
   <section class="page-section section-muted">
@@ -19,7 +24,8 @@
           {{ range $contributors }}
             <article class="contributor-card detailed">
               <img src="{{ .avatar_url }}" alt="{{ .login }} avatar" loading="lazy">
-              <h2><a href="{{ .html_url }}">@{{ .login }}</a></h2>
+              <h2 class="contributor-name"><a href="{{ .html_url }}">{{ .login }}</a></h2>
+              <p class="contributor-handle">@{{ .login }}</p>
               {{ if .contributions }}
                 <p>{{ .contributions }} {{ i18n "contributions_label" }}</p>
               {{ else }}

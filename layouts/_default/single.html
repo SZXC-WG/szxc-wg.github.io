@@ -1,26 +1,19 @@
 {{ define "main" }}
   <section class="page-hero">
-    <div class="container narrow">
-      <p class="eyebrow">{{ i18n "section_intro" }}</p>
-      <h1>{{ .Title }}</h1>
-      {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    <div class="container page-hero-grid">
+      <div>
+        <p class="eyebrow">{{ i18n "section_intro" }}</p>
+        <h1>{{ .Title }}</h1>
+        {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+      </div>
+      {{ partial "page-sidecar.html" . }}
     </div>
   </section>
   <section class="page-section">
-    <div class="container content-grid">
-      <article class="prose">
+    <div class="container">
+      <article class="prose prose-panel">
         {{ .Content }}
       </article>
-      {{ if eq .Section "docs" }}
-        <aside class="sidebar-card">
-          <h2>{{ i18n "project_docs" }}</h2>
-          <ul class="stacked-links">
-            {{ range .CurrentSection.RegularPages.ByWeight }}
-              <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-            {{ end }}
-          </ul>
-        </aside>
-      {{ end }}
     </div>
   </section>
 {{ end }}

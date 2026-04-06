@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="456" viewBox="0 0 780 456" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">LocalGen generated visual</title>
+  <desc id="desc">Automatically generated visual asset for the LocalGen website.</desc>
+  <defs>
+    <linearGradient id="bgGlow" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#12213a" />
+      <stop offset="100%" stop-color="#0a1322" />
+    </linearGradient>
+    <linearGradient id="accentLine" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#4fd1f5" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <linearGradient id="accentArea" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="rgba(110,231,255,0.32)" />
+      <stop offset="100%" stop-color="rgba(110,231,255,0.02)" />
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#020617" flood-opacity="0.42" />
+    </filter>
+    
+  </defs>
+  
+  <rect width="780" height="456" rx="32" fill="url(#bgGlow)" />
+  <circle cx="670" cy="72" r="96" fill="rgba(110,231,255,0.10)" />
+  <circle cx="94" cy="360" r="140" fill="rgba(139,92,246,0.08)" />
+  <g filter="url(#softShadow)"><rect x="22" y="22" width="736" height="412" rx="28" fill="#0f1c31" stroke="rgba(255,255,255,0.12)" stroke-width="1" /></g>
+    <text x="36" y="108" font-size="24" font-weight="700" fill="#eff6ff">Release journey</text>
+    <text x="36" y="132" font-size="13" fill="#a9bdd7" text-anchor="start">How LocalGen evolved from the first GUI builds to the current Qt-era</text><text x="36" y="150" font-size="13" fill="#a9bdd7" text-anchor="start">branch.</text>
+  <rect x="36" y="28" width="162" height="44" rx="16" fill="#101d32" stroke="rgba(255,255,255,0.08)" stroke-width="1" /><text x="54" y="48" font-size="11" fill="#a9bdd7" letter-spacing="1.4">RELEASES</text><text x="54" y="63" font-size="16" fill="#6ee7ff" font-weight="700">23</text><rect x="214" y="28" width="162" height="44" rx="16" fill="#101d32" stroke="rgba(255,255,255,0.08)" stroke-width="1" /><text x="232" y="48" font-size="11" fill="#a9bdd7" letter-spacing="1.4">STABLE</text><text x="232" y="63" font-size="16" fill="#34d399" font-weight="700">12</text><rect x="392" y="28" width="162" height="44" rx="16" fill="#101d32" stroke="rgba(255,255,255,0.08)" stroke-width="1" /><text x="410" y="48" font-size="11" fill="#a9bdd7" letter-spacing="1.4">PREVIEW</text><text x="410" y="63" font-size="16" fill="#fbbf24" font-weight="700">11</text><rect x="570" y="28" width="162" height="44" rx="16" fill="#101d32" stroke="rgba(255,255,255,0.08)" stroke-width="1" /><text x="588" y="48" font-size="11" fill="#a9bdd7" letter-spacing="1.4">LATEST</text><text x="588" y="63" font-size="16" fill="#8b5cf6" font-weight="700">v4.3.2D</text>
+  <g><line x1="68" y1="398.0" x2="744" y2="398.0" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 6" /><line x1="68" y1="348.9" x2="744" y2="348.9" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 6" /><text x="54" y="352.9" text-anchor="end" font-size="12" fill="#a9bdd7">5</text><line x1="68" y1="299.7" x2="744" y2="299.7" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 6" /><text x="54" y="303.7" text-anchor="end" font-size="12" fill="#a9bdd7">10</text><line x1="68" y1="250.6" x2="744" y2="250.6" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 6" /><text x="54" y="254.6" text-anchor="end" font-size="12" fill="#a9bdd7">15</text><line x1="68" y1="201.5" x2="744" y2="201.5" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4 6" /><text x="54" y="205.5" text-anchor="end" font-size="12" fill="#a9bdd7">20</text></g>
+  <g><line x1="68.0" y1="172" x2="68.0" y2="398" stroke="rgba(255,255,255,0.08)" /><text x="68.0" y="438" text-anchor="middle" font-size="12" fill="#a9bdd7">2023</text><line x1="330.0" y1="172" x2="330.0" y2="398" stroke="rgba(255,255,255,0.08)" /><text x="330.0" y="438" text-anchor="middle" font-size="12" fill="#a9bdd7">2024</text><line x1="608.0" y1="172" x2="608.0" y2="398" stroke="rgba(255,255,255,0.08)" /><text x="608.0" y="438" text-anchor="middle" font-size="12" fill="#a9bdd7">2025</text></g>
+  <path d="M 68.0 398.0 L 68.0 388.2 L 68.8 378.3 L 72.6 368.5 L 78.6 358.7 L 85.5 348.9 L 89.3 339.0 L 89.3 329.2 L 108.3 319.4 L 108.3 309.6 L 124.2 299.7 L 145.5 289.9 L 204.0 280.1 L 214.6 270.3 L 220.7 260.4 L 238.1 250.6 L 259.4 240.8 L 263.2 231.0 L 270.8 221.1 L 323.2 211.3 L 514.6 201.5 L 706.8 191.7 L 708.3 181.8 L 744.0 172.0 L 744.0 398.0 Z" fill="rgba(110,231,255,0.18)" />
+  <path d="M 68.0 388.2 L 68.8 378.3 L 72.6 368.5 L 78.6 358.7 L 85.5 348.9 L 89.3 339.0 L 89.3 329.2 L 108.3 319.4 L 108.3 309.6 L 124.2 299.7 L 145.5 289.9 L 204.0 280.1 L 214.6 270.3 L 220.7 260.4 L 238.1 250.6 L 259.4 240.8 L 263.2 231.0 L 270.8 221.1 L 323.2 211.3 L 514.6 201.5 L 706.8 191.7 L 708.3 181.8 L 744.0 172.0" stroke="url(#accentLine)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  <g><circle cx="68.0" cy="388.2" r="4.5" fill="#fbbf24" stroke="#08111f" stroke-width="2" /><circle cx="68.8" cy="378.3" r="4.5" fill="#fbbf24" stroke="#08111f" stroke-width="2" /><circle cx="72.6" cy="368.5" r="4.5" fill="#34d399" stroke="#08111f" stroke-width="2" /><circle cx="78.6" cy="358.7" r="4.5" fill="#34d399" stroke="#08111f" stroke-width="2" /><circle cx="85.5" cy="348.9" r="4.5" fill="#34d399" stroke="#08111f" stroke-width="2" /><circle cx="89.3" cy="339.0" r="4.5" fill="#34d399" stroke="#08111f" stroke-width="2" /><circle cx="89.3" cy="329.2" r="4.5" fill="#34d399" stroke="#08111f" stroke-width="2" /><circle cx="108.3" cy="319.4" r="4.5" fill="#fbbf24" stroke="#08111f" stroke-width="2" /><circle cx="108.3" cy="309.6" r="4.5" fill="#fbbf24" stroke="#08111f" stroke-width="2" /><circle cx="124.2" cy="299.7" r="4.5" fill="#34d399" stroke="#08111f" stroke-width="2" /><circle cx="145.5" cy="289.9" r="4.5" fill="#34d399" stroke="#08111f" stroke-width="2" /><circle cx="204.0" cy="280.1" r="4.5" fill="#34d399" stroke="#08111f" stroke-width="2" /><circle cx="214.6" cy="270.3" r="4.5" fill="#34d399" stroke="#08111f" stroke-width="2" /><circle cx="220.7" cy="260.4" r="4.5" fill="#34d399" stroke="#08111f" stroke-width="2" /><circle cx="238.1" cy="250.6" r="4.5" fill="#fbbf24" stroke="#08111f" stroke-width="2" /><circle cx="259.4" cy="240.8" r="4.5" fill="#fbbf24" stroke="#08111f" stroke-width="2" /><circle cx="263.2" cy="231.0" r="4.5" fill="#fbbf24" stroke="#08111f" stroke-width="2" /><circle cx="270.8" cy="221.1" r="4.5" fill="#fbbf24" stroke="#08111f" stroke-width="2" /><circle cx="323.2" cy="211.3" r="4.5" fill="#fbbf24" stroke="#08111f" stroke-width="2" /><circle cx="514.6" cy="201.5" r="4.5" fill="#fbbf24" stroke="#08111f" stroke-width="2" /><circle cx="706.8" cy="191.7" r="4.5" fill="#fbbf24" stroke="#08111f" stroke-width="2" /><circle cx="708.3" cy="181.8" r="4.5" fill="#34d399" stroke="#08111f" stroke-width="2" /><circle cx="744.0" cy="172.0" r="6" fill="#34d399" stroke="#08111f" stroke-width="2" /></g>
+    <text x="740" y="158" text-anchor="end" font-size="12" fill="#a9bdd7">cumulative releases</text>
+    <text x="740" y="434" text-anchor="end" font-size="12" fill="#a9bdd7">2023–2025</text>
+
+</svg>
