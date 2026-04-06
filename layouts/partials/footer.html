@@ -32,8 +32,9 @@
         <li><a href="{{ "website-license/" | relLangURL }}">{{ i18n "website_license" }}</a></li>
         <li><a href="{{ .Site.Params.releasesUrl }}">Releases</a></li>
         <li><a href="{{ .Site.Params.issuesUrl }}">{{ i18n "issues_label" }}</a></li>
-        <li><a href="mailto:{{ .Site.Params.communityEmail }}">{{ .Site.Params.communityEmail }}</a></li>
+        <li><a href="{{ .Site.Params.actionsUrl }}">{{ i18n "github_actions_label" }}</a></li>
       </ul>
+      <p class="muted footer-contact">{{ i18n "contact_label" }}: <a href="mailto:{{ .Site.Params.communityEmail }}">{{ .Site.Params.communityEmail }}</a></p>
     </div>
   </div>
   <div class="container footer-meta">

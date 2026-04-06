@@ -6,17 +6,17 @@ draft: false
 weight: 10
 ---
 
-## What the README promises
+## Why LocalGen is worth your attention
 
-**Local Generals.io (LocalGen)** is an independent, open-source project built for **local-first strategy play**.
+**Local Generals.io (LocalGen)** is more than a nostalgia project. It is a **local-first strategy sandbox** where players can jump into offline matches immediately, bot authors can test ideas seriously, and contributors can help shape the next generation of the project.
 
-The upstream README highlights three headline use cases:
+The upstream README keeps the promise grounded and practical:
 
-- **Play generals.io completely offline**
-- **Use ready-to-run built-in bots** without extra setup
-- **Battle friends over the same LAN** when you want local multiplayer instead of an online service
+- **Play generals.io-style matches completely offline**
+- **Launch ready-to-run built-in bots** without extra setup
+- **Battle friends over the same LAN** when local multiplayer beats waiting for an online server
 
-It also explicitly invites ideas, bug reports, and pull requests through GitHub.
+That same README also makes it clear that ideas, bug reports, and pull requests are genuinely welcome.
 
 ## Version lines that matter
 
@@ -32,7 +32,7 @@ The README and release guidance make the branch split clear:
    - the home of older playable releases
    - still important if you need the historical EGE-era workflow or legacy downloads
 
-> The upstream README explicitly warns that the `master` branch is still in progress. If you want older finished builds, use the releases page rather than assuming the latest branch is a drop-in end-user build.
+> The upstream README explicitly warns that the `master` branch is still in progress. If you want a smoother first experience, start with the releases page rather than assuming the newest branch is a drop-in end-user build.
 
 ## Toolchain snapshot
 
@@ -72,12 +72,12 @@ Across the README and contribution docs, version 6 is framed as a structural tra
 - map creation workflows
 - multiple generations of built-in bots
 - a standalone bot simulator
-- contribution docs for bots and development workflow
+- contribution docs for bots, workflows, and community standards
 
 ## Where to go next
 
-- Visit the [downloads page]({{< relref "downloads" >}}) for release guidance
-- Browse [releases]({{< relref "releases" >}}) for the full release history
-- Open the [docs section]({{< relref "docs" >}}) for mirrored project documentation
+- Visit the [downloads page]({{< relref "downloads" >}}) to get into your first match faster
+- Browse [releases]({{< relref "releases" >}}) to compare stable builds and previews
+- Open the [docs section]({{< relref "docs" >}}) when you want the project rules, file formats, and contribution habits in one place
 - Read the [disclaimer]({{< relref "disclaimer" >}}) before redistributing or presenting the project publicly
 

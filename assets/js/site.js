@@ -96,9 +96,33 @@ function initTopicTicker() {
   ticker.insertAdjacentHTML("beforeend", clone);
 }
 
+function initLanguageMenu() {
+  const menu = document.querySelector("[data-language-menu]");
+  if (!menu) {
+    return;
+  }
+
+  document.addEventListener("click", (event) => {
+    if (!menu.open) {
+      return;
+    }
+
+    if (!menu.contains(event.target)) {
+      menu.open = false;
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      menu.open = false;
+    }
+  });
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   applyTheme(resolvedTheme());
   initThemeToggle();
+  initLanguageMenu();
   initRevealAnimations();
   initTopicTicker();
 });

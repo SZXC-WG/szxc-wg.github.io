@@ -8,7 +8,7 @@ weight: 80
 
 ## 如何参与贡献
 
-LocalGen 明确欢迎社区通过 GitHub issue 和 pull request 参与项目建设。
+如果你能改进玩法、Bot、文档、测试或工具链，那么 LocalGen 就有适合你的贡献空间。项目明确欢迎社区通过 GitHub issue 和 pull request 参与建设。
 
 README 里有一个很清楚的指向：如果你是在为当前重构主线提交新工作，请把目标分支放在 **`master` / `v6.x`**。
 
@@ -52,7 +52,7 @@ docs(website): clarify bilingual download guidance
 - 对 Bot 或较大玩法改动，是否附带回放、测试或基准结果
 - 如果是外部 Bot，是否写清楚依赖与运行环境
 
-## 参与入口
+## 准备加入了吗？
 
 - [Issues](https://github.com/SZXC-WG/LocalGen-new/issues)
 - [Pull Requests](https://github.com/SZXC-WG/LocalGen-new/pulls)

@@ -8,7 +8,7 @@ weight: 80
 
 ## How to contribute
 
-LocalGen openly welcomes contributions, especially through GitHub issues and pull requests.
+If you can improve gameplay, bots, documentation, testing, or tooling, LocalGen has room for your contribution. The project openly welcomes help, especially through GitHub issues and pull requests.
 
 The README makes one target explicit: if you are contributing new work for the active rewrite, submit it to **`master` / `v6.x`**.
 
@@ -52,7 +52,7 @@ docs(website): clarify bilingual download guidance
 - replays, tests, or benchmark notes when contributing bots or major gameplay work
 - for external bots, dependency and runtime notes
 
-## Where to contribute
+## Ready to join in?
 
 - [Issues](https://github.com/SZXC-WG/LocalGen-new/issues)
 - [Pull requests](https://github.com/SZXC-WG/LocalGen-new/pulls)

@@ -24,7 +24,7 @@ summaryLength = 36
   anchor = 'smart'
 
 [params]
-  description = 'The bilingual project website for Local Generals.io by SZXC Work Group.'
+  description = 'The multilingual project website for Local Generals.io by SZXC Work Group.'
   organization = 'SZXC Work Group'
   projectName = 'Local Generals.io'
   projectShortName = 'LocalGen'
@@ -54,4 +54,22 @@ summaryLength = 36
     languageCode = 'zh-CN'
     contentDir = 'content'
     weight = 2
+    title = 'LocalGen'
+  [languages.ja]
+    languageName = '日本語'
+    languageCode = 'ja-JP'
+    contentDir = 'content'
+    weight = 3
+    title = 'LocalGen'
+  [languages.ko]
+    languageName = '한국어'
+    languageCode = 'ko-KR'
+    contentDir = 'content'
+    weight = 4
+    title = 'LocalGen'
+  [languages.fr]
+    languageName = 'Français'
+    languageCode = 'fr-FR'
+    contentDir = 'content'
+    weight = 5
     title = 'LocalGen'

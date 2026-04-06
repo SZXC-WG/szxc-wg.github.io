@@ -12,11 +12,23 @@
     </div>
   </section>
   <section class="page-section section-muted">
-    <div class="container card-grid">
-      {{ range .RegularPages.ByWeight }}
-        <article class="card">
-          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-          {{ with .Description }}<p>{{ . }}</p>{{ end }}
+    <div class="container">
+      {{ if .RegularPages }}
+        <div class="card-grid">
+          {{ range .RegularPages.ByWeight }}
+            <article class="card">
+              <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+              {{ with .Description }}<p>{{ . }}</p>{{ end }}
+            </article>
+          {{ end }}
+        </div>
+      {{ else }}
+        <article class="panel prose-panel docs-fallback-card">
+          <p>{{ i18n "docs_localized_fallback" }}</p>
+          <div class="hero-actions">
+            <a class="button button-secondary" href="{{ "/docs/" | relURL }}">{{ i18n "docs_fallback_english" }}</a>
+            <a class="button button-secondary" href="{{ "/zh/docs/" | relURL }}">{{ i18n "docs_fallback_chinese" }}</a>
+          </div>
         </article>
       {{ end }}
     </div>

@@ -1,11 +1,55 @@
-{{ $translations := .AllTranslations }}
-{{ if not $translations }}
-  {{ $translations = .Site.Home.AllTranslations }}
-{{ end }}
-{{ if $translations }}
-  <nav class="language-switcher" aria-label="{{ i18n "site_language" }}">
-    {{ range sort $translations "Language.Weight" }}
-      <a href="{{ .RelPermalink }}" class="{{ if eq $.Site.Language.Lang .Language.Lang }}is-active{{ end }}">{{ .Language.LanguageName }}</a>
-    {{ end }}
-  </nav>
+{{ $page := . }}
+{{ $sites := sort hugo.Sites "Language.Weight" }}
+{{ if gt (len $sites) 1 }}
+  <details class="language-switcher" data-language-menu>
+    <summary class="language-trigger" aria-label="{{ i18n "site_language" }}" title="{{ i18n "site_language" }}">
+      <span class="language-trigger-label">{{ i18n "site_language" }}</span>
+      <strong>{{ .Site.Language.LanguageName }}</strong>
+      <span class="language-chevron" aria-hidden="true">▾</span>
+    </summary>
+    <div class="language-panel">
+      <ul class="language-list" role="list">
+        {{ range $sites }}
+          {{ $site := . }}
+          {{ $lang := .Language.Lang }}
+          {{ $scratch := newScratch }}
+          {{ $scratch.Set "target" .Home }}
+          {{ $scratch.Set "matched" false }}
+          {{ if eq $page.Site.Language.Lang $lang }}
+            {{ $scratch.Set "target" $page }}
+            {{ $scratch.Set "matched" true }}
+          {{ else }}
+            {{ range $page.AllTranslations }}
+              {{ if eq .Language.Lang $lang }}
+                {{ $scratch.Set "target" . }}
+                {{ $scratch.Set "matched" true }}
+              {{ end }}
+            {{ end }}
+            {{ if and (not ($scratch.Get "matched")) $page.Section }}
+              {{ with $site.GetPage (printf "/%s" $page.Section) }}
+                {{ $scratch.Set "target" . }}
+                {{ $scratch.Set "matched" true }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+          {{ $target := $scratch.Get "target" }}
+          <li>
+            <a
+              href="{{ $target.RelPermalink }}"
+              class="language-link {{ if eq $lang $page.Site.Language.Lang }}is-active{{ end }}"
+              {{ if eq $lang $page.Site.Language.Lang }}aria-current="page"{{ end }}
+            >
+              <span class="language-link-copy">
+                <strong>{{ $site.Language.LanguageName }}</strong>
+                <small>{{ upper $site.Language.Lang }}</small>
+              </span>
+              {{ if eq $lang $page.Site.Language.Lang }}
+                <span class="language-status" aria-hidden="true">●</span>
+              {{ end }}
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+  </details>
 {{ end }}

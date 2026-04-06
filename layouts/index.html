@@ -3,6 +3,7 @@
   {{ $releases := hugo.Data.releases.items | default (slice) }}
   {{ $contributors := hugo.Data.contributors.items | default (slice) }}
   {{ $bots := hugo.Data.bots.items | default (slice) }}
+  {{ $sites := sort hugo.Sites "Language.Weight" }}
   <section class="hero-section">
     <div class="container hero-grid">
       <div class="hero-copy stack-lg">
@@ -21,7 +22,7 @@
         <div class="stat-grid metric-strip">
           <article class="stat-card"><span>{{ i18n "stats_version" }}</span><strong>{{ $project.version | default .Site.Params.projectVersion }}</strong></article>
           <article class="stat-card"><span>{{ i18n "stats_license" }}</span><strong>{{ $project.license | default .Site.Params.license }}</strong></article>
-          <article class="stat-card"><span>{{ i18n "stats_languages" }}</span><strong>EN / 中文</strong></article>
+          <article class="stat-card"><span>{{ i18n "stats_languages" }}</span><strong>{{ range $index, $site := $sites }}{{ if gt $index 0 }} / {{ end }}{{ $site.Language.LanguageName }}{{ end }}</strong></article>
           <article class="stat-card"><span>{{ i18n "stats_release_count" }}</span><strong>{{ len $releases }}</strong></article>
           <article class="stat-card"><span>{{ i18n "stats_contributor_count" }}</span><strong>{{ len $contributors }}</strong></article>
           <article class="stat-card"><span>{{ i18n "stats_bot_count" }}</span><strong>{{ $project.bot_count | default 10 }}</strong></article>

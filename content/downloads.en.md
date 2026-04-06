@@ -6,26 +6,26 @@ draft: false
 weight: 20
 ---
 
-## The canonical download source
+## Want to play tonight? Start here.
 
-The upstream README sends users straight to the GitHub releases page. That is still the canonical place to download LocalGen builds:
+The upstream README sends users straight to the GitHub releases page, and that is still the safest place to pick up LocalGen builds:
 
 - [Open LocalGen releases on GitHub](https://github.com/SZXC-WG/LocalGen-new/releases)
 
-The [releases section]({{< relref "releases" >}}) on this site mirrors the release timeline and links back to those download pages.
+The [releases section]({{< relref "releases" >}}) on this site mirrors the timeline and links back to those download pages, so you can compare versions before committing to one.
 
-## What branch are you looking at?
+## Choose the right branch on purpose
 
 The README also contains an important warning: **the `master` branch is the active v6 rewrite and is not the same thing as a finished end-user release**.
 
 - If you want something proven and historically downloadable, start with **GitHub Releases**.
-- If you are tracking the future Qt direction, follow **`master` / `v6.x`** and expect active development.
+- If you want to help test the future Qt direction, follow **`master` / `v6.x`** and expect active development.
 
 ## Stable vs preview builds
 
 ### For most players
 
-Start with the **latest stable GitHub release** if you want the safest entry point.
+Start with the **latest stable GitHub release** if you want the smoothest path from download to first match.
 
 ### For testers and contributors
 
@@ -33,7 +33,7 @@ Use preview or development releases when you want:
 
 - the newest gameplay or bot features
 - newer map or replay behavior
-- early access to UI and platform changes
+- early access to UI, tooling, and platform changes
 
 ## Version lines explained
 
@@ -50,7 +50,7 @@ Use preview or development releases when you want:
 
 Several historical releases mention bundled fonts such as **Quicksand** or **Freestyle Script**. If a release note tells you to install a font from the package, follow that instruction before launching.
 
-## Need details before downloading?
+## Want more confidence before downloading?
 
 - Read the [release history]({{< relref "releases" >}})
 - Check the [FAQ]({{< relref "faq" >}})

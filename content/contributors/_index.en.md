@@ -6,5 +6,7 @@ draft: false
 weight: 40
 ---
 
-The LocalGen story is strongly community-driven. This section highlights the GitHub contributors who shaped the project across its gameplay logic, bot ecosystem, releases, and supporting documentation.
+The LocalGen story is strongly community-driven. This section highlights the GitHub contributors who shaped the project across gameplay logic, bot design, releases, experiments, and documentation.
+
+If the project convinces you to download it, test it, or contribute back, these are the people who helped make that invitation real.
 

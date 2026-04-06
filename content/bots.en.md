@@ -8,7 +8,7 @@ weight: 60
 
 ## Bot ecosystem overview
 
-Bots are one of the defining features of LocalGen. They matter both for ordinary offline play and for serious AI experimentation, and the project docs explicitly invite new bot contributions.
+Bots are where LocalGen becomes more than an offline strategy game. They power quick solo matches, make LAN sessions more interesting, and turn the project into a genuine playground for AI experimentation. Better yet, the project docs explicitly invite new bot contributions.
 
 The upstream documentation distinguishes two major categories:
 
@@ -47,7 +47,7 @@ $$
 T_{\text{match}} \approx \sum_{t=1}^{s} T_{\text{bot}}(n_t)
 $$
 
-That shorthand is why a jump from $O(n)$ to $O(n \log n)$ can become visible in long simulator runs: the per-turn difference compounds over hundreds of steps.
+That shorthand is why a jump from $O(n)$ to $O(n \log n)$ can become visible in long simulator runs: the per-turn difference compounds over hundreds of steps, especially when you are benchmarking many games instead of playing just one.
 
 ```text
 src/bots/MyBot.cpp
@@ -77,7 +77,7 @@ The upstream built-in bot README expects every bot in `src/bots/` to satisfy all
 - strategy deeper than a placeholder random walker
 - for external bots, setup instructions plus supported runtime / OS details
 
-## Continue reading
+## Ready to build something smarter?
 
 - Read the mirrored [Bot Contributions]({{< relref "docs/bot-contributions" >}}) guide
 - Check the [Built-in Bots]({{< relref "docs/built-in-bots" >}}) document for exact submission requirements

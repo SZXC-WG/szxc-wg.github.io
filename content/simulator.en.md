@@ -8,7 +8,7 @@ weight: 70
 
 ## What the simulator is for
 
-`LocalGen-bot-simulator` is a lightweight command-line tool for **bot-vs-bot evaluation**.
+`LocalGen-bot-simulator` is the tool you reach for when you want evidence instead of guesswork. It is a lightweight command-line companion for **bot-vs-bot evaluation**.
 
 It uses the same core board and game logic as the main application, but removes the Qt user interface so you can focus on benchmarking, regression checking, and large-scale comparison runs.
 
@@ -22,7 +22,7 @@ It uses the same core board and game logic as the main application, but removes 
 
 ## Why contributors use it
 
-The bot contribution guide repeatedly asks for evidence: replays, tests, and performance notes. The simulator is the cleanest way to collect that evidence when you want to compare multiple strategies under consistent settings.
+The bot contribution guide repeatedly asks for evidence: replays, tests, and performance notes. The simulator is the cleanest way to collect that evidence when you want to compare multiple strategies under consistent settings, share meaningful benchmarks, and prove that a new idea is more than a lucky streak.
 
 ## Example usage
 
