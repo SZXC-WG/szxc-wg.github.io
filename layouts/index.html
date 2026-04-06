@@ -1,216 +1,249 @@
 {{ define "main" }}
-  {{ $project := hugo.Data.project }}
-  {{ $releases := hugo.Data.releases.items | default (slice) }}
-  {{ $contributors := hugo.Data.contributors.items | default (slice) }}
-  {{ $bots := hugo.Data.bots.items | default (slice) }}
-  {{ $sites := sort hugo.Sites "Language.Weight" }}
-  <section class="hero-section">
-    <div class="container hero-grid">
-      <div class="hero-copy stack-lg">
-        <div class="label-row">
-          <span class="label label-accent">{{ i18n "label_offline_first" }}</span>
-          <span class="label">{{ i18n "label_same_lan" }}</span>
-          <span class="label">{{ $project.version_line | default .Site.Params.projectVersion }}</span>
-        </div>
-        <p class="eyebrow">{{ i18n "hero_kicker" }}</p>
-        <h1>{{ i18n "hero_title" }}</h1>
-        <p class="lead">{{ i18n "hero_summary" }}</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="{{ "downloads/" | relLangURL }}">{{ i18n "download_now" }}</a>
-          <a class="button button-secondary" href="{{ .Site.Params.sourceRepo }}">{{ i18n "view_source" }}</a>
-        </div>
-        <div class="stat-grid metric-strip">
-          <article class="stat-card"><span>{{ i18n "stats_version" }}</span><strong>{{ $project.version | default .Site.Params.projectVersion }}</strong></article>
-          <article class="stat-card"><span>{{ i18n "stats_license" }}</span><strong>{{ $project.license | default .Site.Params.license }}</strong></article>
-          <article class="stat-card"><span>{{ i18n "stats_languages" }}</span><strong>{{ range $index, $site := $sites }}{{ if gt $index 0 }} / {{ end }}{{ $site.Language.LanguageName }}{{ end }}</strong></article>
-          <article class="stat-card"><span>{{ i18n "stats_release_count" }}</span><strong>{{ len $releases }}</strong></article>
-          <article class="stat-card"><span>{{ i18n "stats_contributor_count" }}</span><strong>{{ len $contributors }}</strong></article>
-          <article class="stat-card"><span>{{ i18n "stats_bot_count" }}</span><strong>{{ $project.bot_count | default 10 }}</strong></article>
-        </div>
-        <div class="feature-marquee">
-          <div class="feature-marquee-track" data-marquee>
-            {{ range $project.topics }}
-              <span class="label subtle">{{ . }}</span>
-            {{ end }}
-          </div>
+{{ $project := hugo.Data.project }}
+{{ $releases := hugo.Data.releases.items | default (slice) }}
+{{ $contributors := hugo.Data.contributors.items | default (slice) }}
+{{ $bots := hugo.Data.bots.items | default (slice) }}
+{{ $sites := sort hugo.Sites "Language.Weight" }}
+<section class="hero-section">
+  <div class="container hero-grid">
+    <div class="hero-copy stack-lg">
+      <div class="label-row">
+        <span class="label label-accent">{{ i18n "label_offline_first" }}</span>
+        <span class="label">{{ i18n "label_same_lan" }}</span>
+        <span class="label">{{ $project.version_line | default .Site.Params.projectVersion }}</span>
+      </div>
+      <p class="eyebrow">{{ i18n "hero_kicker" }}</p>
+      <h1>{{ i18n "hero_title" }}</h1>
+      <p class="lead">{{ i18n "hero_summary" }}</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="{{ " downloads/" | relLangURL }}">{{ i18n "download_now" }}</a>
+        <a class="button button-secondary" href="{{ .Site.Params.sourceRepo }}">{{ i18n "view_source" }}</a>
+      </div>
+      <div class="stat-grid metric-strip">
+        <article class="stat-card"><span>{{ i18n "stats_version" }}</span><strong>{{ $project.version | default
+            .Site.Params.projectVersion }}</strong></article>
+        <article class="stat-card"><span>{{ i18n "stats_license" }}</span><strong>{{ $project.license | default
+            .Site.Params.license }}</strong></article>
+        <article class="stat-card"><span>{{ i18n "stats_languages" }}</span><strong>{{ range $index, $site := $sites
+            }}{{ if gt $index 0 }} / {{ end }}{{ $site.Language.LanguageName }}{{ end }}</strong></article>
+        <article class="stat-card"><span>{{ i18n "stats_release_count" }}</span><strong>{{ len $releases }}</strong>
+        </article>
+        <article class="stat-card"><span>{{ i18n "stats_contributor_count" }}</span><strong>{{ len $contributors
+            }}</strong></article>
+        <article class="stat-card"><span>{{ i18n "stats_bot_count" }}</span><strong>{{ $project.bot_count | default 10
+            }}</strong></article>
+      </div>
+      <div class="feature-marquee">
+        <div class="feature-marquee-track" data-marquee>
+          {{ range $project.topics }}
+          <span class="label subtle">{{ . }}</span>
+          {{ end }}
         </div>
       </div>
-      <aside class="hero-panel hero-visual-card">
-        <p class="eyebrow">{{ i18n "visual_hero_title" }}</p>
-        <figure class="visual-figure">
-          <img src="{{ "img/generated/hero-board.svg" | relURL }}" alt="{{ i18n "visual_hero_alt" }}" loading="eager">
+    </div>
+    <aside class="hero-panel hero-visual-card">
+      <p class="eyebrow">{{ i18n "visual_hero_title" }}</p>
+      <figure class="visual-figure">
+        <img src="{{ " img/generated/hero-board.svg" | relURL }}" alt="{{ i18n " visual_hero_alt" }}" loading="eager">
+      </figure>
+      <p>{{ i18n "visual_hero_summary" }}</p>
+      <div class="label-row">
+        {{ range $project.built_with }}
+        <span class="label">{{ . }}</span>
+        {{ end }}
+        <span class="label">{{ $project.license | default .Site.Params.license }}</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="page-section section-muted">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">{{ i18n "insight_kicker" }}</p>
+        <h2>{{ i18n "insight_title" }}</h2>
+      </div>
+    </div>
+    <div class="plot-grid">
+      <article class="plot-card">
+        <p class="eyebrow">{{ i18n "visual_release_title" }}</p>
+        <figure class="visual-figure compact">
+          <img src="{{ " img/generated/release-journey.svg" | relURL }}" alt="{{ i18n " visual_release_alt" }}"
+            loading="lazy">
         </figure>
-        <p>{{ i18n "visual_hero_summary" }}</p>
-        <div class="label-row">
-          {{ range $project.built_with }}
-            <span class="label">{{ . }}</span>
-          {{ end }}
-          <span class="label">{{ $project.license | default .Site.Params.license }}</span>
-        </div>
-      </aside>
+        <p>{{ i18n "visual_release_summary" }}</p>
+      </article>
+      <article class="plot-card">
+        <p class="eyebrow">{{ i18n "visual_bots_title" }}</p>
+        <figure class="visual-figure compact">
+          <img src="{{ " img/generated/bot-spectrum.svg" | relURL }}" alt="{{ i18n " visual_bots_alt" }}"
+            loading="lazy">
+        </figure>
+        <p>{{ i18n "visual_bots_summary" }}</p>
+      </article>
+      <article class="plot-card">
+        <p class="eyebrow">{{ i18n "visual_pillars_title" }}</p>
+        <figure class="visual-figure compact">
+          <img src="{{ " img/generated/project-pillars.svg" | relURL }}" alt="{{ i18n " visual_pillars_alt" }}"
+            loading="lazy">
+        </figure>
+        <p>{{ i18n "visual_pillars_summary" }}</p>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="page-section section-muted">
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">{{ i18n "insight_kicker" }}</p>
-          <h2>{{ i18n "insight_title" }}</h2>
-        </div>
-      </div>
-      <div class="plot-grid">
-        <article class="plot-card">
-          <p class="eyebrow">{{ i18n "visual_release_title" }}</p>
-          <figure class="visual-figure compact">
-            <img src="{{ "img/generated/release-journey.svg" | relURL }}" alt="{{ i18n "visual_release_alt" }}" loading="lazy">
-          </figure>
-          <p>{{ i18n "visual_release_summary" }}</p>
-        </article>
-        <article class="plot-card">
-          <p class="eyebrow">{{ i18n "visual_bots_title" }}</p>
-          <figure class="visual-figure compact">
-            <img src="{{ "img/generated/bot-spectrum.svg" | relURL }}" alt="{{ i18n "visual_bots_alt" }}" loading="lazy">
-          </figure>
-          <p>{{ i18n "visual_bots_summary" }}</p>
-        </article>
-        <article class="plot-card">
-          <p class="eyebrow">{{ i18n "visual_pillars_title" }}</p>
-          <figure class="visual-figure compact">
-            <img src="{{ "img/generated/project-pillars.svg" | relURL }}" alt="{{ i18n "visual_pillars_alt" }}" loading="lazy">
-          </figure>
-          <p>{{ i18n "visual_pillars_summary" }}</p>
-        </article>
+<section class="page-section">
+  <div class="container stack-lg">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">{{ i18n "media_kicker" }}</p>
+        <h2>{{ i18n "media_title" }}</h2>
       </div>
     </div>
-  </section>
+    <p class="lead">{{ i18n "media_summary" }}</p>
+    <div class="media-grid">
+      {{ partial "sample-video.html" (dict "variant" "simulation") }}
+      {{ partial "sample-video.html" (dict "variant" "release") }}
+    </div>
+  </div>
+</section>
 
-  <section class="page-section">
-    <div class="container stack-lg">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">{{ i18n "media_kicker" }}</p>
-          <h2>{{ i18n "media_title" }}</h2>
-        </div>
-      </div>
-      <p class="lead">{{ i18n "media_summary" }}</p>
-      <div class="media-grid">
-        {{ partial "sample-video.html" (dict "variant" "simulation") }}
-        {{ partial "sample-video.html" (dict "variant" "release") }}
+<section class="page-section">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">{{ i18n "project_sections" }}</p>
+        <h2>{{ .Title }}</h2>
       </div>
     </div>
-  </section>
-
-  <section class="page-section">
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">{{ i18n "project_sections" }}</p>
-          <h2>{{ .Title }}</h2>
-        </div>
-      </div>
-      {{ with .Content }}
-        <div class="prose prose-panel mb-lg">
-          {{ . }}
-        </div>
-      {{ end }}
-      <div class="card-grid">
-        <article class="card"><span class="label">GitHub Releases</span><h3>{{ i18n "project_downloads" }}</h3><p>{{ i18n "project_downloads_summary" }}</p><a href="{{ "downloads/" | relLangURL }}">{{ i18n "learn_more" }}</a></article>
-        <article class="card"><span class="label">README + docs</span><h3>{{ i18n "project_docs" }}</h3><p>{{ i18n "project_docs_summary" }}</p><a href="{{ "docs/" | relLangURL }}">{{ i18n "read_docs" }}</a></article>
-        <article class="card"><span class="label">{{ len $bots }} bots</span><h3>{{ i18n "project_bots" }}</h3><p>{{ i18n "project_bots_summary" }}</p><a href="{{ "bots/" | relLangURL }}">{{ i18n "learn_more" }}</a></article>
-        <article class="card"><span class="label">CLI</span><h3>{{ i18n "project_simulator" }}</h3><p>{{ i18n "project_simulator_summary" }}</p><a href="{{ "simulator/" | relLangURL }}">{{ i18n "learn_more" }}</a></article>
-        <article class="card"><span class="label">PR + Issues</span><h3>{{ i18n "project_contribute" }}</h3><p>{{ i18n "project_contribute_summary" }}</p><a href="{{ "contribute/" | relLangURL }}">{{ i18n "learn_more" }}</a></article>
-        <article class="card"><span class="label">{{ len $contributors }} people</span><h3>{{ i18n "contributors_title" }}</h3><p>{{ i18n "contributors_summary" }}</p><a href="{{ "contributors/" | relLangURL }}">{{ i18n "all_contributors" }}</a></article>
-      </div>
+    {{ with .Content }}
+    <div class="prose prose-panel mb-lg">
+      {{ . }}
     </div>
-  </section>
-
-  <section class="page-section section-muted">
-    <div class="container two-column-grid">
-      <div class="panel">
-        <p class="eyebrow">{{ i18n "branch_strategy" }}</p>
-        <h2>{{ i18n "branch_strategy" }}</h2>
-        <p>{{ i18n "branch_strategy_summary" }}</p>
-        <ul class="feature-list compact">
-          <li>{{ i18n "branch_v6" }}</li>
-          <li>{{ i18n "branch_v5" }}</li>
-          <li>{{ i18n "branch_release" }}</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <p class="eyebrow">{{ i18n "quick_links" }}</p>
-        <h2>{{ i18n "repo_links" }}</h2>
-        <ul class="stacked-links">
-          <li><a href="{{ .Site.Params.sourceRepo }}">{{ i18n "source_repository" }}</a></li>
-          <li><a href="{{ .Site.Params.releasesUrl }}">GitHub Releases</a></li>
-          <li><a href="{{ .Site.Params.issuesUrl }}">{{ i18n "issues_label" }}</a></li>
-          <li><a href="{{ .Site.Params.pullsUrl }}">{{ i18n "pull_requests_label" }}</a></li>
-          <li><a href="{{ .Site.Params.discussionsUrl }}">{{ i18n "discussions_label" }}</a></li>
-          <li><a href="{{ .Site.Params.actionsUrl }}">{{ i18n "github_actions_label" }}</a></li>
-        </ul>
-      </div>
+    {{ end }}
+    <div class="card-grid">
+      <article class="card"><span class="label">GitHub Releases</span>
+        <h3>{{ i18n "project_downloads" }}</h3>
+        <p>{{ i18n "project_downloads_summary" }}</p><a href="{{ " downloads/" | relLangURL }}">{{ i18n "learn_more"
+          }}</a>
+      </article>
+      <article class="card"><span class="label">README + docs</span>
+        <h3>{{ i18n "project_docs" }}</h3>
+        <p>{{ i18n "project_docs_summary" }}</p><a href="{{ " docs/" | relLangURL }}">{{ i18n "read_docs" }}</a>
+      </article>
+      <article class="card"><span class="label">{{ len $bots }} bots</span>
+        <h3>{{ i18n "project_bots" }}</h3>
+        <p>{{ i18n "project_bots_summary" }}</p><a href="{{ " bots/" | relLangURL }}">{{ i18n "learn_more" }}</a>
+      </article>
+      <article class="card"><span class="label">CLI</span>
+        <h3>{{ i18n "project_simulator" }}</h3>
+        <p>{{ i18n "project_simulator_summary" }}</p><a href="{{ " simulator/" | relLangURL }}">{{ i18n "learn_more"
+          }}</a>
+      </article>
+      <article class="card"><span class="label">PR + Issues</span>
+        <h3>{{ i18n "project_contribute" }}</h3>
+        <p>{{ i18n "project_contribute_summary" }}</p><a href="{{ " contribute/" | relLangURL }}">{{ i18n "learn_more"
+          }}</a>
+      </article>
+      <article class="card"><span class="label">{{ len $contributors }} people</span>
+        <h3>{{ i18n "contributors_title" }}</h3>
+        <p>{{ i18n "contributors_summary" }}</p><a href="{{ " contributors/" | relLangURL }}">{{ i18n "all_contributors"
+          }}</a>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="page-section">
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">{{ i18n "featured_releases" }}</p>
-          <h2>{{ i18n "release_notes" }}</h2>
-        </div>
-        <a href="{{ "releases/" | relLangURL }}">{{ i18n "all_releases" }}</a>
+<section class="page-section section-muted">
+  <div class="container two-column-grid">
+    <div class="panel">
+      <p class="eyebrow">{{ i18n "branch_strategy" }}</p>
+      <h2>{{ i18n "branch_strategy" }}</h2>
+      <p>{{ i18n "branch_strategy_summary" }}</p>
+      <ul class="feature-list compact">
+        <li>{{ i18n "branch_v6" }}</li>
+        <li>{{ i18n "branch_v5" }}</li>
+        <li>{{ i18n "branch_release" }}</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <p class="eyebrow">{{ i18n "quick_links" }}</p>
+      <h2>{{ i18n "repo_links" }}</h2>
+      <ul class="stacked-links">
+        <li><a href="{{ .Site.Params.sourceRepo }}">{{ i18n "source_repository" }}</a></li>
+        <li><a href="{{ .Site.Params.releasesUrl }}">GitHub Releases</a></li>
+        <li><a href="{{ .Site.Params.issuesUrl }}">{{ i18n "issues_label" }}</a></li>
+        <li><a href="{{ .Site.Params.pullsUrl }}">{{ i18n "pull_requests_label" }}</a></li>
+        <li><a href="{{ .Site.Params.discussionsUrl }}">{{ i18n "discussions_label" }}</a></li>
+        <li><a href="{{ .Site.Params.actionsUrl }}">{{ i18n "github_actions_label" }}</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">{{ i18n "featured_releases" }}</p>
+        <h2>{{ i18n "release_notes" }}</h2>
       </div>
-      {{ if gt (len $releases) 0 }}
-        <div class="card-grid">
-          {{ range first 3 $releases }}
-            <article class="card release-card compact">
-              <div class="card-meta">
-                <span class="badge {{ if .prerelease }}badge-preview{{ else }}badge-stable{{ end }}">{{ if .prerelease }}{{ i18n "release_prerelease" }}{{ else }}{{ i18n "release_stable" }}{{ end }}</span>
-                <span>{{ .tag_name }}</span>
-              </div>
-              <h3>{{ .name }}</h3>
-              <p class="muted">{{ i18n "release_published" }} · {{ time.Format ":date_medium" (time.AsTime .published_at) }}</p>
-              <p>{{ .summary | default .body | plainify | truncate 180 }}</p>
-              <a href="{{ .html_url }}">{{ i18n "release_notes" }}</a>
-            </article>
-          {{ end }}
+      <a href="{{ " releases/" | relLangURL }}">{{ i18n "all_releases" }}</a>
+    </div>
+    {{ if gt (len $releases) 0 }}
+    <div class="card-grid">
+      {{ range first 3 $releases }}
+      <article class="card release-card compact">
+        <div class="card-meta">
+          <span class="badge {{ if .prerelease }}badge-preview{{ else }}badge-stable{{ end }}">{{ if .prerelease }}{{
+            i18n "release_prerelease" }}{{ else }}{{ i18n "release_stable" }}{{ end }}</span>
+          <span>{{ .tag_name }}</span>
         </div>
-      {{ else }}
-        <p>{{ i18n "release_empty" }}</p>
+        <h3>{{ .name }}</h3>
+        <p class="muted">{{ i18n "release_published" }} · {{ time.Format ":date_medium" (time.AsTime .published_at) }}
+        </p>
+        <p>{{ .summary | default .body | plainify | truncate 180 }}</p>
+        <a href="{{ .html_url }}">{{ i18n "release_notes" }}</a>
+      </article>
       {{ end }}
     </div>
-  </section>
+    {{ else }}
+    <p>{{ i18n "release_empty" }}</p>
+    {{ end }}
+  </div>
+</section>
 
-  <section class="page-section section-muted">
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">{{ i18n "contributors_title" }}</p>
-          <h2>{{ i18n "contributors_title" }}</h2>
-        </div>
-        <a href="{{ "contributors/" | relLangURL }}">{{ i18n "all_contributors" }}</a>
+<section class="page-section section-muted">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">{{ i18n "contributors_title" }}</p>
+        <h2>{{ i18n "contributors_title" }}</h2>
       </div>
-      {{ if gt (len $contributors) 0 }}
-        <div class="contributor-grid">
-          {{ range first 8 $contributors }}
-            <article class="contributor-card">
-              <img src="{{ .avatar_url }}" alt="{{ .login }} avatar" loading="lazy">
-              <h3 class="contributor-name"><a href="{{ .html_url }}">{{ .login }}</a></h3>
-              <p class="contributor-handle">@{{ .login }}</p>
-              {{ if .contributions }}
-                <p>{{ .contributions }} {{ i18n "contributions_label" }}</p>
-              {{ else if .role }}
-                <p>{{ .role }}</p>
-              {{ else }}
-                <p>{{ i18n "community_contributor" }}</p>
-              {{ end }}
-            </article>
-          {{ end }}
-        </div>
-      {{ else }}
-        <p>{{ i18n "contributors_empty" }}</p>
+      <a href="{{ " contributors/" | relLangURL }}">{{ i18n "all_contributors" }}</a>
+    </div>
+    {{ if gt (len $contributors) 0 }}
+    <div class="contributor-grid">
+      {{ range first 8 $contributors }}
+      <article class="contributor-card">
+        <img src="{{ .avatar_url }}" alt="{{ .login }} avatar" loading="lazy">
+        <h3 class="contributor-name"><a href="{{ .html_url }}">{{ .login }}</a></h3>
+        <p class="contributor-handle">@{{ .login }}</p>
+        {{ if .contributions }}
+        <p>{{ .contributions }} {{ i18n "contributions_label" }}</p>
+        {{ else if .role }}
+        <p>{{ .role }}</p>
+        {{ else }}
+        <p>{{ i18n "community_contributor" }}</p>
+        {{ end }}
+      </article>
       {{ end }}
     </div>
-  </section>
+    {{ else }}
+    <p>{{ i18n "contributors_empty" }}</p>
+    {{ end }}
+  </div>
+</section>
 {{ end }}

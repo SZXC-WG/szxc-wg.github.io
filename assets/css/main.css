@@ -821,9 +821,9 @@ h3 {
   margin-bottom: 0.48rem;
 }
 
-.card > .label,
-.plot-card > .label,
-.release-card.compact > .label {
+.card>.label,
+.plot-card>.label,
+.release-card.compact>.label {
   margin-bottom: 0.9rem;
 }
 
@@ -1044,7 +1044,7 @@ h3 {
   margin: 0.75rem 0;
 }
 
-.stack-lg > * + * {
+.stack-lg>*+* {
   margin-top: 1.45rem;
 }
 
@@ -1095,6 +1095,7 @@ h3 {
 }
 
 @keyframes floatY {
+
   0%,
   100% {
     transform: translateY(0);
@@ -1120,6 +1121,7 @@ h3 {
 }
 
 @keyframes videoPulse {
+
   0%,
   100% {
     opacity: 0.68;
@@ -1149,6 +1151,7 @@ h3 {
 }
 
 @media (max-width: 980px) {
+
   .header-inner,
   .header-actions,
   .section-heading,
@@ -1183,6 +1186,7 @@ h3 {
 }
 
 @media (max-width: 640px) {
+
   .stat-grid,
   .plot-grid {
     grid-template-columns: 1fr;

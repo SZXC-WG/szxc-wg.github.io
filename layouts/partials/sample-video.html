@@ -6,35 +6,35 @@
 {{ $summary := i18n "media_simulation_summary" }}
 {{ $labels := slice (i18n "label_cli_tool") (i18n "label_parallel_runs") (i18n "label_source_backed") }}
 {{ if eq $variant "release" }}
-  {{ $video = "release-loop" }}
-  {{ $poster = "img/generated/release-loop-poster.png" | relURL }}
-  {{ $title = i18n "media_release_title" }}
-  {{ $summary = i18n "media_release_summary" }}
-  {{ $labels = slice (i18n "label_stable_builds") (i18n "label_preview_builds") (i18n "label_source_backed") }}
+{{ $video = "release-loop" }}
+{{ $poster = "img/generated/release-loop-poster.png" | relURL }}
+{{ $title = i18n "media_release_title" }}
+{{ $summary = i18n "media_release_summary" }}
+{{ $labels = slice (i18n "label_stable_builds") (i18n "label_preview_builds") (i18n "label_source_backed") }}
 {{ end }}
 
 <article class="media-card panel {{ if $compact }}media-card-compact{{ end }}">
-  <div class="media-card-head">
-    <div>
-      <p class="eyebrow">{{ i18n "media_video_label" }}</p>
-      <h3>{{ $title }}</h3>
+    <div class="media-card-head">
+        <div>
+            <p class="eyebrow">{{ i18n "media_video_label" }}</p>
+            <h3>{{ $title }}</h3>
+        </div>
+        <span class="badge badge-latest media-badge">{{ i18n "media_video_loop" }}</span>
     </div>
-    <span class="badge badge-latest media-badge">{{ i18n "media_video_loop" }}</span>
-  </div>
-  <figure class="video-shell">
-    <video class="media-video" autoplay muted loop playsinline preload="metadata" poster="{{ $poster }}">
-      <source src="{{ printf "video/%s.webm" $video | relURL }}" type="video/webm">
-      <source src="{{ printf "video/%s.mp4" $video | relURL }}" type="video/mp4">
-    </video>
-    <div class="video-overlay">
-      <span class="video-pill">{{ i18n "media_video_label" }}</span>
-      <span class="video-pill subtle">{{ i18n "media_video_loop" }}</span>
+    <figure class="video-shell">
+        <video class="media-video" autoplay muted loop playsinline preload="metadata" poster="{{ $poster }}">
+            <source src="{{ printf " video/%s.webm" $video | relURL }}" type="video/webm">
+            <source src="{{ printf " video/%s.mp4" $video | relURL }}" type="video/mp4">
+        </video>
+        <div class="video-overlay">
+            <span class="video-pill">{{ i18n "media_video_label" }}</span>
+            <span class="video-pill subtle">{{ i18n "media_video_loop" }}</span>
+        </div>
+    </figure>
+    <p>{{ $summary }}</p>
+    <div class="label-row media-labels">
+        {{ range $labels }}
+        <span class="label">{{ . }}</span>
+        {{ end }}
     </div>
-  </figure>
-  <p>{{ $summary }}</p>
-  <div class="label-row media-labels">
-    {{ range $labels }}
-      <span class="label">{{ . }}</span>
-    {{ end }}
-  </div>
 </article>
