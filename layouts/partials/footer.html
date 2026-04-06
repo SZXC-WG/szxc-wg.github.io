@@ -9,7 +9,11 @@
       <h3>{{ i18n "quick_links" }}</h3>
       <ul class="footer-links">
         {{ range .Site.Menus.footer }}
-          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{ $href := .URL }}
+          {{ with .Page }}
+            {{ $href = .RelPermalink }}
+          {{ end }}
+          <li><a href="{{ $href }}">{{ .Name }}</a></li>
         {{ end }}
       </ul>
     </div>

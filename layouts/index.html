@@ -103,7 +103,7 @@
                 <span>{{ .tag_name }}</span>
               </div>
               <h3>{{ .name }}</h3>
-              <p class="muted">{{ i18n "release_published" }} · {{ (time.AsTime .published_at).Format ":date_medium" }}</p>
+              <p class="muted">{{ i18n "release_published" }} · {{ time.Format ":date_medium" (time.AsTime .published_at) }}</p>
               <p>{{ .summary | default .body | plainify | truncate 180 }}</p>
               <a href="{{ .html_url }}">{{ i18n "release_notes" }}</a>
             </article>

@@ -24,7 +24,7 @@
                   {{ if .is_latest }}<span class="badge badge-latest">{{ i18n "release_latest" }}</span>{{ end }}
                 </div>
                 <h2>{{ .name }}</h2>
-                <p class="muted">{{ .tag_name }} · {{ i18n "release_published" }} {{ (time.AsTime .published_at).Format ":date_full" }}</p>
+                <p class="muted">{{ .tag_name }} · {{ i18n "release_published" }} {{ time.Format ":date_full" (time.AsTime .published_at) }}</p>
               </div>
               <div class="release-actions">
                 <a class="button button-secondary" href="{{ .html_url }}">{{ i18n "release_notes" }}</a>

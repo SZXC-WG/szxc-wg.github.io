@@ -9,7 +9,11 @@
     </a>
     <nav class="main-nav" aria-label="Main navigation">
       {{ range .Site.Menus.main }}
-        <a href="{{ .URL }}" class="{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}is-active{{ end }}">{{ .Name }}</a>
+        {{ $href := .URL }}
+        {{ with .Page }}
+          {{ $href = .RelPermalink }}
+        {{ end }}
+        <a href="{{ $href }}" class="{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}is-active{{ end }}">{{ .Name }}</a>
       {{ end }}
     </nav>
     {{ partial "language-switcher.html" . }}
