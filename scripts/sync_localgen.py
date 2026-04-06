@@ -142,6 +142,8 @@ def main() -> None:
     normalized_project = normalize_repo(repo)
     normalized_releases = [normalize_release(release, latest_stable_tag) for release in releases if not release.get("draft")]
     normalized_contributors = [normalize_contributor(contributor) for contributor in contributors]
+    normalized_project["release_count"] = len(normalized_releases)
+    normalized_project["contributor_count"] = len(normalized_contributors)
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now(timezone.utc).isoformat()

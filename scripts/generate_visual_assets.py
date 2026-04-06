@@ -416,6 +416,8 @@ def main() -> None:
     project = load_json("project.json")
     releases = load_json("releases.json")
     bots = load_json("bots.json")
+    project.setdefault("release_count", len(releases.get("items", [])))
+    project.setdefault("bot_count", len(bots.get("items", [])))
     generate_release_journey(project, releases)
     generate_bot_spectrum(project, bots)
     generate_project_pillars(project)
