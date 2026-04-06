@@ -1,4 +1,4 @@
-baseURL = 'https://szxc-wg.github.io/SZXC-HomePage/'
+baseURL = 'https://szxc-wg.github.io/'
 title = 'LocalGen'
 defaultContentLanguage = 'en'
 defaultContentLanguageInSubdir = false
@@ -30,8 +30,8 @@ summaryLength = 36
   projectShortName = 'LocalGen'
   projectVersion = '6.0.0'
   license = 'GPL-3.0'
-  websiteRepo = 'https://github.com/SZXC-WG/SZXC-HomePage'
-  siteUrl = 'https://szxc-wg.github.io/SZXC-HomePage/'
+  websiteRepo = 'https://github.com/SZXC-WG/szxc-wg.github.io'
+  siteUrl = 'https://szxc-wg.github.io/'
   sourceRepo = 'https://github.com/SZXC-WG/LocalGen-new'
   releasesUrl = 'https://github.com/SZXC-WG/LocalGen-new/releases'
   issuesUrl = 'https://github.com/SZXC-WG/LocalGen-new/issues'

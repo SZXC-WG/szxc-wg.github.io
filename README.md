@@ -4,11 +4,11 @@ This repository directly hosts and publishes the bilingual **Hugo** website for 
 
 Repository:
 
-- <https://github.com/SZXC-WG/SZXC-HomePage>
+- <https://github.com/SZXC-WG/szxc-wg.github.io>
 
 Published site:
 
-- <https://szxc-wg.github.io/SZXC-HomePage/>
+- <https://szxc-wg.github.io/>
 
 ## What the site includes
 
@@ -45,9 +45,9 @@ For authenticated local refreshes, copy `.env.example` to `.env` and set either 
 
 ## Workflows
 
-- `hugo.yaml` — builds and deploys the site to the `SZXC-HomePage` GitHub Pages environment
+- `hugo.yaml` — builds and deploys the site to the root `szxc-wg.github.io` GitHub Pages environment
 - `sync-localgen-data.yaml` — refreshes project metadata on demand or on a schedule
 
 ## GitHub Pages setup
 
-In the repository settings for `SZXC-WG/SZXC-HomePage`, set **Pages → Source** to **GitHub Actions**. The committed workflow then handles the full build and deployment process.
+In the repository settings for `SZXC-WG/szxc-wg.github.io`, set **Pages → Source** to **GitHub Actions**. The committed workflow then handles the full build and deployment process.
