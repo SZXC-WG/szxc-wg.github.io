@@ -9,7 +9,7 @@
         <h1>{{ i18n "hero_title" }}</h1>
         <p class="lead">{{ i18n "hero_summary" }}</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="{{ "/downloads/" | relLangURL }}">{{ i18n "download_now" }}</a>
+          <a class="button button-primary" href="{{ "downloads/" | relLangURL }}">{{ i18n "download_now" }}</a>
           <a class="button button-secondary" href="{{ .Site.Params.sourceRepo }}">{{ i18n "view_source" }}</a>
         </div>
         <div class="stat-grid">
@@ -48,12 +48,12 @@
         </div>
       {{ end }}
       <div class="card-grid">
-        <article class="card"><h3>{{ i18n "project_downloads" }}</h3><p>{{ i18n "project_downloads_summary" }}</p><a href="{{ "/downloads/" | relLangURL }}">{{ i18n "learn_more" }}</a></article>
-        <article class="card"><h3>{{ i18n "project_docs" }}</h3><p>{{ i18n "project_docs_summary" }}</p><a href="{{ "/docs/" | relLangURL }}">{{ i18n "read_docs" }}</a></article>
-        <article class="card"><h3>{{ i18n "project_bots" }}</h3><p>{{ i18n "project_bots_summary" }}</p><a href="{{ "/bots/" | relLangURL }}">{{ i18n "learn_more" }}</a></article>
-        <article class="card"><h3>{{ i18n "project_simulator" }}</h3><p>{{ i18n "project_simulator_summary" }}</p><a href="{{ "/simulator/" | relLangURL }}">{{ i18n "learn_more" }}</a></article>
-        <article class="card"><h3>{{ i18n "project_contribute" }}</h3><p>{{ i18n "project_contribute_summary" }}</p><a href="{{ "/contribute/" | relLangURL }}">{{ i18n "learn_more" }}</a></article>
-        <article class="card"><h3>{{ i18n "contributors_title" }}</h3><p>{{ i18n "contributors_summary" }}</p><a href="{{ "/contributors/" | relLangURL }}">{{ i18n "all_contributors" }}</a></article>
+        <article class="card"><h3>{{ i18n "project_downloads" }}</h3><p>{{ i18n "project_downloads_summary" }}</p><a href="{{ "downloads/" | relLangURL }}">{{ i18n "learn_more" }}</a></article>
+        <article class="card"><h3>{{ i18n "project_docs" }}</h3><p>{{ i18n "project_docs_summary" }}</p><a href="{{ "docs/" | relLangURL }}">{{ i18n "read_docs" }}</a></article>
+        <article class="card"><h3>{{ i18n "project_bots" }}</h3><p>{{ i18n "project_bots_summary" }}</p><a href="{{ "bots/" | relLangURL }}">{{ i18n "learn_more" }}</a></article>
+        <article class="card"><h3>{{ i18n "project_simulator" }}</h3><p>{{ i18n "project_simulator_summary" }}</p><a href="{{ "simulator/" | relLangURL }}">{{ i18n "learn_more" }}</a></article>
+        <article class="card"><h3>{{ i18n "project_contribute" }}</h3><p>{{ i18n "project_contribute_summary" }}</p><a href="{{ "contribute/" | relLangURL }}">{{ i18n "learn_more" }}</a></article>
+        <article class="card"><h3>{{ i18n "contributors_title" }}</h3><p>{{ i18n "contributors_summary" }}</p><a href="{{ "contributors/" | relLangURL }}">{{ i18n "all_contributors" }}</a></article>
       </div>
     </div>
   </section>
@@ -92,7 +92,7 @@
           <p class="eyebrow">{{ i18n "featured_releases" }}</p>
           <h2>{{ i18n "release_notes" }}</h2>
         </div>
-        <a href="{{ "/releases/" | relLangURL }}">{{ i18n "all_releases" }}</a>
+        <a href="{{ "releases/" | relLangURL }}">{{ i18n "all_releases" }}</a>
       </div>
       {{ if gt (len $releases) 0 }}
         <div class="card-grid">
@@ -122,7 +122,7 @@
           <p class="eyebrow">{{ i18n "contributors_title" }}</p>
           <h2>{{ i18n "contributors_title" }}</h2>
         </div>
-        <a href="{{ "/contributors/" | relLangURL }}">{{ i18n "all_contributors" }}</a>
+        <a href="{{ "contributors/" | relLangURL }}">{{ i18n "all_contributors" }}</a>
       </div>
       {{ if gt (len $contributors) 0 }}
         <div class="contributor-grid">
