@@ -1,0 +1,65 @@
+{
+  "synced_at": "2026-04-06T00:00:00Z",
+  "items": [
+    {
+      "login": "AppOfficer",
+      "html_url": "https://github.com/AppOfficer",
+      "avatar_url": "https://github.com/AppOfficer.png?size=160",
+      "role": "Core maintainer, release manager, and bot author"
+    },
+    {
+      "login": "GoodCoder666",
+      "html_url": "https://github.com/GoodCoder666",
+      "avatar_url": "https://github.com/GoodCoder666.png?size=160",
+      "role": "Core contributor focused on bots and map generation"
+    },
+    {
+      "login": "chrhaa",
+      "html_url": "https://github.com/chrhaa",
+      "avatar_url": "https://github.com/chrhaa.png?size=160",
+      "role": "Early contributor and release collaborator"
+    },
+    {
+      "login": "xiaruize0911",
+      "html_url": "https://github.com/xiaruize0911",
+      "avatar_url": "https://github.com/xiaruize0911.png?size=160",
+      "role": "Bot author and gameplay contributor"
+    },
+    {
+      "login": "Ihave4oranges",
+      "html_url": "https://github.com/Ihave4oranges",
+      "avatar_url": "https://github.com/Ihave4oranges.png?size=160",
+      "role": "Replay and map feature contributor"
+    },
+    {
+      "login": "nfls20210805",
+      "html_url": "https://github.com/nfls20210805",
+      "avatar_url": "https://github.com/nfls20210805.png?size=160",
+      "role": "Project contributor"
+    },
+    {
+      "login": "pinkHC",
+      "html_url": "https://github.com/pinkHC",
+      "avatar_url": "https://github.com/pinkHC.png?size=160",
+      "role": "Advanced bot author"
+    },
+    {
+      "login": "WangManhe",
+      "html_url": "https://github.com/WangManhe",
+      "avatar_url": "https://github.com/WangManhe.png?size=160",
+      "role": "Project contributor"
+    },
+    {
+      "login": "oimasterkafuu",
+      "html_url": "https://github.com/oimasterkafuu",
+      "avatar_url": "https://github.com/oimasterkafuu.png?size=160",
+      "role": "Advanced bot author"
+    },
+    {
+      "login": "ktq1124298818",
+      "html_url": "https://github.com/ktq1124298818",
+      "avatar_url": "https://github.com/ktq1124298818.png?size=160",
+      "role": "Early bot contributor"
+    }
+  ]
+}

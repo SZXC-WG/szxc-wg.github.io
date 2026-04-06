@@ -1,1 +1,45 @@
-# SZXC Work Group
+# LocalGen project website
+
+This repository hosts the bilingual **Hugo** website for the **Local Generals.io (LocalGen)** project.
+
+The site is published to:
+
+- <https://szxc-wg.github.io/>
+
+## What the site includes
+
+- English and Chinese content through Hugo multilingual mode
+- project overview and branch strategy
+- download guidance and mirrored release history
+- contributor roster
+- mirrored project documentation
+- GitHub Pages deployment workflow
+
+## Local development
+
+Hugo is required locally. Once installed, run:
+
+```text
+hugo server
+```
+
+or build a production version with:
+
+```text
+hugo build --gc --minify
+```
+
+## Data refresh
+
+Release and contributor data is generated into the `data/` directory by:
+
+- `scripts/sync_localgen.py`
+
+The site ships with seeded public data for local development. On GitHub Actions, the workflow runs the sync script with `GITHUB_TOKEN` so the published site stays fresh.
+
+For authenticated local refreshes, copy `.env.example` to `.env` and set either `GITHUB_TOKEN` or `GH_TOKEN` before running the sync script.
+
+## Workflows
+
+- `hugo.yaml` — builds and deploys the site to GitHub Pages
+- `sync-localgen-data.yaml` — refreshes project metadata on demand or on a schedule

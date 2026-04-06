@@ -1,0 +1,17 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ .Site.Home.RelPermalink }}">
+      <img src="{{ "/favicon.png" | relURL }}" alt="LocalGen logo" width="48" height="48">
+      <span>
+        <strong>{{ .Site.Params.projectShortName }}</strong>
+        <small>{{ .Site.Params.organization }}</small>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}" class="{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}is-active{{ end }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+    {{ partial "language-switcher.html" . }}
+  </div>
+</header>

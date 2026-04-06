@@ -1,0 +1,24 @@
+{{ define "main" }}
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">{{ i18n "section_intro" }}</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    </div>
+  </section>
+  <section class="page-section">
+    <div class="container prose">
+      {{ .Content }}
+      {{ if .RegularPages }}
+        <div class="card-grid mt-lg">
+          {{ range .RegularPages.ByWeight }}
+            <article class="card">
+              <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+              {{ with .Description }}<p>{{ . }}</p>{{ end }}
+            </article>
+          {{ end }}
+        </div>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

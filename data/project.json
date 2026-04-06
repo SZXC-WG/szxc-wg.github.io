@@ -1,0 +1,53 @@
+{
+  "name": "LocalGen-new",
+  "full_name": "SZXC-WG/LocalGen-new",
+  "description": "Play generals.io completely offline!",
+  "html_url": "https://github.com/SZXC-WG/LocalGen-new",
+  "license": "GPL-3.0",
+  "default_branch": "master",
+  "created_at": "2023-01-21T00:00:00Z",
+  "updated_at": "2026-04-06T00:00:00Z",
+  "organization": "SZXC Work Group",
+  "project_name": "Local Generals.io",
+  "short_name": "LocalGen",
+  "version": "6.0.0",
+  "version_line": "master / v6.x",
+  "legacy_line": "v5.x",
+  "languages": [
+    "English",
+    "Chinese"
+  ],
+  "bot_count": 10,
+  "release_count": 23,
+  "contributor_count": 10,
+  "stargazers_count": 22,
+  "watchers_count": 4,
+  "forks_count": 9,
+  "open_issues_count": 4,
+  "topics": [
+    "qt",
+    "cmake",
+    "cpp",
+    "websocket",
+    "cpp14",
+    "cpp17",
+    "generals-io",
+    "fast-paced-game",
+    "xege",
+    "qt6",
+    "local-game"
+  ],
+  "built_with": [
+    "C++17",
+    "Qt6",
+    "CMake"
+  ],
+  "download_url": "https://github.com/SZXC-WG/LocalGen-new/releases",
+  "issues_url": "https://github.com/SZXC-WG/LocalGen-new/issues",
+  "pulls_url": "https://github.com/SZXC-WG/LocalGen-new/pulls",
+  "discussions_url": "https://github.com/SZXC-WG/LocalGen-new/discussions",
+  "actions_url": "https://github.com/SZXC-WG/LocalGen-new/actions",
+  "contributors_url": "https://github.com/SZXC-WG/LocalGen-new/graphs/contributors",
+  "synced_at": "2026-04-06T00:00:00Z",
+  "sync_note": "Seeded from public GitHub pages locally. The sync workflow will refresh this data with authenticated API requests in GitHub Actions."
+}

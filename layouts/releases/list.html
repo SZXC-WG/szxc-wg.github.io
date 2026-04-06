@@ -1,0 +1,57 @@
+{{ define "main" }}
+  {{ $releases := hugo.Data.releases.items | default (slice) }}
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">{{ i18n "project_downloads" }}</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    </div>
+  </section>
+  <section class="page-section">
+    <div class="container prose">
+      {{ .Content }}
+    </div>
+  </section>
+  <section class="page-section section-muted">
+    <div class="container stack-lg">
+      {{ if gt (len $releases) 0 }}
+        {{ range $releases }}
+          <article class="release-card panel detailed">
+            <div class="release-header">
+              <div>
+                <div class="card-meta">
+                  <span class="badge {{ if .prerelease }}badge-preview{{ else }}badge-stable{{ end }}">{{ if .prerelease }}{{ i18n "release_prerelease" }}{{ else }}{{ i18n "release_stable" }}{{ end }}</span>
+                  {{ if .is_latest }}<span class="badge badge-latest">{{ i18n "release_latest" }}</span>{{ end }}
+                </div>
+                <h2>{{ .name }}</h2>
+                <p class="muted">{{ .tag_name }} · {{ i18n "release_published" }} {{ (time.AsTime .published_at).Format ":date_full" }}</p>
+              </div>
+              <div class="release-actions">
+                <a class="button button-secondary" href="{{ .html_url }}">{{ i18n "release_notes" }}</a>
+                {{ with .zipball_url }}<a class="button button-secondary" href="{{ . }}">Source ZIP</a>{{ end }}
+              </div>
+            </div>
+            <div class="release-body prose compact-prose">{{ .body | markdownify }}</div>
+            <div>
+              <h3>{{ i18n "release_assets" }}</h3>
+              {{ if gt (len .assets) 0 }}
+                <ul class="asset-list">
+                  {{ range .assets }}
+                    <li>
+                      <a href="{{ .browser_download_url }}">{{ .name }}</a>
+                      <span>{{ .download_count }} downloads · {{ .size_human }}</span>
+                    </li>
+                  {{ end }}
+                </ul>
+              {{ else }}
+                <p>{{ i18n "asset_empty" }} <a href="{{ .html_url }}">{{ i18n "view_release_page" }}</a>.</p>
+              {{ end }}
+            </div>
+          </article>
+        {{ end }}
+      {{ else }}
+        <p>{{ i18n "release_empty" }}</p>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

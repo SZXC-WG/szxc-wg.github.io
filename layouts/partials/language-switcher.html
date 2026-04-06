@@ -1,0 +1,11 @@
+{{ $translations := .AllTranslations }}
+{{ if not $translations }}
+  {{ $translations = .Site.Home.AllTranslations }}
+{{ end }}
+{{ if $translations }}
+  <nav class="language-switcher" aria-label="{{ i18n "site_language" }}">
+    {{ range sort $translations "Language.Weight" }}
+      <a href="{{ .RelPermalink }}" class="{{ if eq $.Site.Language.Lang .Language.Lang }}is-active{{ end }}">{{ .Language.LanguageName }}</a>
+    {{ end }}
+  </nav>
+{{ end }}

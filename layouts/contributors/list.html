@@ -1,0 +1,37 @@
+{{ define "main" }}
+  {{ $contributors := hugo.Data.contributors.items | default (slice) }}
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">{{ i18n "community" }}</p>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    </div>
+  </section>
+  <section class="page-section">
+    <div class="container prose">
+      {{ .Content }}
+    </div>
+  </section>
+  <section class="page-section section-muted">
+    <div class="container">
+      {{ if gt (len $contributors) 0 }}
+        <div class="contributor-grid full">
+          {{ range $contributors }}
+            <article class="contributor-card detailed">
+              <img src="{{ .avatar_url }}" alt="{{ .login }} avatar" loading="lazy">
+              <h2><a href="{{ .html_url }}">@{{ .login }}</a></h2>
+              {{ if .contributions }}
+                <p>{{ .contributions }} {{ i18n "contributions_label" }}</p>
+              {{ else }}
+                <p>{{ i18n "community_contributor" }}</p>
+              {{ end }}
+              {{ with .role }}<p class="muted">{{ . }}</p>{{ else }}{{ with .type }}<p class="muted">{{ . }}</p>{{ end }}{{ end }}
+            </article>
+          {{ end }}
+        </div>
+      {{ else }}
+        <p>{{ i18n "contributors_empty" }}</p>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

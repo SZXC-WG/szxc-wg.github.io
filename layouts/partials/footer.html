@@ -1,0 +1,30 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h2>{{ .Site.Params.projectName }}</h2>
+      <p>{{ i18n "footer_tagline" }}</p>
+      <p class="muted">{{ i18n "disclaimer_short" }}</p>
+    </div>
+    <div>
+      <h3>{{ i18n "quick_links" }}</h3>
+      <ul class="footer-links">
+        {{ range .Site.Menus.footer }}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+    <div>
+      <h3>{{ i18n "repo_links" }}</h3>
+      <ul class="footer-links">
+        <li><a href="{{ .Site.Params.sourceRepo }}">{{ i18n "source_repository" }}</a></li>
+        <li><a href="{{ .Site.Params.releasesUrl }}">Releases</a></li>
+        <li><a href="{{ .Site.Params.issuesUrl }}">{{ i18n "issues_label" }}</a></li>
+        <li><a href="mailto:{{ .Site.Params.communityEmail }}">{{ .Site.Params.communityEmail }}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-meta">
+    <span>© {{ now.Year }} {{ .Site.Params.copyright }}</span>
+    <a href="#top">{{ i18n "back_to_top" }}</a>
+  </div>
+</footer>

@@ -1,0 +1,55 @@
+baseURL = 'https://szxc-wg.github.io/'
+title = 'LocalGen'
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = false
+hasCJKLanguage = true
+enableRobotsTXT = true
+summaryLength = 36
+
+[pagination]
+  pagerSize = 12
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[imaging]
+  quality = 85
+  resampleFilter = 'CatmullRom'
+  anchor = 'smart'
+
+[params]
+  description = 'The bilingual project website for Local Generals.io by SZXC Work Group.'
+  organization = 'SZXC Work Group'
+  projectName = 'Local Generals.io'
+  projectShortName = 'LocalGen'
+  projectVersion = '6.0.0'
+  license = 'GPL-3.0'
+  sourceRepo = 'https://github.com/SZXC-WG/LocalGen-new'
+  pagesRepo = 'https://github.com/SZXC-WG/szxc-wg.github.io'
+  releasesUrl = 'https://github.com/SZXC-WG/LocalGen-new/releases'
+  issuesUrl = 'https://github.com/SZXC-WG/LocalGen-new/issues'
+  pullsUrl = 'https://github.com/SZXC-WG/LocalGen-new/pulls'
+  discussionsUrl = 'https://github.com/SZXC-WG/LocalGen-new/discussions'
+  actionsUrl = 'https://github.com/SZXC-WG/LocalGen-new/actions'
+  communityEmail = 'lzhang0903@outlook.com'
+  copyright = 'SZXC Work Group'
+
+[languages]
+  [languages.en]
+    languageName = 'English'
+    languageCode = 'en-US'
+    contentDir = 'content'
+    weight = 1
+    title = 'LocalGen'
+  [languages.zh]
+    languageName = '中文'
+    languageCode = 'zh-CN'
+    contentDir = 'content'
+    weight = 2
+    title = 'LocalGen'
