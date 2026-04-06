@@ -1,10 +1,14 @@
 # LocalGen project website
 
-This repository hosts the bilingual **Hugo** website for the **Local Generals.io (LocalGen)** project.
+This repository directly hosts and publishes the bilingual **Hugo** website for the **Local Generals.io (LocalGen)** project.
 
-The site is published to:
+Repository:
 
-- <https://szxc-wg.github.io/>
+- <https://github.com/SZXC-WG/SZXC-HomePage>
+
+Published site:
+
+- <https://szxc-wg.github.io/SZXC-HomePage/>
 
 ## What the site includes
 
@@ -41,5 +45,9 @@ For authenticated local refreshes, copy `.env.example` to `.env` and set either 
 
 ## Workflows
 
-- `hugo.yaml` — builds and deploys the site to GitHub Pages
+- `hugo.yaml` — builds and deploys the site to the `SZXC-HomePage` GitHub Pages environment
 - `sync-localgen-data.yaml` — refreshes project metadata on demand or on a schedule
+
+## GitHub Pages setup
+
+In the repository settings for `SZXC-WG/SZXC-HomePage`, set **Pages → Source** to **GitHub Actions**. The committed workflow then handles the full build and deployment process.
