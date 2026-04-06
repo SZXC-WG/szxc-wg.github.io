@@ -75,7 +75,7 @@ def normalize_repo(repo: dict[str, Any]) -> dict[str, Any]:
         "version": "6.0.0",
         "version_line": "master / v6.x",
         "legacy_line": "v5.x",
-        "languages": ["English", "Chinese", "Japanese", "Korean", "French"],
+        "languages": ["English", "Chinese", "Japanese", "Korean", "French", "Spanish"],
         "bot_count": 10,
         "built_with": ["C++17", "Qt6", "CMake"],
         "download_url": f"https://github.com/{OWNER}/{REPO}/releases",

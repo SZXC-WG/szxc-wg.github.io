@@ -73,3 +73,9 @@ summaryLength = 36
     contentDir = 'content'
     weight = 5
     title = 'LocalGen'
+  [languages.es]
+    languageName = 'Español'
+    languageCode = 'es-ES'
+    contentDir = 'content'
+    weight = 6
+    title = 'LocalGen'

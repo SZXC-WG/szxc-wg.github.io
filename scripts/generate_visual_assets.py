@@ -1,16 +1,24 @@
 from __future__ import annotations
 
 import json
+import math
+import shutil
+import subprocess
+import tempfile
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
 from xml.sax.saxutils import escape
 
+from PIL import Image, ImageDraw, ImageFont  # pyright: ignore[reportMissingImports]
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 STATIC_DIR = ROOT / "static"
 OUTPUT_DIR = STATIC_DIR / "img" / "generated"
+VIDEO_DIR = STATIC_DIR / "video"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+VIDEO_DIR.mkdir(parents=True, exist_ok=True)
 
 CARD_FILL = "#0f1c31"
 CARD_BORDER = "rgba(255,255,255,0.12)"
@@ -23,6 +31,11 @@ SUCCESS = "#34d399"
 WARNING = "#fbbf24"
 DANGER = "#fb7185"
 SURFACE = "#0c1628"
+CYAN_RGB = (110, 231, 255)
+PURPLE_RGB = (139, 92, 246)
+TEAL_RGB = (52, 211, 153)
+AMBER_RGB = (251, 191, 36)
+ROSE_RGB = (251, 113, 133)
 
 
 def load_json(name: str) -> dict:
@@ -118,6 +131,270 @@ def write_svg(path: Path, width: int, height: int, content: str, defs: str = "")
 </svg>
 '''
     path.write_text(svg, encoding="utf-8")
+
+
+def ensure_ffmpeg() -> str:
+    ffmpeg = shutil.which("ffmpeg")
+    if not ffmpeg:
+        raise SystemExit("ffmpeg is required to generate the sample video assets.")
+    return ffmpeg
+
+
+def load_font(size: int, bold: bool = False) -> ImageFont.ImageFont:
+    candidates = ["DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf", "DejaVuSans.ttf"]
+    for candidate in candidates:
+        try:
+            return ImageFont.truetype(candidate, size)
+        except OSError:
+            continue
+    return ImageFont.load_default()
+
+
+def mix_rgb(first: tuple[int, int, int], second: tuple[int, int, int], ratio: float) -> tuple[int, int, int]:
+    ratio = max(0.0, min(1.0, ratio))
+    return (
+        int(round(first[0] + (second[0] - first[0]) * ratio)),
+        int(round(first[1] + (second[1] - first[1]) * ratio)),
+        int(round(first[2] + (second[2] - first[2]) * ratio)),
+    )
+
+
+def rgba(color: tuple[int, int, int], alpha: int) -> tuple[int, int, int, int]:
+    return (*color, alpha)
+
+
+def save_frame(image: Image.Image, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    image.save(path)
+
+
+def encode_video_from_frames(frame_dir: Path, output_mp4: Path, output_webm: Path, fps: int) -> None:
+    ffmpeg = ensure_ffmpeg()
+    pattern = str(frame_dir / "frame_%03d.png")
+    common = [ffmpeg, "-y", "-hide_banner", "-loglevel", "error", "-framerate", str(fps), "-i", pattern]
+    subprocess.run(common + ["-c:v", "libx264", "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(output_mp4)], check=True)
+    subprocess.run(common + ["-c:v", "libvpx", "-pix_fmt", "yuv420p", "-crf", "34", "-b:v", "0", str(output_webm)], check=True)
+
+
+def draw_labeled_chip(
+    draw: ImageDraw.ImageDraw,
+    box: tuple[int, int, int, int],
+    label: str,
+    fill: tuple[int, int, int, int],
+    outline: tuple[int, int, int, int],
+    font: ImageFont.ImageFont,
+) -> None:
+    draw.rounded_rectangle(box, radius=box[3] - box[1], fill=fill, outline=outline, width=1)
+    x1, y1, x2, y2 = box
+    text_box = draw.textbbox((0, 0), label, font=font)
+    text_width = text_box[2] - text_box[0]
+    text_height = text_box[3] - text_box[1]
+    draw.text(
+        (x1 + (x2 - x1 - text_width) / 2, y1 + (y2 - y1 - text_height) / 2 - 1),
+        label,
+        font=font,
+        fill=(239, 246, 255, 255),
+    )
+
+
+def generate_simulation_frame(index: int, total_frames: int, width: int = 960, height: int = 540) -> Image.Image:
+    progress = index / max(total_frames - 1, 1)
+    image = Image.new("RGBA", (width, height), (7, 17, 31, 255))
+    draw = ImageDraw.Draw(image, "RGBA")
+    title_font = load_font(30, bold=True)
+    subtitle_font = load_font(15)
+    body_font = load_font(13)
+    chip_font = load_font(12, bold=True)
+    tiny_font = load_font(11)
+
+    draw.ellipse((-100, -60, 260, 260), fill=rgba(CYAN_RGB, 30))
+    draw.ellipse((700, 320, 1020, 650), fill=rgba(PURPLE_RGB, 28))
+    draw.ellipse((360, 40, 700, 340), fill=rgba(TEAL_RGB, 20))
+
+    panel = (54, 86, 906, 454)
+    board = (98, 142, 862, 388)
+    draw.rounded_rectangle(panel, radius=34, fill=(15, 28, 49, 245), outline=(255, 255, 255, 24), width=1)
+    draw.rounded_rectangle(board, radius=26, fill=(10, 18, 34, 255), outline=(255, 255, 255, 18), width=1)
+
+    cols, rows = 12, 6
+    cell_w = (board[2] - board[0]) / cols
+    cell_h = (board[3] - board[1]) / rows
+    center_a = (
+        board[0] + 96 + (board[2] - board[0] - 192) * progress,
+        board[1] + 74 + 34 * math.sin(progress * math.tau),
+    )
+    center_b = (
+        board[2] - 96 - (board[2] - board[0] - 192) * progress,
+        board[3] - 72 + 34 * math.cos(progress * math.tau),
+    )
+
+    for row in range(rows):
+        for col in range(cols):
+            left = int(board[0] + col * cell_w)
+            top = int(board[1] + row * cell_h)
+            right = int(board[0] + (col + 1) * cell_w)
+            bottom = int(board[1] + (row + 1) * cell_h)
+            cx = (left + right) / 2
+            cy = (top + bottom) / 2
+            dist_a = math.hypot(cx - center_a[0], cy - center_a[1])
+            dist_b = math.hypot(cx - center_b[0], cy - center_b[1])
+            owner = CYAN_RGB if dist_a <= dist_b else PURPLE_RGB
+            pulse = max(0.16, 1 - min(dist_a, dist_b) / 310)
+            fill = rgba(mix_rgb((20, 29, 50), owner, pulse), int(72 + 138 * pulse))
+            outline = rgba((255, 255, 255), 14 + int(52 * pulse))
+            draw.rounded_rectangle((left + 2, top + 2, right - 2, bottom - 2), radius=9, fill=fill, outline=outline, width=1)
+            if abs(dist_a - dist_b) < 35:
+                draw.rounded_rectangle(
+                    (left + 5, top + 5, right - 5, bottom - 5),
+                    radius=8,
+                    outline=rgba(AMBER_RGB, 92),
+                    width=1,
+                )
+
+    for offset, color in ((-0.08, CYAN_RGB), (0.08, PURPLE_RGB)):
+        phase = (progress + offset) % 1.0
+        px = board[0] + 120 + (board[2] - board[0] - 240) * phase
+        py = board[1] + 74 + 40 * math.sin((phase + offset) * math.tau * 1.6)
+        draw.ellipse((px - 18, py - 18, px + 18, py + 18), fill=rgba(color, 128), outline=rgba((255, 255, 255), 220), width=3)
+        draw.line((board[0] + 120, board[3] - 54, px, py), fill=rgba(color, 165), width=4)
+
+    draw.text((84, 32), "SIMULATION SAMPLE", font=title_font, fill=(239, 246, 255, 255))
+    draw.text(
+        (84, 65),
+        "Bot-vs-bot pressure loop with moving frontiers and replay-style pacing.",
+        font=subtitle_font,
+        fill=(169, 189, 215, 255),
+    )
+
+    status_box = (88, 414, 876, 492)
+    draw.rounded_rectangle(status_box, radius=22, fill=(16, 29, 50, 250), outline=(255, 255, 255, 20), width=1)
+    draw_labeled_chip(draw, (114, 434, 238, 458), "OFFLINE", rgba(CYAN_RGB, 34), rgba(CYAN_RGB, 110), chip_font)
+    draw_labeled_chip(draw, (250, 434, 342, 458), "LAN", rgba(PURPLE_RGB, 34), rgba(PURPLE_RGB, 110), chip_font)
+    draw_labeled_chip(draw, (354, 434, 468, 458), "REPLAY", rgba(TEAL_RGB, 34), rgba(TEAL_RGB, 110), chip_font)
+    draw.text((516, 432), f"TURN {index + 1:02d}/{total_frames:02d}", font=body_font, fill=(239, 246, 255, 255))
+    draw.text(
+        (516, 453),
+        "Cyan and violet fronts converge while the match keeps looping.",
+        font=tiny_font,
+        fill=(169, 189, 215, 255),
+    )
+    draw.text((728, 432), "STATUS", font=tiny_font, fill=(169, 189, 215, 255))
+    draw.text((728, 451), "Stable preview", font=body_font, fill=(110, 231, 255, 255))
+
+    return image
+
+
+def generate_release_frame(index: int, total_frames: int, releases: dict, width: int = 960, height: int = 540) -> Image.Image:
+    items = sorted(releases.get("items", []), key=lambda item: parse_timestamp(item["published_at"]))
+    if not items:
+        items = [
+            {"tag_name": "v5.0", "prerelease": False, "published_at": "2024-01-01T00:00:00+00:00"},
+            {"tag_name": "v5.5", "prerelease": False, "published_at": "2024-05-01T00:00:00+00:00"},
+            {"tag_name": "v6.0-preview", "prerelease": True, "published_at": "2024-09-01T00:00:00+00:00"},
+            {"tag_name": "v6.0", "prerelease": False, "published_at": "2025-01-01T00:00:00+00:00"},
+        ]
+
+    sample_count = min(8, len(items))
+    if sample_count == 1:
+        sample = items
+    else:
+        sample = [items[round(i * (len(items) - 1) / (sample_count - 1))] for i in range(sample_count)]
+
+    progress = index / max(total_frames - 1, 1)
+    image = Image.new("RGBA", (width, height), (7, 17, 31, 255))
+    draw = ImageDraw.Draw(image, "RGBA")
+    title_font = load_font(30, bold=True)
+    subtitle_font = load_font(15)
+    body_font = load_font(13)
+    chip_font = load_font(12, bold=True)
+    tiny_font = load_font(11)
+
+    draw.ellipse((-120, -50, 200, 250), fill=rgba(PURPLE_RGB, 28))
+    draw.ellipse((680, 300, 1020, 640), fill=rgba(CYAN_RGB, 26))
+    draw.ellipse((320, 20, 620, 320), fill=rgba(TEAL_RGB, 18))
+
+    panel = (54, 88, 906, 454)
+    plot = (108, 154, 852, 364)
+    draw.rounded_rectangle(panel, radius=34, fill=(15, 28, 49, 245), outline=(255, 255, 255, 24), width=1)
+    draw.rounded_rectangle(plot, radius=26, fill=(10, 18, 34, 255), outline=(255, 255, 255, 18), width=1)
+
+    points = []
+    for idx, item in enumerate(sample):
+        x = plot[0] + 60 + idx * ((plot[2] - plot[0] - 120) / max(len(sample) - 1, 1))
+        value = 0.2 + (idx / max(len(sample) - 1, 1)) * 0.65 + (0.09 if item.get("prerelease") else 0.0)
+        y = plot[3] - 36 - value * (plot[3] - plot[1] - 72)
+        points.append((x, y, item, value))
+
+    baseline = plot[3] - 36
+    draw.line((plot[0] + 36, baseline, plot[2] - 36, baseline), fill=rgba((255, 255, 255), 32), width=2)
+
+    if len(points) > 1:
+        draw.line([(x, y) for x, y, _, _ in points], fill=rgba(CYAN_RGB, 170), width=4, joint="curve")
+
+    active_index = min(len(points) - 1, int(progress * len(points)))
+    for idx, (x, y, item, value) in enumerate(points):
+        is_active = idx == active_index
+        fill = AMBER_RGB if item.get("prerelease") else (CYAN_RGB if idx <= active_index else PURPLE_RGB)
+        alpha = 240 if is_active else 160
+        radius = 16 if is_active else 10
+        draw.ellipse(
+            (x - radius, y - radius, x + radius, y + radius),
+            fill=rgba(fill, alpha),
+            outline=rgba((255, 255, 255), 235),
+            width=3 if is_active else 2,
+        )
+        draw.line((x, y, x, baseline), fill=rgba(fill, 52), width=2)
+        tag = item.get("tag_name", "")
+        tag_box = draw.textbbox((0, 0), tag, font=tiny_font)
+        tag_w = tag_box[2] - tag_box[0]
+        draw.text((x - tag_w / 2, y + 20), tag, font=tiny_font, fill=(239, 246, 255, 255))
+
+    draw.text((84, 32), "RELEASE TIMELINE", font=title_font, fill=(239, 246, 255, 255))
+    draw.text((84, 65), "Loop through stable builds, previews, and the project’s momentum.", font=subtitle_font, fill=(169, 189, 215, 255))
+
+    summary_box = (88, 396, 876, 492)
+    draw.rounded_rectangle(summary_box, radius=22, fill=(16, 29, 50, 250), outline=(255, 255, 255, 20), width=1)
+    draw_labeled_chip(draw, (114, 416, 242, 440), "STABLE", rgba(TEAL_RGB, 34), rgba(TEAL_RGB, 110), chip_font)
+    draw_labeled_chip(draw, (252, 416, 362, 440), "PREVIEW", rgba(AMBER_RGB, 34), rgba(AMBER_RGB, 110), chip_font)
+    draw_labeled_chip(draw, (372, 416, 462, 440), "LIVE", rgba(PURPLE_RGB, 34), rgba(PURPLE_RGB, 110), chip_font)
+    latest = sample[min(active_index, len(sample) - 1)]
+    draw.text((514, 414), f"HIGHLIGHT {latest.get('tag_name', '')}", font=body_font, fill=(239, 246, 255, 255))
+    draw.text(
+        (514, 435),
+        "Release cadence animated as a looping preview for the releases page.",
+        font=tiny_font,
+        fill=(169, 189, 215, 255),
+    )
+    draw.text((728, 414), "SYNCED", font=tiny_font, fill=(169, 189, 215, 255))
+    draw.text((728, 433), f"{len(items)} releases", font=body_font, fill=(110, 231, 255, 255))
+
+    return image
+
+
+def build_video_from_frame_renderer(renderer, output_name: str, frame_total: int, fps: int, *renderer_args) -> None:
+    with tempfile.TemporaryDirectory(dir=ROOT) as tmp_dir:
+        frame_dir = Path(tmp_dir)
+        first_frame = None
+        for index in range(frame_total):
+            frame = renderer(index, frame_total, *renderer_args)
+            if first_frame is None:
+                first_frame = frame.copy()
+            frame.save(frame_dir / f"frame_{index:03d}.png")
+
+        if first_frame is not None:
+            save_frame(first_frame, OUTPUT_DIR / f"{output_name}-poster.png")
+
+        encode_video_from_frames(
+            frame_dir,
+            VIDEO_DIR / f"{output_name}.mp4",
+            VIDEO_DIR / f"{output_name}.webm",
+            fps,
+        )
+
+
+def generate_sample_videos(project: dict, releases: dict) -> None:
+    build_video_from_frame_renderer(generate_simulation_frame, "simulation-loop", 60, 20)
+    build_video_from_frame_renderer(generate_release_frame, "release-loop", 60, 20, releases)
 
 
 def generate_release_journey(project: dict, releases: dict) -> None:
@@ -422,6 +699,7 @@ def main() -> None:
     generate_bot_spectrum(project, bots)
     generate_project_pillars(project)
     generate_hero_board(project)
+    generate_sample_videos(project, releases)
     generate_favicon()
     generate_webmanifest(project)
 

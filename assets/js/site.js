@@ -56,7 +56,7 @@ function initThemeToggle() {
 function initRevealAnimations() {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const revealTargets = document.querySelectorAll(
-    ".hero-panel, .panel, .card, .stat-card, .sidebar-card, .release-card, .contributor-card, .plot-card, .page-sidecar, .prose-panel, .hero-visual-card, .feature-marquee, .metric-strip"
+    ".hero-panel, .panel, .card, .stat-card, .sidebar-card, .release-card, .contributor-card, .plot-card, .page-sidecar, .prose-panel, .hero-visual-card, .feature-marquee, .metric-strip, .media-card"
   );
 
   if (prefersReducedMotion || !("IntersectionObserver" in window)) {

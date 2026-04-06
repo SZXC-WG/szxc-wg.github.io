@@ -2,3 +2,5 @@ public/
 resources/_gen/
 .hugo_build.lock
 .env
+static/video/
+static/img/generated/*-poster.png
