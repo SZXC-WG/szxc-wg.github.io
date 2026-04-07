@@ -22,14 +22,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Install ffmpeg
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
-
-      - name: Install Python dependencies
-        run: python3 -m pip install --requirement requirements.txt
-
       - name: Sync metadata
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

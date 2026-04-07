@@ -34,14 +34,6 @@ jobs:
           hugo-version: '0.160.0'
           extended: true
 
-      - name: Install ffmpeg
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
-
-      - name: Install Python dependencies
-        run: python3 -m pip install --requirement requirements.txt
-
       - name: Sync LocalGen metadata
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

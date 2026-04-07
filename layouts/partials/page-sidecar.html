@@ -54,16 +54,6 @@
     </div>
   </div>
 
-  {{ if or (eq .Section "releases") (eq $slug "simulator") }}
-  <div class="sidebar-card">
-    {{ if eq .Section "releases" }}
-    {{ partial "sample-video.html" (dict "variant" "release" "compact" true) }}
-    {{ else }}
-    {{ partial "sample-video.html" (dict "variant" "simulation" "compact" true) }}
-    {{ end }}
-  </div>
-  {{ end }}
-
   {{ if eq .Section "docs" }}
   <div class="sidebar-card">
     <h2>{{ i18n "project_docs" }}</h2>

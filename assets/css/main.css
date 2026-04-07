@@ -432,7 +432,6 @@ textarea {
 .two-column-grid,
 .content-grid,
 .footer-grid,
-.media-grid,
 .plot-grid,
 .card-grid,
 .stat-grid,
@@ -459,11 +458,6 @@ textarea {
 
 .plot-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.media-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: stretch;
 }
 
 .stat-grid {
@@ -540,108 +534,6 @@ textarea {
 
 .hero-visual-card .visual-figure img {
   animation: floatY 9s ease-in-out infinite;
-}
-
-.media-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.media-card-head {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.media-badge {
-  align-self: flex-start;
-}
-
-.video-shell {
-  position: relative;
-  overflow: hidden;
-  border-radius: calc(var(--radius) - 10px);
-  background: linear-gradient(180deg, var(--bg-elevated), var(--surface-strong));
-  border: 1px solid var(--border);
-  margin: 1rem 0 1rem;
-  isolation: isolate;
-}
-
-.video-shell::before,
-.video-shell::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.video-shell::before {
-  background: linear-gradient(120deg, transparent 16%, rgba(255, 255, 255, 0.16) 42%, transparent 64%);
-  transform: translateX(-120%);
-  animation: videoSweep 7.5s linear infinite;
-}
-
-.video-shell::after {
-  background:
-    radial-gradient(circle at 18% 20%, rgba(110, 231, 255, 0.16), transparent 24%),
-    radial-gradient(circle at 82% 76%, rgba(139, 92, 246, 0.12), transparent 28%);
-  animation: videoPulse 8.4s ease-in-out infinite;
-}
-
-.media-video {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: inherit;
-  filter: saturate(1.08) contrast(1.02);
-}
-
-.video-overlay {
-  position: absolute;
-  inset: 1rem 1rem auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.video-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.32rem 0.6rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: color-mix(in srgb, var(--bg-elevated) 72%, transparent);
-  backdrop-filter: blur(14px);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text);
-}
-
-.video-pill.subtle {
-  color: var(--muted);
-}
-
-.media-card p {
-  margin-top: 0.85rem;
-}
-
-.media-labels {
-  margin-top: 0.85rem;
-}
-
-.media-card-compact h3 {
-  font-size: 1.05rem;
-}
-
-.media-card-compact .video-overlay {
-  inset: 0.85rem 0.85rem auto;
 }
 
 .plot-card:hover,
@@ -1106,34 +998,6 @@ h3 {
   }
 }
 
-@keyframes videoSweep {
-  0% {
-    transform: translateX(-120%);
-  }
-
-  60% {
-    transform: translateX(120%);
-  }
-
-  100% {
-    transform: translateX(120%);
-  }
-}
-
-@keyframes videoPulse {
-
-  0%,
-  100% {
-    opacity: 0.68;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1.02);
-  }
-}
-
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -1166,7 +1030,6 @@ h3 {
   .two-column-grid,
   .content-grid,
   .footer-grid,
-  .media-grid,
   .plot-grid {
     grid-template-columns: 1fr;
   }
