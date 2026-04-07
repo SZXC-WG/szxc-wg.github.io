@@ -1,281 +1,738 @@
 {
-  "synced_at": "2026-04-06T00:00:00Z",
+  "synced_at": "2026-04-07T06:41:21.902573+00:00",
   "items": [
     {
       "name": "v4.3.2 (dev)",
       "tag_name": "v4.3.2D",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v4.3.2D",
-      "body": "Adjusted lookout vision range, added the Watchtower modifier, improved zlyBot v2 and gcBot, added map creator hotkeys and in-game speed controls, and smoothed replay handling.",
-      "summary": "Adjusted lookout vision range, added the Watchtower modifier, improved zlyBot v2 and gcBot, added map creator hotkeys and in-game speed controls, and smoothed replay handling.",
+      "body": "# Local Generals.io v4.3.2 (dev)\r\n\r\nThank you for your continued support, and don't forget to **star** this project!\r\n\r\nOn this special occasion, we are excited to release the **developers' version** of the new LocalGen!\r\n\r\nWhile this is a developer-focused release, we’re presenting it as a stable version to replace the outdated v4.1.0, which was published almost two years ago and no longer meets the standards of today’s updates.\r\n\r\n**Click the download links below to start your game!**\r\n\r\n> **P.S.** If you haven’t installed the **Quicksand** font yet, please locate it in the `font` folder and install it before launching the game.\r\n\r\n## Changelog\r\n\r\n- **Fixed**: Adjusted the Lookout's vision range. Previously set to 3 in v4.3.1, it has now been reduced to 2.\r\n- **Added**: Introducing the new **Watchtower** modifier!\r\n- **Enhanced**: Major improvements to zlyBot v2 and gcBot! These robots are now more challenging to defeat.\r\n- **Added**: New hotkeys for map creators! You can now use F1-F10 or the ↑↓ arrow keys to switch between tools.\r\n- **Added**: New in-game speed adjustment options! You can find these controls at the top-left corner of the game window.\r\n- **Fixed**: Replays should now run smoothly in mode 0.\r\n- **Added**: Time stamp suffixes for replay files. Remember, you still need to rename the file to `replay.lgr` to watch it in the application.\r\n\r\n## ATTENTION!\r\n\r\nBot contribution is now welcomed. Please read the instructions in #31.\r\n\r\n**Note that LocalGen is built for and under Windows x64. To run on Mac or Linux, try using `wine`.**\r\n\r\n**Full Changelog**: https://github.com/SZXC-WG/LocalGen-new/compare/v4.3.1D...v4.3.2D",
+      "summary": "# Local Generals.io v4.3.2 (dev) Thank you for your continued support, and don't forget to **star** this project! On this special occasion, we are excited to release the **developers' version** of the new LocalGen! While this is a developer-focused release, we’re presenting it as a stable version to replace the outdated v4.1.0, which was published almost two years ago and no longer meets the standards of today’s updates. **Click the download links below to start your game!** > **P.S.** If you haven’t installed the **Quicksand** font yet, please locate it in the `font` folder and install it before launching the game. ## Changelog - **Fixed**: Adjusted the Lookout's vision range. Previously set to 3 in v4.3.1, it has now been reduced to 2. - **Added**: Introducing the new **Watchtower** modifier! - **Enhanced**: Major improvements to zlyBot v2 and gcBot! These robots are now more challenging to defeat. - **Added**: New hotkeys for map creators! You can now use F1-F10 or the ↑↓ arrow keys to switch between tools. - **Added**: New in-game speed adjustment options! You can find these controls at the top-left corner of the game window. - **Fixed**: Replays should now run smoothly in mode 0. - **Added**: Time stamp suffixes for replay files. Remember, you still need to rename the file to `replay.lgr` to watch it in the application. ## ATTENTION! Bot contribution is now welcomed. Please read the instructions in #31. **Note that LocalGen is built for and under Windows x64. To run on Mac or Linux, try using `wine`.** **Full Changelog**: https://github.com/SZXC-WG/LocalGen-new/compare/v4.3.1D...v4.3.2D",
       "draft": false,
       "prerelease": false,
-      "published_at": "2025-06-29T00:00:00Z",
+      "published_at": "2025-06-29T13:06:45Z",
+      "created_at": "2025-06-29T13:04:47Z",
+      "author": "AppOfficer",
       "is_latest": true,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v4.3.2D",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v4.3.2D",
+      "assets": [
+        {
+          "name": "LGen_win64_v4.3.2D.7z",
+          "size": 1810995,
+          "size_human": "1.7 MB",
+          "download_count": 11,
+          "content_type": "application/x-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.3.2D/LGen_win64_v4.3.2D.7z",
+          "updated_at": "2025-06-29T13:06:33Z"
+        },
+        {
+          "name": "LGen_win64_v4.3.2D.zip",
+          "size": 2171141,
+          "size_human": "2.1 MB",
+          "download_count": 14,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.3.2D/LGen_win64_v4.3.2D.zip",
+          "updated_at": "2025-06-29T13:06:40Z"
+        }
+      ]
     },
     {
       "name": "v4.3.1 (dev)",
       "tag_name": "v4.3.1D",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v4.3.1D",
-      "body": "Corrected the Lookout vision range and rolled the headline v4.3.0 improvements into a more stable developer release.",
-      "summary": "Corrected the Lookout vision range and rolled the headline v4.3.0 improvements into a more stable developer release.",
+      "body": "# Local Generals.io v4.3.1 (dev)\r\n\r\nThank you for your continued support, and don't forget to **star** this project!\r\n\r\nOn this special occasion, we are excited to release the **developers' version** of the new LocalGen!\r\n\r\nWhile this is a developer-focused release, we’re presenting it as a stable version to replace the outdated v4.1.0, which was published almost two years ago and no longer meets the standards of today’s updates.\r\n\r\n**Click the download links below to start your game!**\r\n\r\n> **P.S.** If you haven’t installed the **Quicksand** font yet, please locate it in the `font` folder and install it before launching the game.\r\n\r\n## Changelog\r\n\r\n- **Fixed**: Corrected the Lookout's vision range. Priorly set to 2 in v4.3.0, it has now been updated to 3.\r\n\r\n### Changelog of v4.3.0\r\n\r\n- **Added**: Gap between blocks for improved layout and clarity.\r\n- **Added**: Support for up to 16 players, enhancing multiplayer experience.\r\n- **Fixed**: Replays now support a total number of turns up to 1,000,000, ensuring seamless playback.\r\n- **Added**: New robots, including **szlyBot**, **gcBot**, and **zlyBot v2**, each bringing unique gameplay dynamics.\r\n- **Added**: New tiles, including **Desert**, **Lookout**, and **Observatory**. These can now be experienced in-game or incorporated into your custom maps via the map creator tool!\r\n- **Fixed**: Players will no longer spawn on tiles occupied by neutral troops.\r\n\r\n## ATTENTION!\r\n\r\nBot contribution is now welcomed. Please read the instructions in #31.\r\n\r\n**Note that LocalGen is built for and under Windows x64. To run on Mac or Linux, try using `wine`.**\r\n\r\n**Full Changelog (covering v4.3.0)**: https://github.com/SZXC-WG/LocalGen-new/compare/v4.2.5D...v4.3.1D",
+      "summary": "# Local Generals.io v4.3.1 (dev) Thank you for your continued support, and don't forget to **star** this project! On this special occasion, we are excited to release the **developers' version** of the new LocalGen! While this is a developer-focused release, we’re presenting it as a stable version to replace the outdated v4.1.0, which was published almost two years ago and no longer meets the standards of today’s updates. **Click the download links below to start your game!** > **P.S.** If you haven’t installed the **Quicksand** font yet, please locate it in the `font` folder and install it before launching the game. ## Changelog - **Fixed**: Corrected the Lookout's vision range. Priorly set to 2 in v4.3.0, it has now been updated to 3. ### Changelog of v4.3.0 - **Added**: Gap between blocks for improved layout and clarity. - **Added**: Support for up to 16 players, enhancing multiplayer experience. - **Fixed**: Replays now support a total number of turns up to 1,000,000, ensuring seamless playback. - **Added**: New robots, including **szlyBot**, **gcBot**, and **zlyBot v2**, each bringing unique gameplay dynamics. - **Added**: New tiles, including **Desert**, **Lookout**, and **Observatory**. These can now be experienced in-game or incorporated into your custom maps via the map creator tool! - **Fixed**: Players will no longer spawn on tiles occupied by neutral troops. ## ATTENTION! Bot contribution is now welcomed. Please read the instructions in #31. **Note that LocalGen is built for and under Windows x64. To run on Mac or Linux, try using `wine`.** **Full Changelog (covering v4.3.0)**: https://github.com/SZXC-WG/LocalGen-new/compare/v4.2.5D...v4.3.1D",
       "draft": false,
       "prerelease": false,
-      "published_at": "2025-05-13T00:00:00Z",
+      "published_at": "2025-05-13T15:32:13Z",
+      "created_at": "2025-05-13T15:31:08Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v4.3.1D",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v4.3.1D",
+      "assets": [
+        {
+          "name": "LGen_v4.3.1D_win64.7z",
+          "size": 1263665,
+          "size_human": "1.2 MB",
+          "download_count": 5,
+          "content_type": "application/x-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.3.1D/LGen_v4.3.1D_win64.7z",
+          "updated_at": "2025-05-13T15:31:43Z"
+        },
+        {
+          "name": "LGen_v4.3.1D_win64.zip",
+          "size": 1698577,
+          "size_human": "1.6 MB",
+          "download_count": 5,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.3.1D/LGen_v4.3.1D_win64.zip",
+          "updated_at": "2025-05-13T15:31:47Z"
+        }
+      ]
     },
     {
       "name": "v4.3.0 (dev)",
       "tag_name": "v4.3.0D",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v4.3.0D",
-      "body": "Introduced gap-based layout polish, up to 16 players, million-turn replay support, new bots including szlyBot and gcBot, and new terrain types such as Desert, Lookout, and Observatory.",
-      "summary": "Introduced gap-based layout polish, up to 16 players, million-turn replay support, new bots including szlyBot and gcBot, and new terrain types such as Desert, Lookout, and Observatory.",
+      "body": "# Local Generals.io v4.3.0 (dev)\r\n\r\n> **Important Notice**: The target branch for this release was incorrectly set to `master` instead of `v5.0`. As a result, please avoid downloading the last two assets of this release.\r\n\r\n> **Update (2025/05/13)**: The binary files have been replaced to include the necessary font files. If you have already installed the fonts on your system, no further action is required. However, if you haven't installed them yet, please download the release again. We apologize for any inconvenience this may have caused.\r\n\r\nThanks for your support and don't forget to **star** this project! \r\n\r\nOn this special day, we are glad to release this **developers' version** of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\n> P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- **Added**: Gap between blocks for improved layout and clarity.\r\n- **Added**: Support for up to 16 players, enhancing multiplayer experience.\r\n- **Fixed**: Replays now support a total number of turns up to 1,000,000, ensuring seamless playback.\r\n- **Added**: New robots, including **szlyBot**, **gcBot**, and **zlyBot v2**, each bringing unique gameplay dynamics.\r\n- **Added**: New tiles, including **Desert**, **Lookout**, and **Observatory**. These can now be experienced in-game or incorporated into your custom maps via the map creator tool!\r\n- **Fixed**: Players will no longer spawn on tiles occupied by neutral troops.\r\n\r\n## ATTENTION!\r\n\r\nBot contribution is now welcomed. Please read the instructions in #31.\r\n\r\n**Note that LocalGen is built for and under Windows x64. To run on Mac or Linux, try using `wine`.**\r\n\r\n**Full Changelog**: https://github.com/SZXC-WG/LocalGen-new/compare/v4.2.5D...v4.3.0D",
+      "summary": "# Local Generals.io v4.3.0 (dev) > **Important Notice**: The target branch for this release was incorrectly set to `master` instead of `v5.0`. As a result, please avoid downloading the last two assets of this release. > **Update (2025/05/13)**: The binary files have been replaced to include the necessary font files. If you have already installed the fonts on your system, no further action is required. However, if you haven't installed them yet, please download the release again. We apologize for any inconvenience this may have caused. Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this **developers' version** of the new LocalGen! **Click the download links below and start your game!** > P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - **Added**: Gap between blocks for improved layout and clarity. - **Added**: Support for up to 16 players, enhancing multiplayer experience. - **Fixed**: Replays now support a total number of turns up to 1,000,000, ensuring seamless playback. - **Added**: New robots, including **szlyBot**, **gcBot**, and **zlyBot v2**, each bringing unique gameplay dynamics. - **Added**: New tiles, including **Desert**, **Lookout**, and **Observatory**. These can now be experienced in-game or incorporated into your custom maps via the map creator tool! - **Fixed**: Players will no longer spawn on tiles occupied by neutral troops. ## ATTENTION! Bot contribution is now welcomed. Please read the instructions in #31. **Note that LocalGen is built for and under Windows x64. To run on Mac or Linux, try using `wine`.** **Full Changelog**: https://github.com/SZXC-WG/LocalGen-new/compare/v4.2.5D...v4.3.0D",
       "draft": false,
       "prerelease": true,
-      "published_at": "2025-05-11T00:00:00Z",
+      "published_at": "2025-05-11T14:49:58Z",
+      "created_at": "2025-04-20T09:15:42Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v4.3.0D",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v4.3.0D",
+      "assets": [
+        {
+          "name": "LGen_v4.3.0D_win64.7z",
+          "size": 1259740,
+          "size_human": "1.2 MB",
+          "download_count": 2,
+          "content_type": "application/x-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.3.0D/LGen_v4.3.0D_win64.7z",
+          "updated_at": "2025-05-13T15:10:42Z"
+        },
+        {
+          "name": "LGen_v4.3.0D_win64.zip",
+          "size": 1698554,
+          "size_human": "1.6 MB",
+          "download_count": 5,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.3.0D/LGen_v4.3.0D_win64.zip",
+          "updated_at": "2025-05-13T15:10:43Z"
+        }
+      ]
     },
     {
       "name": "v4.2.5 (dev)",
       "tag_name": "v4.2.5D",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v4.2.5D",
-      "body": "Added a settings page, a new map, modifiers, zlyBot compatibility updates, and migrated the project to CMake.",
-      "summary": "Added a settings page, a new map, modifiers, zlyBot compatibility updates, and migrated the project to CMake.",
+      "body": "# Local Generals.io v4.2.5 (dev)\r\n\r\nThanks for your support and don't forget to **star** this project! \r\n\r\nOn this special day, we are glad to release this **developers' version** of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\n> P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- Added: New settings page! Try changing game settings. **Note that this feature might be unstable, so if you encounter bugs feel free to report them in the issues page.**\r\n- Added: New game map. Check it out by yourself!\r\n- Added: Modifiers.\r\n- Fixed: zlyBot is now compatible with all game modes.\r\n- The project has been migrated to the CMake build system.\r\n\r\n## ATTENTION!\r\n\r\nBot contribution is now welcomed. Please read the instructions in #31.\r\n\r\n**Note that LocalGen is built under Windows x64. To run on Mac or Linux, try using `wine`.**\r\n\r\n**Full Changelog**: https://github.com/SZXC-WG/LocalGen-new/compare/v4.2.4D...v4.2.5D",
+      "summary": "# Local Generals.io v4.2.5 (dev) Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this **developers' version** of the new LocalGen! **Click the download links below and start your game!** > P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - Added: New settings page! Try changing game settings. **Note that this feature might be unstable, so if you encounter bugs feel free to report them in the issues page.** - Added: New game map. Check it out by yourself! - Added: Modifiers. - Fixed: zlyBot is now compatible with all game modes. - The project has been migrated to the CMake build system. ## ATTENTION! Bot contribution is now welcomed. Please read the instructions in #31. **Note that LocalGen is built under Windows x64. To run on Mac or Linux, try using `wine`.** **Full Changelog**: https://github.com/SZXC-WG/LocalGen-new/compare/v4.2.4D...v4.2.5D",
       "draft": false,
       "prerelease": true,
-      "published_at": "2024-08-31T00:00:00Z",
+      "published_at": "2024-08-31T03:45:37Z",
+      "created_at": "2024-08-31T03:33:05Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v4.2.5D",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v4.2.5D",
+      "assets": [
+        {
+          "name": "LGen_v4.2.5D_win64.7z",
+          "size": 1132265,
+          "size_human": "1.1 MB",
+          "download_count": 7,
+          "content_type": "application/x-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.2.5D/LGen_v4.2.5D_win64.7z",
+          "updated_at": "2024-08-31T03:45:25Z"
+        },
+        {
+          "name": "LGen_v4.2.5D_win64.zip",
+          "size": 1489511,
+          "size_human": "1.4 MB",
+          "download_count": 18,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.2.5D/LGen_v4.2.5D_win64.zip",
+          "updated_at": "2024-08-31T03:45:26Z"
+        }
+      ]
     },
     {
       "name": "v4.2.4 (dev)",
       "tag_name": "v4.2.4D",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v4.2.4D",
-      "body": "Added generals.io-style block numbering, local-game map zooming, the new zlyBot, labyrinth improvements, and a faster analysis graph presentation.",
-      "summary": "Added generals.io-style block numbering, local-game map zooming, the new zlyBot, labyrinth improvements, and a faster analysis graph presentation.",
+      "body": "# Local Generals.io v4.2.4 (dev)\r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this **developers' version** of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\n> P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- Added: Block number self-adaption like generals.io. No number suffixes!\r\n- Added: Map zooming in local games. Now it zooms centering your mouse.\r\n- Added: New bot zlyBot! It is much more clever than the other 3 bots. Check it out in game!\r\n- Modified: Labyrinth improvement. Now it's more \"labyrinth\", and all cities have neutral armies of 40.\r\n- Modified: smartRandomBot improvement. Check it out in game!\r\n- Modified: Game Analysis X-axis and Y-axis both logged and improved to make it prettier and faster.\r\n\r\n## ATTENTION!\r\n\r\nWe now allow everyone to contribute game robots to us. The instructions are in issue #31.\r\n\r\n**Note that the LocalGen application is built in Windows x64 environment. If you want you run it on Mac or Linux, you can use `wine` to run it as an alternative option.**\r\n\r\n**Full Changelog**: https://github.com/SZXC-WG/LocalGen-new/compare/v4.2.3D...v4.2.4D",
+      "summary": "# Local Generals.io v4.2.4 (dev) Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this **developers' version** of the new LocalGen! **Click the download links below and start your game!** > P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - Added: Block number self-adaption like generals.io. No number suffixes! - Added: Map zooming in local games. Now it zooms centering your mouse. - Added: New bot zlyBot! It is much more clever than the other 3 bots. Check it out in game! - Modified: Labyrinth improvement. Now it's more \"labyrinth\", and all cities have neutral armies of 40. - Modified: smartRandomBot improvement. Check it out in game! - Modified: Game Analysis X-axis and Y-axis both logged and improved to make it prettier and faster. ## ATTENTION! We now allow everyone to contribute game robots to us. The instructions are in issue #31. **Note that the LocalGen application is built in Windows x64 environment. If you want you run it on Mac or Linux, you can use `wine` to run it as an alternative option.** **Full Changelog**: https://github.com/SZXC-WG/LocalGen-new/compare/v4.2.3D...v4.2.4D",
       "draft": false,
       "prerelease": true,
-      "published_at": "2023-12-23T00:00:00Z",
+      "published_at": "2023-12-23T13:25:40Z",
+      "created_at": "2023-12-23T13:15:22Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v4.2.4D",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v4.2.4D",
+      "assets": [
+        {
+          "name": "Local_Generals_io_v4.2.4D_win64.7z",
+          "size": 1880897,
+          "size_human": "1.8 MB",
+          "download_count": 15,
+          "content_type": "application/x-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.2.4D/Local_Generals_io_v4.2.4D_win64.7z",
+          "updated_at": "2023-12-23T13:24:44Z"
+        },
+        {
+          "name": "Local_Generals_io_v4.2.4D_win64.zip",
+          "size": 2221013,
+          "size_human": "2.1 MB",
+          "download_count": 19,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.2.4D/Local_Generals_io_v4.2.4D_win64.zip",
+          "updated_at": "2023-12-23T13:25:38Z"
+        }
+      ]
     },
     {
       "name": "v4.2.3 (dev)",
       "tag_name": "v4.2.3D",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v4.2.3D",
-      "body": "Fixed map-selection errors, added in-game analysis graphs, and documented temporary web instability caused by v4.2 move-storage changes.",
-      "summary": "Fixed map-selection errors, added in-game analysis graphs, and documented temporary web instability caused by v4.2 move-storage changes.",
+      "body": "# Local Generals.io v4.2.3 (dev)\r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this **developers' version** of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\n> P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- Fixed: Select errors when selecting some special maps.\r\n- Added: Game analysis in local game. The three graphs are: land (up), army (mid) and army in hand (down).\r\n- **The web functions of this release are buggy due to `v4.2`'s move storage changes. It may be fixed in a further release. If you want a stabler release, go check the \"latest release\" shown in the homepage.**\r\n\r\n## ATTENTION!\r\n\r\nWe now allow everyone to contribute game robots to us. The instructions are in issue #31.\r\n\r\n**Note that the LocalGen application is built in Windows x64 environment. If you want you run it on Mac or Linux, you can use `wine` to run it as an alternative option.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v4.2.2D...v4.2.3D",
+      "summary": "# Local Generals.io v4.2.3 (dev) Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this **developers' version** of the new LocalGen! **Click the download links below and start your game!** > P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - Fixed: Select errors when selecting some special maps. - Added: Game analysis in local game. The three graphs are: land (up), army (mid) and army in hand (down). - **The web functions of this release are buggy due to `v4.2`'s move storage changes. It may be fixed in a further release. If you want a stabler release, go check the \"latest release\" shown in the homepage.** ## ATTENTION! We now allow everyone to contribute game robots to us. The instructions are in issue #31. **Note that the LocalGen application is built in Windows x64 environment. If you want you run it on Mac or Linux, you can use `wine` to run it as an alternative option.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v4.2.2D...v4.2.3D",
       "draft": false,
       "prerelease": true,
-      "published_at": "2023-10-15T00:00:00Z",
+      "published_at": "2023-10-15T11:51:09Z",
+      "created_at": "2023-10-15T11:45:27Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v4.2.3D",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v4.2.3D",
+      "assets": [
+        {
+          "name": "LocalGen_v4.2.3D_win64.7z",
+          "size": 1844365,
+          "size_human": "1.8 MB",
+          "download_count": 7,
+          "content_type": "application/x-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.2.3D/LocalGen_v4.2.3D_win64.7z",
+          "updated_at": "2023-10-15T11:50:52Z"
+        },
+        {
+          "name": "LocalGen_v4.2.3D_win64.zip",
+          "size": 2177957,
+          "size_human": "2.1 MB",
+          "download_count": 9,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.2.3D/LocalGen_v4.2.3D_win64.zip",
+          "updated_at": "2023-10-15T11:50:55Z"
+        }
+      ]
     },
     {
       "name": "v4.2.2 (pre)",
       "tag_name": "v4.2.2D",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v4.2.2D",
-      "body": "Added Labyrinth special maps with multiple styles and warned about temporary web-function bugs linked to the v4.2 move-storage changes.",
-      "summary": "Added Labyrinth special maps with multiple styles and warned about temporary web-function bugs linked to the v4.2 move-storage changes.",
+      "body": "# Local Generals.io v4.2.2 (pre)\r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\n> P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- Added: A series of new special maps - Labyrinths! It has three different types: single-path, single-ring and multi-ring. Choose the map you like to play!\r\n- **The web functions of this release are buggy due to `v4.2.0`'s move storage changes. It may be fixed in a further release. If you want a stabler release, go check the \"latest release\" shown in the homepage.**\r\n\r\n## ATTENTION!\r\n\r\nWe now allow everyone to contribute game robots to us. The instructions are in issue #31.\r\n\r\n**Note that the LocalGen application is built in Windows x64 environment. If you want you run it on Mac or Linux, you can use `wine` to run it as an alternative option.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v4.2.1...v4.2.2D",
+      "summary": "# Local Generals.io v4.2.2 (pre) Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this version of the new LocalGen! **Click the download links below and start your game!** > P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - Added: A series of new special maps - Labyrinths! It has three different types: single-path, single-ring and multi-ring. Choose the map you like to play! - **The web functions of this release are buggy due to `v4.2.0`'s move storage changes. It may be fixed in a further release. If you want a stabler release, go check the \"latest release\" shown in the homepage.** ## ATTENTION! We now allow everyone to contribute game robots to us. The instructions are in issue #31. **Note that the LocalGen application is built in Windows x64 environment. If you want you run it on Mac or Linux, you can use `wine` to run it as an alternative option.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v4.2.1...v4.2.2D",
       "draft": false,
       "prerelease": true,
-      "published_at": "2023-10-05T00:00:00Z",
+      "published_at": "2023-10-05T02:59:32Z",
+      "created_at": "2023-10-05T02:56:24Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v4.2.2D",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v4.2.2D",
+      "assets": [
+        {
+          "name": "LocalGen_v4.2.2_win64.7z",
+          "size": 1841718,
+          "size_human": "1.8 MB",
+          "download_count": 7,
+          "content_type": "application/octet-stream",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.2.2D/LocalGen_v4.2.2_win64.7z",
+          "updated_at": "2023-10-05T02:54:50Z"
+        },
+        {
+          "name": "LocalGen_v4.2.2_win64.zip",
+          "size": 2174513,
+          "size_human": "2.1 MB",
+          "download_count": 9,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.2.2D/LocalGen_v4.2.2_win64.zip",
+          "updated_at": "2023-10-05T02:54:51Z"
+        }
+      ]
     },
     {
       "name": "v4.2.1 (pre)",
       "tag_name": "v4.2.1",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v4.2.1",
-      "body": "Fixed local game speed problems, transparent ranklist titles, and removed import-map support from local games while web features were being revised.",
-      "summary": "Fixed local game speed problems, transparent ranklist titles, and removed import-map support from local games while web features were being revised.",
+      "body": "# Local Generals.io v4.2.1 (pre)\r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\n> P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- Fixed: Local game speed error in `v4.2.0`.\r\n- Fixed: Transparent background of ranklist titles.\r\n- Deleted: Map importing function in local games. The function in web games will be soon deleted too.\r\n- **The web functions of this release are buggy due to changes. It may be fixed in a further release. If you want a stabler release, go check the \"latest release\" shown in the homepage.**\r\n\r\n## ATTENTION!\r\n\r\nWe now allow everyone to contribute game robots to us. The instructions are in issue #31.\r\n\r\n**Note that the LocalGen application is built in Windows x64 environment. If you want you run it on Mac or Linux, you can use `wine` to run it as an alternative option.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v4.2.0...v4.2.1",
+      "summary": "# Local Generals.io v4.2.1 (pre) Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this version of the new LocalGen! **Click the download links below and start your game!** > P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - Fixed: Local game speed error in `v4.2.0`. - Fixed: Transparent background of ranklist titles. - Deleted: Map importing function in local games. The function in web games will be soon deleted too. - **The web functions of this release are buggy due to changes. It may be fixed in a further release. If you want a stabler release, go check the \"latest release\" shown in the homepage.** ## ATTENTION! We now allow everyone to contribute game robots to us. The instructions are in issue #31. **Note that the LocalGen application is built in Windows x64 environment. If you want you run it on Mac or Linux, you can use `wine` to run it as an alternative option.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v4.2.0...v4.2.1",
       "draft": false,
       "prerelease": true,
-      "published_at": "2023-09-30T00:00:00Z",
+      "published_at": "2023-09-30T07:38:33Z",
+      "created_at": "2023-09-30T07:28:09Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v4.2.1",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v4.2.1",
+      "assets": [
+        {
+          "name": "LocalGen_v4.2.1_win64.7z",
+          "size": 1834724,
+          "size_human": "1.7 MB",
+          "download_count": 4,
+          "content_type": "application/octet-stream",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.2.1/LocalGen_v4.2.1_win64.7z",
+          "updated_at": "2023-09-30T07:38:55Z"
+        },
+        {
+          "name": "LocalGen_v4.2.1_win64.zip",
+          "size": 2166010,
+          "size_human": "2.1 MB",
+          "download_count": 4,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.2.1/LocalGen_v4.2.1_win64.zip",
+          "updated_at": "2023-09-30T07:38:57Z"
+        }
+      ]
     },
     {
       "name": "v4.2.0 (pre)",
       "tag_name": "v4.2.0",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v4.2.0",
-      "body": "Changed the overall move-storage and replay encoding system, with a note that older replays may break and that web/game-speed issues would be addressed later.",
-      "summary": "Changed the overall move-storage and replay encoding system, with a note that older replays may break and that web/game-speed issues would be addressed later.",
+      "body": "# Local Generals.io v4.2.0 (pre)\r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\n> P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- Changed: Overall game move storage.\r\n  **Note that the replay encoding system is changed too. Therefore, old replay files may not work any more.**\r\n- **This release is set as a pre-release because its game speed control and web functions are buggy. It may be fixed through a `v4.2.1` release, or it will be fixed in `v5.0`.**\r\n\r\n## ATTENTION!\r\n\r\nWe now allow everyone to contribute game robots to us. The instructions are in issue #31.\r\n\r\n**Note that the LocalGen application is built in Windows x64 environment. If you want you run it on Mac or Linux, you can use `wine` to run it as an alternative option.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v4.1.0...v4.2.0",
+      "summary": "# Local Generals.io v4.2.0 (pre) Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this version of the new LocalGen! **Click the download links below and start your game!** > P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - Changed: Overall game move storage. **Note that the replay encoding system is changed too. Therefore, old replay files may not work any more.** - **This release is set as a pre-release because its game speed control and web functions are buggy. It may be fixed through a `v4.2.1` release, or it will be fixed in `v5.0`.** ## ATTENTION! We now allow everyone to contribute game robots to us. The instructions are in issue #31. **Note that the LocalGen application is built in Windows x64 environment. If you want you run it on Mac or Linux, you can use `wine` to run it as an alternative option.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v4.1.0...v4.2.0",
       "draft": false,
       "prerelease": true,
-      "published_at": "2023-09-02T00:00:00Z",
+      "published_at": "2023-09-02T05:12:24Z",
+      "created_at": "2023-09-02T05:07:31Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v4.2.0",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v4.2.0",
+      "assets": [
+        {
+          "name": "LocalGen_v4.2.0_win64.7z",
+          "size": 1831880,
+          "size_human": "1.7 MB",
+          "download_count": 8,
+          "content_type": "application/octet-stream",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.2.0/LocalGen_v4.2.0_win64.7z",
+          "updated_at": "2023-09-02T05:12:21Z"
+        },
+        {
+          "name": "LocalGen_v4.2.0_win64.zip",
+          "size": 2184134,
+          "size_human": "2.1 MB",
+          "download_count": 8,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.2.0/LocalGen_v4.2.0_win64.zip",
+          "updated_at": "2023-09-02T05:12:22Z"
+        }
+      ]
     },
     {
       "name": "v4.1.0",
       "tag_name": "v4.1.0",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v4.1.0",
-      "body": "Renamed Army In Hand to AIH and moved the project and map configuration files to UTF-8 encoding.",
-      "summary": "Renamed Army In Hand to AIH and moved the project and map configuration files to UTF-8 encoding.",
+      "body": "> **We recommend downloading the latest pre-releases, which are up-to-date. This release may already be outdated, as an enormous amount of the code base has changed since its publication.**\r\n\r\n# Local Generals.io v4.1.0\r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\n> P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- Changed: Replaced `Army In Hand` in ranklist to `AIH`.\r\n- Changed: Big change! Replaced overall encoding to UTF-8. Note that the map config file's encoding has also changed, so old config files may not work. You can change the config file's encoding form to UTF-8 using tools like Notepad to fix that.\r\n\r\n**Note that the LocalGen application is built in Windows x64 environment. If you want you run it on Mac or Linux, you can use `wine` to run it as an alternative option.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v4.0.1...v4.1.0",
+      "summary": "> **We recommend downloading the latest pre-releases, which are up-to-date. This release may already be outdated, as an enormous amount of the code base has changed since its publication.** # Local Generals.io v4.1.0 Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this version of the new LocalGen! **Click the download links below and start your game!** > P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - Changed: Replaced `Army In Hand` in ranklist to `AIH`. - Changed: Big change! Replaced overall encoding to UTF-8. Note that the map config file's encoding has also changed, so old config files may not work. You can change the config file's encoding form to UTF-8 using tools like Notepad to fix that. **Note that the LocalGen application is built in Windows x64 environment. If you want you run it on Mac or Linux, you can use `wine` to run it as an alternative option.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v4.0.1...v4.1.0",
       "draft": false,
       "prerelease": false,
-      "published_at": "2023-08-10T00:00:00Z",
+      "published_at": "2023-08-10T13:56:47Z",
+      "created_at": "2023-08-10T13:49:45Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v4.1.0",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v4.1.0",
+      "assets": [
+        {
+          "name": "LocalGen_v4.1.0_win64.7z",
+          "size": 1845223,
+          "size_human": "1.8 MB",
+          "download_count": 21,
+          "content_type": "application/octet-stream",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.1.0/LocalGen_v4.1.0_win64.7z",
+          "updated_at": "2023-08-10T13:56:04Z"
+        },
+        {
+          "name": "LocalGen_v4.1.0_win64.zip",
+          "size": 2202807,
+          "size_human": "2.1 MB",
+          "download_count": 34,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.1.0/LocalGen_v4.1.0_win64.zip",
+          "updated_at": "2023-08-10T13:56:05Z"
+        }
+      ]
     },
     {
       "name": "v4.0.1",
       "tag_name": "v4.0.1",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v4.0.1",
-      "body": "Fixed issues #23, #27, and #28 and continued refining the new LocalGen branch.",
-      "summary": "Fixed issues #23, #27, and #28 and continued refining the new LocalGen branch.",
+      "body": "# Local Generals.io v4.0.1\r\n\r\n> Given to you by @AppOfficer @chrhaa \r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\n> P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- Fixed: issues #23, #28, #27.\r\n\r\n**Note that the LocalGen application is built in Windows environment.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v4.0.0...v4.0.1",
+      "summary": "# Local Generals.io v4.0.1 > Given to you by @AppOfficer @chrhaa Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this version of the new LocalGen! **Click the download links below and start your game!** > P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - Fixed: issues #23, #28, #27. **Note that the LocalGen application is built in Windows environment.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v4.0.0...v4.0.1",
       "draft": false,
       "prerelease": false,
-      "published_at": "2023-08-02T00:00:00Z",
+      "published_at": "2023-08-02T04:21:13Z",
+      "created_at": "2023-08-02T04:20:08Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v4.0.1",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v4.0.1",
+      "assets": [
+        {
+          "name": "LocalGen_v4.0.1_win64.7z",
+          "size": 1842801,
+          "size_human": "1.8 MB",
+          "download_count": 9,
+          "content_type": "application/octet-stream",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.0.1/LocalGen_v4.0.1_win64.7z",
+          "updated_at": "2023-08-02T05:04:44Z"
+        },
+        {
+          "name": "LocalGen_v4.0.1_win64.zip",
+          "size": 2201107,
+          "size_human": "2.1 MB",
+          "download_count": 8,
+          "content_type": "application/zip",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.0.1/LocalGen_v4.0.1_win64.zip",
+          "updated_at": "2023-08-02T05:04:46Z"
+        }
+      ]
     },
     {
       "name": "v4.0.0",
       "tag_name": "v4.0.0",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v4.0.0",
-      "body": "Added brand-new web support, replay turn jumping, unlocked local flushing speed, and introduced a new UI layout.",
-      "summary": "Added brand-new web support, replay turn jumping, unlocked local flushing speed, and introduced a new UI layout.",
+      "body": "# LocalGen (new ver.) v4.0.0\r\n\r\n> Given to you by @AppOfficer @chrhaa \r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\n> P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- Added: Brand new web support! Now you can play with your friends in the local Internet using the web functions!\r\n- Added: Turn jumping in replay page. Skip to the turn whatever you want!\r\n- Added: Unlocked local game flushing speed. Now, even the speed is low, the software will still flush as fast as it can.\r\n- Modified: New UI layout! Check it out by your own!\r\n\r\n**Note that the LocalGen application is built in Windows environment.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v3.1.0...v4.0.0",
+      "summary": "# LocalGen (new ver.) v4.0.0 > Given to you by @AppOfficer @chrhaa Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this version of the new LocalGen! **Click the download links below and start your game!** > P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - Added: Brand new web support! Now you can play with your friends in the local Internet using the web functions! - Added: Turn jumping in replay page. Skip to the turn whatever you want! - Added: Unlocked local game flushing speed. Now, even the speed is low, the software will still flush as fast as it can. - Modified: New UI layout! Check it out by your own! **Note that the LocalGen application is built in Windows environment.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v3.1.0...v4.0.0",
       "draft": false,
       "prerelease": false,
-      "published_at": "2023-07-19T00:00:00Z",
+      "published_at": "2023-07-19T14:01:59Z",
+      "created_at": "2023-07-19T13:56:51Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v4.0.0",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v4.0.0",
+      "assets": [
+        {
+          "name": "LocalGen_v4.0.0_win.7z",
+          "size": 1841765,
+          "size_human": "1.8 MB",
+          "download_count": 10,
+          "content_type": "application/octet-stream",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.0.0/LocalGen_v4.0.0_win.7z",
+          "updated_at": "2023-07-19T14:01:52Z"
+        },
+        {
+          "name": "LocalGen_v4.0.0_win.zip",
+          "size": 2200361,
+          "size_human": "2.1 MB",
+          "download_count": 24,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v4.0.0/LocalGen_v4.0.0_win.zip",
+          "updated_at": "2023-07-19T14:01:55Z"
+        }
+      ]
     },
     {
       "name": "v3.1.0",
       "tag_name": "v3.1.0",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v3.1.0",
-      "body": "Added replay and Create Map support, beta labels for unfinished features, and notes about manually creating ini files for custom maps.",
-      "summary": "Added replay and Create Map support, beta labels for unfinished features, and notes about manually creating ini files for custom maps.",
+      "body": "# LocalGen (new ver.) v3.1.0\r\n\r\n> Given to you by @AppOfficer @Ihave4oranges\r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\n> P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- Added: Replay and Create Map support with pull requests #20 and #21. Thanks to @Ihave4oranges for writing these excellent codes! These functions are still in beta and in preview status.\r\n- Added: Labels for beta and non-developed buttons.\r\n- NOTES: The Create Map function will save the map in the `maps` folder, but it will not create the `ini` file automatically. You must create it by your own. The functions for it will be added in further versions. We are sorry for the inconvenience.\r\n\r\n**Note that the LocalGen application is built in Windows environment.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v3.0.2...v3.1.0",
+      "summary": "# LocalGen (new ver.) v3.1.0 > Given to you by @AppOfficer @Ihave4oranges Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this version of the new LocalGen! **Click the download links below and start your game!** > P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - Added: Replay and Create Map support with pull requests #20 and #21. Thanks to @Ihave4oranges for writing these excellent codes! These functions are still in beta and in preview status. - Added: Labels for beta and non-developed buttons. - NOTES: The Create Map function will save the map in the `maps` folder, but it will not create the `ini` file automatically. You must create it by your own. The functions for it will be added in further versions. We are sorry for the inconvenience. **Note that the LocalGen application is built in Windows environment.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v3.0.2...v3.1.0",
       "draft": false,
       "prerelease": false,
-      "published_at": "2023-05-03T00:00:00Z",
+      "published_at": "2023-05-03T12:53:26Z",
+      "created_at": "2023-05-03T12:43:23Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v3.1.0",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v3.1.0",
+      "assets": [
+        {
+          "name": "LocalGen_v3.1.0_build.zip",
+          "size": 2177972,
+          "size_human": "2.1 MB",
+          "download_count": 23,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v3.1.0/LocalGen_v3.1.0_build.zip",
+          "updated_at": "2023-05-03T12:53:24Z"
+        }
+      ]
     },
     {
       "name": "v3.0.2",
       "tag_name": "v3.0.2",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v3.0.2",
-      "body": "Completed more of the new UI, added speed settings, fixed count limits, addressed issues #11 and #15, and added map dragging and resizing.",
-      "summary": "Completed more of the new UI, added speed settings, fixed count limits, addressed issues #11 and #15, and added map dragging and resizing.",
+      "body": "# LocalGen (new ver.) v3.0.2\r\n\r\nBy @AppOfficer\r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\n> P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- Added: The new UI is completed. Although all the functions (except local game) aren't completed, we make the buttons stay there and keep them temporarily unavailable.\r\n- Added: New speed settings. Now you need to type the speed you like (between 1 and 10000) in a text box and press the `submit` button to set it. Note that if your computer is too slow, maybe some high speeds can't run properly on your computer. We advise to use speeds under 1000.\r\n- Fixed: Time out when the count of players is bigger than the map could hold. Now we've set the count limits to make it always under the limit.\r\n- Fixed: issue #15. Now the information is all displayed.\r\n- Fixed: issue #11. With the new UI, the problem is fixed.\r\n- Added: Map dragging and resizing in game. Use your scroller to resize, and long press your left mouse button and move to drag! If you want to choose a single block, just click the block, don't move the mouse and keep the clicking duration below 200ms.\r\n\r\n**Note that the LocalGen application is built in Windows environment.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v3.0.1...v3.0.2",
+      "summary": "# LocalGen (new ver.) v3.0.2 By @AppOfficer Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this version of the new LocalGen! **Click the download links below and start your game!** > P.S. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - Added: The new UI is completed. Although all the functions (except local game) aren't completed, we make the buttons stay there and keep them temporarily unavailable. - Added: New speed settings. Now you need to type the speed you like (between 1 and 10000) in a text box and press the `submit` button to set it. Note that if your computer is too slow, maybe some high speeds can't run properly on your computer. We advise to use speeds under 1000. - Fixed: Time out when the count of players is bigger than the map could hold. Now we've set the count limits to make it always under the limit. - Fixed: issue #15. Now the information is all displayed. - Fixed: issue #11. With the new UI, the problem is fixed. - Added: Map dragging and resizing in game. Use your scroller to resize, and long press your left mouse button and move to drag! If you want to choose a single block, just click the block, don't move the mouse and keep the clicking duration below 200ms. **Note that the LocalGen application is built in Windows environment.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v3.0.1...v3.0.2",
       "draft": false,
       "prerelease": false,
-      "published_at": "2023-04-05T00:00:00Z",
+      "published_at": "2023-04-05T14:52:47Z",
+      "created_at": "2023-04-05T14:28:51Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v3.0.2",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v3.0.2",
+      "assets": [
+        {
+          "name": "LocalGen_v3.0.2_build.zip",
+          "size": 2167133,
+          "size_human": "2.1 MB",
+          "download_count": 27,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v3.0.2/LocalGen_v3.0.2_build.zip",
+          "updated_at": "2023-04-05T14:49:29Z"
+        }
+      ]
     },
     {
       "name": "v3.0.1",
       "tag_name": "v3.0.1",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v3.0.1",
-      "body": "Fixed a bug in speed settings for the pre-release UI branch.",
-      "summary": "Fixed a bug in speed settings for the pre-release UI branch.",
+      "body": "# LocalGen (new ver.) v3.0.1 (pre-release)\r\n\r\nBy @AppOfficer\r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this **pre** version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\np.s. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- Fixed: bug on setting speed.\r\n\r\n**Note that the LocalGen application is built in Windows environment.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v3.0.0...v3.0.1",
+      "summary": "# LocalGen (new ver.) v3.0.1 (pre-release) By @AppOfficer Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this **pre** version of the new LocalGen! **Click the download links below and start your game!** p.s. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - Fixed: bug on setting speed. **Note that the LocalGen application is built in Windows environment.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v3.0.0...v3.0.1",
       "draft": false,
       "prerelease": true,
-      "published_at": "2023-03-15T00:00:00Z",
+      "published_at": "2023-03-15T08:42:40Z",
+      "created_at": "2023-03-15T08:42:17Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v3.0.1",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v3.0.1",
+      "assets": [
+        {
+          "name": "LocalGen_v3.0.1_prebuild.zip",
+          "size": 2136264,
+          "size_human": "2.0 MB",
+          "download_count": 11,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v3.0.1/LocalGen_v3.0.1_prebuild.zip",
+          "updated_at": "2023-03-15T08:46:08Z"
+        }
+      ]
     },
     {
       "name": "v3.0.0",
       "tag_name": "v3.0.0",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v3.0.0",
-      "body": "Added a brand-new UI, a donate button, stable 300x speed control, bundled new default maps, and flagged some unfinished buttons for future releases.",
-      "summary": "Added a brand-new UI, a donate button, stable 300x speed control, bundled new default maps, and flagged some unfinished buttons for future releases.",
+      "body": "# LocalGen (new ver.) v3.0.0 (pre-release)\r\n\r\nBy @AppOfficer\r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this **pre** version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\np.s. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start.\r\n\r\n## Changelog\r\n\r\n- Added: A new UI! We haven't finished it yet, so you can still see old UI somewhere.\r\n- Added: DONATE button. We need your support!\r\n- Added: Speed total control! Now the MAX SPEED is stable - 300x!\r\n- Added: Some new default maps along with the release: \"Arena\" series and one single \"gjr\" map! Note that the \"Geography\" series also have a new map.\r\n- Note that old maps may not fit in the new version.\r\n- Note that some buttons in this version is still unavailable. They'll all be completed when the next standard version is released.\r\n\r\n**Note that the LocalGen application is built in Windows environment.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v2.1.0...v3.0.0",
+      "summary": "# LocalGen (new ver.) v3.0.0 (pre-release) By @AppOfficer Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this **pre** version of the new LocalGen! **Click the download links below and start your game!** p.s. If you haven't installed the font **Quicksand**, please find it under the `font` folder and install it before you start. ## Changelog - Added: A new UI! We haven't finished it yet, so you can still see old UI somewhere. - Added: DONATE button. We need your support! - Added: Speed total control! Now the MAX SPEED is stable - 300x! - Added: Some new default maps along with the release: \"Arena\" series and one single \"gjr\" map! Note that the \"Geography\" series also have a new map. - Note that old maps may not fit in the new version. - Note that some buttons in this version is still unavailable. They'll all be completed when the next standard version is released. **Note that the LocalGen application is built in Windows environment.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v2.1.0...v3.0.0",
       "draft": false,
       "prerelease": true,
-      "published_at": "2023-03-15T00:00:00Z",
+      "published_at": "2023-03-15T07:28:36Z",
+      "created_at": "2023-03-15T07:22:07Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v3.0.0",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v3.0.0",
+      "assets": [
+        {
+          "name": "LocalGen_v3.0.0_prebuild.zip",
+          "size": 2136206,
+          "size_human": "2.0 MB",
+          "download_count": 12,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v3.0.0/LocalGen_v3.0.0_prebuild.zip",
+          "updated_at": "2023-03-15T08:46:22Z"
+        }
+      ]
     },
     {
       "name": "v2.1.0",
       "tag_name": "v2.1.0",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v2.1.0",
-      "body": "Fixed edge-selection bugs, removed dll dependence for maps, introduced a dedicated maps directory, and refined centered numbers and FPS precision.",
-      "summary": "Fixed edge-selection bugs, removed dll dependence for maps, introduced a dedicated maps directory, and refined centered numbers and FPS precision.",
+      "body": "# LocalGen (new ver.) v2.1.0\r\n\r\nBy @AppOfficer\r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\np.s. If you haven't installed the font **Freestyle Script**, you can find it under the `font` folder, so install it before you start.\r\n\r\n## Changelog\r\n\r\n- Fixed: A bug that one can't click blocks at the edges to select them.\r\n- Deleted: `dll` dependance for all maps.\r\n- Added: A brand new `maps` directory to store all maps (also to replace `dll`)! One can also put his own map with extension `.lg` into the directory to import, but make sure to also create an `ini` file to state the map.\r\n- Modified: Centered the army number in the blocks.\r\n- Modified: When setting the fps, we've added it by 0.5 to make it more accurate.\r\n- Find more updates by yourself!\r\n\r\n**Note that the LocalGen application is built in Windows environment.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v2.0.2...v2.1.0",
+      "summary": "# LocalGen (new ver.) v2.1.0 By @AppOfficer Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this version of the new LocalGen! **Click the download links below and start your game!** p.s. If you haven't installed the font **Freestyle Script**, you can find it under the `font` folder, so install it before you start. ## Changelog - Fixed: A bug that one can't click blocks at the edges to select them. - Deleted: `dll` dependance for all maps. - Added: A brand new `maps` directory to store all maps (also to replace `dll`)! One can also put his own map with extension `.lg` into the directory to import, but make sure to also create an `ini` file to state the map. - Modified: Centered the army number in the blocks. - Modified: When setting the fps, we've added it by 0.5 to make it more accurate. - Find more updates by yourself! **Note that the LocalGen application is built in Windows environment.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v2.0.2...v2.1.0",
       "draft": false,
       "prerelease": false,
-      "published_at": "2023-02-18T00:00:00Z",
+      "published_at": "2023-02-18T15:11:02Z",
+      "created_at": "2023-02-18T15:09:25Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v2.1.0",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v2.1.0",
+      "assets": [
+        {
+          "name": "LocalGen_v2.1.0_build.zip",
+          "size": 920108,
+          "size_human": "898.5 KB",
+          "download_count": 19,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v2.1.0/LocalGen_v2.1.0_build.zip",
+          "updated_at": "2023-02-18T15:10:59Z"
+        }
+      ]
     },
     {
       "name": "v2.0.2",
       "tag_name": "v2.0.2",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v2.0.2",
-      "body": "Added icon and version information to the window-size page, widened map-selection blocks, and fixed duplicate color naming.",
-      "summary": "Added icon and version information to the window-size page, widened map-selection blocks, and fixed duplicate color naming.",
+      "body": "# LocalGen (new ver.) v2.0.2\r\n\r\nBy @AppOfficer\r\n\r\nThanks for your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\np.s. If you haven't installed the font **Freestyle Script**, you can find it under the `font` folder, so install it before you start.\r\n\r\n## Changelog\r\n\r\n- Modified: Icon added and version added to window size selection page.\r\n- Modified: Widened blocks in map selection page.\r\n- Added: version number and developers in caption.\r\n- Fixed: Two colours with the same name `Purple`. Now we've modified one of them to `Indigo`.\r\n\r\n**Note that the LocalGen application is built in Windows environment.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v2.0.1...v2.0.2",
+      "summary": "# LocalGen (new ver.) v2.0.2 By @AppOfficer Thanks for your support and don't forget to **star** this project! On this special day, we are glad to release this version of the new LocalGen! **Click the download links below and start your game!** p.s. If you haven't installed the font **Freestyle Script**, you can find it under the `font` folder, so install it before you start. ## Changelog - Modified: Icon added and version added to window size selection page. - Modified: Widened blocks in map selection page. - Added: version number and developers in caption. - Fixed: Two colours with the same name `Purple`. Now we've modified one of them to `Indigo`. **Note that the LocalGen application is built in Windows environment.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v2.0.1...v2.0.2",
       "draft": false,
       "prerelease": false,
-      "published_at": "2023-02-18T00:00:00Z",
+      "published_at": "2023-02-18T07:32:52Z",
+      "created_at": "2023-02-18T07:28:35Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v2.0.2",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v2.0.2",
+      "assets": [
+        {
+          "name": "LocalGen_v2.0.2_build.zip",
+          "size": 1269765,
+          "size_human": "1.2 MB",
+          "download_count": 11,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v2.0.2/LocalGen_v2.0.2_build.zip",
+          "updated_at": "2023-02-18T07:29:28Z"
+        }
+      ]
     },
     {
       "name": "v2.0.1",
       "tag_name": "v2.0.1",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v2.0.1",
-      "body": "Added bot labels in the ranklist and improved SmartRandomBot.",
-      "summary": "Added bot labels in the ranklist and improved SmartRandomBot.",
+      "body": "# LocalGen (new ver.) v2.0.1\r\n\r\nBy @xiaruize0911 @AppOfficer\r\n\r\nThanks to your support and don't forget to **star** this project!\r\n\r\nOn this special day, we are glad to release this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\np.s. If you haven't installed the font **Freestyle Script**, you can find it under the `font` folder, so install it before you start.\r\n\r\n## Changelog\r\n\r\n- We've add the bot column in the ranklist. Now one can see what robot a player is now!\r\n- Improved smartRandomBot. Now it is much more clever.\r\n\r\n**Note that the LocalGen application is built in Windows environment.**\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v2.0.0...v2.0.1",
+      "summary": "# LocalGen (new ver.) v2.0.1 By @xiaruize0911 @AppOfficer Thanks to your support and don't forget to **star** this project! On this special day, we are glad to release this version of the new LocalGen! **Click the download links below and start your game!** p.s. If you haven't installed the font **Freestyle Script**, you can find it under the `font` folder, so install it before you start. ## Changelog - We've add the bot column in the ranklist. Now one can see what robot a player is now! - Improved smartRandomBot. Now it is much more clever. **Note that the LocalGen application is built in Windows environment.** **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/compare/v2.0.0...v2.0.1",
       "draft": false,
       "prerelease": false,
-      "published_at": "2023-02-13T00:00:00Z",
+      "published_at": "2023-02-13T13:29:17Z",
+      "created_at": "2023-02-13T13:26:56Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v2.0.1",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v2.0.1",
+      "assets": [
+        {
+          "name": "LocalGen_v2.0.1_build.zip",
+          "size": 1237704,
+          "size_human": "1.2 MB",
+          "download_count": 10,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v2.0.1/LocalGen_v2.0.1_build.zip",
+          "updated_at": "2023-02-13T13:31:27Z"
+        }
+      ]
     },
     {
       "name": "v2.0.0",
       "tag_name": "v2.0.0",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v2.0.0",
-      "body": "Introduced the first GUI version of the new LocalGen, with window-size selection and click-to-select gameplay controls.",
-      "summary": "Introduced the first GUI version of the new LocalGen, with window-size selection and click-to-select gameplay controls.",
+      "body": "# LocalGen (new ver.) v2.0.0\r\n\r\nBy @xiaruize0911 @AppOfficer @chrhaa @AllenJYL \r\n\r\nThanks to your support and don't forget to **star** this project!\r\n\r\nOn the last day of the winter holiday (in China), we are glad to release this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\np.s. If you haven't installed the font **Freestyle Script**, you can find it under the `font` folder, so install it before you start.\r\n\r\n## Changelog\r\n\r\n- Brand new GUI! The UI is much better than the console.\r\n- Add window size selection with `auto fit` option (full screen actually).\r\n- Add clicking selecting, which means that now you can click a block to select it.\r\n\r\n**Note that the LocalGen application is built in Windows environment.**\r\n",
+      "summary": "# LocalGen (new ver.) v2.0.0 By @xiaruize0911 @AppOfficer @chrhaa @AllenJYL Thanks to your support and don't forget to **star** this project! On the last day of the winter holiday (in China), we are glad to release this version of the new LocalGen! **Click the download links below and start your game!** p.s. If you haven't installed the font **Freestyle Script**, you can find it under the `font` folder, so install it before you start. ## Changelog - Brand new GUI! The UI is much better than the console. - Add window size selection with `auto fit` option (full screen actually). - Add clicking selecting, which means that now you can click a block to select it. **Note that the LocalGen application is built in Windows environment.**",
       "draft": false,
       "prerelease": false,
-      "published_at": "2023-02-04T00:00:00Z",
+      "published_at": "2023-02-04T01:05:50Z",
+      "created_at": "2023-02-04T01:04:51Z",
+      "author": "xiaruize0911",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v2.0.0",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v2.0.0",
+      "assets": [
+        {
+          "name": "LocalGen_v2.0.0_build.zip",
+          "size": 1216275,
+          "size_human": "1.2 MB",
+          "download_count": 18,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v2.0.0/LocalGen_v2.0.0_build.zip",
+          "updated_at": "2023-02-04T01:05:29Z"
+        }
+      ]
     },
     {
       "name": "v1.0.2",
       "tag_name": "v1.0.2",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v1.0.2",
-      "body": "Extended cheatCode watching, rewrote game messages, added turn numbers, and introduced more in-game tips.",
-      "summary": "Extended cheatCode watching, rewrote game messages, added turn numbers, and introduced more in-game tips.",
+      "body": "# **LocalGen (new ver.) v1.0.2**\r\n\r\nBy @AppOfficer @xiaruize0911 @chrhaa\r\n\r\nTo all Chinese people, **happy Chinese New Year!**\r\n\r\nAt this special holiday, we're happy to give you this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\nNote that, if you run the program with no `dll` files in the same directory, you can't choose the default maps (even the special maps).\r\n\r\n## Changelog\r\n\r\n- cheatCode option extended. Now multiple player watching is available.\r\n- We've rewritten the game message part. Now it is more standard and pretty.\r\n- Turn numbers are added.\r\n- We've written some in-game tips to help you play.\r\n\r\n**We still need to warn that the LocalGen application can only run on Windows.**\r\n",
+      "summary": "# **LocalGen (new ver.) v1.0.2** By @AppOfficer @xiaruize0911 @chrhaa To all Chinese people, **happy Chinese New Year!** At this special holiday, we're happy to give you this version of the new LocalGen! **Click the download links below and start your game!** Note that, if you run the program with no `dll` files in the same directory, you can't choose the default maps (even the special maps). ## Changelog - cheatCode option extended. Now multiple player watching is available. - We've rewritten the game message part. Now it is more standard and pretty. - Turn numbers are added. - We've written some in-game tips to help you play. **We still need to warn that the LocalGen application can only run on Windows.**",
       "draft": false,
       "prerelease": false,
-      "published_at": "2023-01-27T00:00:00Z",
+      "published_at": "2023-01-27T15:20:58Z",
+      "created_at": "2023-01-27T15:16:13Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v1.0.2",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v1.0.2",
+      "assets": [
+        {
+          "name": "LocalGen_v1.0.2_build.zip",
+          "size": 816325,
+          "size_human": "797.2 KB",
+          "download_count": 17,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v1.0.2/LocalGen_v1.0.2_build.zip",
+          "updated_at": "2023-01-27T15:20:52Z"
+        },
+        {
+          "name": "LocalGen_v1.0.2_build_no_dll.zip",
+          "size": 441285,
+          "size_human": "430.9 KB",
+          "download_count": 10,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v1.0.2/LocalGen_v1.0.2_build_no_dll.zip",
+          "updated_at": "2023-01-27T15:20:55Z"
+        }
+      ]
     },
     {
       "name": "v1.0.1",
       "tag_name": "v1.0.1",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v1.0.1",
-      "body": "Fixed issue #9, repaired Import Map handling, rewrote map printing, and patched missing bottom-line separators.",
-      "summary": "Fixed issue #9, repaired Import Map handling, rewrote map printing, and patched missing bottom-line separators.",
+      "body": "# **LocalGen (new ver.) v1.0.1**\r\n\r\nBy @AppOfficer @xiaruize0911 @chrhaa @AllenJYL \r\n\r\nTo all Chinese people, **happy Chinese New Year!**\r\n\r\nAt this special holiday, we're happy to give you this version of the new LocalGen!\r\n\r\n**Click the download links below and start your game!**\r\n\r\nNote that, if you run the program with no `dll` files in the same directory, you can't choose the default maps (even the special maps).\r\n\r\n## Changelog\r\n\r\n- Fixed issue #9: One can only move their own army now!\r\n- `Import Map` option fixed. Now you can import your own maps! Note that your file's extension should be `.lg` or `.lgmp`.\r\n- Map printing rewritten and fixed known bugs.\r\n- We've added the missing `|` at the bottom of map lines.\r\n\r\n**We still need to warn that the LocalGen application can only run on Windows.**\r\n",
+      "summary": "# **LocalGen (new ver.) v1.0.1** By @AppOfficer @xiaruize0911 @chrhaa @AllenJYL To all Chinese people, **happy Chinese New Year!** At this special holiday, we're happy to give you this version of the new LocalGen! **Click the download links below and start your game!** Note that, if you run the program with no `dll` files in the same directory, you can't choose the default maps (even the special maps). ## Changelog - Fixed issue #9: One can only move their own army now! - `Import Map` option fixed. Now you can import your own maps! Note that your file's extension should be `.lg` or `.lgmp`. - Map printing rewritten and fixed known bugs. - We've added the missing `|` at the bottom of map lines. **We still need to warn that the LocalGen application can only run on Windows.**",
       "draft": false,
       "prerelease": true,
-      "published_at": "2023-01-22T00:00:00Z",
+      "published_at": "2023-01-22T11:22:31Z",
+      "created_at": "2023-01-22T11:05:04Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v1.0.1",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v1.0.1",
+      "assets": [
+        {
+          "name": "LocalGen_v1.0.1_build.zip",
+          "size": 834848,
+          "size_human": "815.3 KB",
+          "download_count": 17,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v1.0.1/LocalGen_v1.0.1_build.zip",
+          "updated_at": "2023-01-22T11:21:07Z"
+        },
+        {
+          "name": "LocalGen_v1.0.1_build_no_dll.zip",
+          "size": 459864,
+          "size_human": "449.1 KB",
+          "download_count": 11,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v1.0.1/LocalGen_v1.0.1_build_no_dll.zip",
+          "updated_at": "2023-01-22T11:21:37Z"
+        }
+      ]
     },
     {
       "name": "v1.0.0",
       "tag_name": "v1.0.0",
       "html_url": "https://github.com/SZXC-WG/LocalGen-new/releases/tag/v1.0.0",
-      "body": "The first release of the new LocalGen delivered self-written code, a new UI, higher refresh rate, better robots, unlimited game speed, and a simplified MapCreator workflow.",
-      "summary": "The first release of the new LocalGen delivered self-written code, a new UI, higher refresh rate, better robots, unlimited game speed, and a simplified MapCreator workflow.",
+      "body": "# **LocalGen (new ver.) v1.0.0**\r\n\r\nBy @AppOfficer @xiaruize0911 @chrhaa @ktq1124298818 @AllenJYL \r\n\r\nTo all Chinese people, **happy Chinese New Year's (Eve)!**\r\n\r\nAt this special holiday, we're happy to give you this first version of the new LocalGen!\r\n\r\n## In this new version, we have\r\n\r\n- **Completely self-written code. Thanks to all the contributors!**\r\n- A new UI \r\n- A higher refreshing rate\r\n- Better robots\r\n- An unlimited game speed (which depends on your computer)\r\n- Give up MapCreator (no need to generate files before using)\r\n- Fixed issue #8.\r\n\r\n## Contributor Details\r\n\r\n- @AppOfficer  @chrhaa  main code & UI\r\n- @xiaruize0911  Robot\r\n- @ktq1124298818  Robot (not used)\r\n- @AllenJYL zip&replay (developing)\r\n\r\n**Click the download links below and start your game!**\r\n\r\n## What's Changed\r\n* add ktq's new bot by @ktq1124298818 in https://github.com/LocalGen-dev/LocalGen-new/pull/1\r\n* Fixed grammar mistakes. by @AllenJYL in https://github.com/LocalGen-dev/LocalGen-new/pull/2\r\n* Update Bot by @xiaruize0911 in https://github.com/LocalGen-dev/LocalGen-new/pull/4\r\n* Updated xrzBot by @xiaruize0911 in https://github.com/LocalGen-dev/LocalGen-new/pull/6\r\n* Formatted by @xiaruize0911 in https://github.com/LocalGen-dev/LocalGen-new/pull/7\r\n\r\n## New Contributors\r\n* @ktq1124298818 made their first contribution in https://github.com/LocalGen-dev/LocalGen-new/pull/1\r\n* @AllenJYL made their first contribution in https://github.com/LocalGen-dev/LocalGen-new/pull/2\r\n* @xiaruize0911 made their first contribution in https://github.com/LocalGen-dev/LocalGen-new/pull/4\r\n\r\n**Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/commits/v1.0.0\r\n\r\n**We still need to warn that the LocalGen application can only run on Windows.**\r\n",
+      "summary": "# **LocalGen (new ver.) v1.0.0** By @AppOfficer @xiaruize0911 @chrhaa @ktq1124298818 @AllenJYL To all Chinese people, **happy Chinese New Year's (Eve)!** At this special holiday, we're happy to give you this first version of the new LocalGen! ## In this new version, we have - **Completely self-written code. Thanks to all the contributors!** - A new UI - A higher refreshing rate - Better robots - An unlimited game speed (which depends on your computer) - Give up MapCreator (no need to generate files before using) - Fixed issue #8. ## Contributor Details - @AppOfficer  @chrhaa  main code & UI - @xiaruize0911  Robot - @ktq1124298818  Robot (not used) - @AllenJYL zip&replay (developing) **Click the download links below and start your game!** ## What's Changed * add ktq's new bot by @ktq1124298818 in https://github.com/LocalGen-dev/LocalGen-new/pull/1 * Fixed grammar mistakes. by @AllenJYL in https://github.com/LocalGen-dev/LocalGen-new/pull/2 * Update Bot by @xiaruize0911 in https://github.com/LocalGen-dev/LocalGen-new/pull/4 * Updated xrzBot by @xiaruize0911 in https://github.com/LocalGen-dev/LocalGen-new/pull/6 * Formatted by @xiaruize0911 in https://github.com/LocalGen-dev/LocalGen-new/pull/7 ## New Contributors * @ktq1124298818 made their first contribution in https://github.com/LocalGen-dev/LocalGen-new/pull/1 * @AllenJYL made their first contribution in https://github.com/LocalGen-dev/LocalGen-new/pull/2 * @xiaruize0911 made their first contribution in https://github.com/LocalGen-dev/LocalGen-new/pull/4 **Full Changelog**: https://github.com/LocalGen-dev/LocalGen-new/commits/v1.0.0 **We still need to warn that the LocalGen application can only run on Windows.**",
       "draft": false,
       "prerelease": true,
-      "published_at": "2023-01-21T00:00:00Z",
+      "published_at": "2023-01-21T13:12:26Z",
+      "created_at": "2023-01-21T12:41:46Z",
+      "author": "AppOfficer",
       "is_latest": false,
-      "assets": []
+      "zipball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/zipball/v1.0.0",
+      "tarball_url": "https://api.github.com/repos/SZXC-WG/LocalGen-new/tarball/v1.0.0",
+      "assets": [
+        {
+          "name": "LocalGen_v1.0.0_build.zip",
+          "size": 869262,
+          "size_human": "848.9 KB",
+          "download_count": 17,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v1.0.0/LocalGen_v1.0.0_build.zip",
+          "updated_at": "2023-01-21T13:05:36Z"
+        },
+        {
+          "name": "LocalGen_v1.0.0_build_no_dll.zip",
+          "size": 494278,
+          "size_human": "482.7 KB",
+          "download_count": 10,
+          "content_type": "application/x-zip-compressed",
+          "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v1.0.0/LocalGen_v1.0.0_build_no_dll.zip",
+          "updated_at": "2023-01-21T13:05:46Z"
+        }
+      ]
     }
   ]
 }
