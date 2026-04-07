@@ -11,7 +11,7 @@ weight: 20
 ## Introducción
 
 Los bots siempre han sido una parte central de LocalGen. Las versiones anteriores del proyecto hacían que desarrollar bots fuera mucho más difícil de lo necesario:
-
+xx
 - los bots solo podían escribirse en C++
 - tenían que compilarse dentro del binario principal
 - la superficie de la API estaba prácticamente fija dentro del árbol de código
