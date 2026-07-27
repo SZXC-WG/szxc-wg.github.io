@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-07-20T06:11:15.071171+00:00",
+  "synced_at": "2026-07-27T06:23:03.269061+00:00",
   "items": [
     {
       "name": "v6.0.0-beta.3",
@@ -65,7 +65,7 @@
           "name": "LocalGen-v6.0.0-beta.3-windows-x86_64.zip",
           "size": 15190902,
           "size_human": "14.5 MB",
-          "download_count": 4,
+          "download_count": 6,
           "content_type": "application/x-zip-compressed",
           "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v6.0.0-beta.3/LocalGen-v6.0.0-beta.3-windows-x86_64.zip",
           "updated_at": "2026-07-12T08:32:09Z"
