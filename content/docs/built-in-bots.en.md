@@ -1,55 +1,53 @@
 ---
-title: "Built-in Bots"
-description: "The compiled LocalGen bot roster, API contract, runtime names, and CMake integration."
-date: 2026-04-06T17:55:08+08:00
-draft: false
-weight: 70
+title: "Meet the bots"
+description: "Choose an offline opponent and learn how each built-in bot approaches the game."
+weight: 40
+doc_group: play
 ---
 
-For strategy and complexity notes, see the project's [Bot overview](https://github.com/SZXC-WG/LocalGen-new/blob/master/src/bots/README.md).
+LocalGen includes ten enabled bots, ready to select in Local Game. You can play against them or watch them compete to see how their strategies unfold.
 
-## Built-in Bot roster
+## Available opponents
 
-| Bot | Author | Enabled | Approx. cost | Summary |
-| --- | --- | --- | --- | --- |
-| DummyBot | AppOfficer | No | $O(n)$ | Example heuristic greedy |
-| SmartRandomBot | AppOfficer / GoodCoder666 | Yes | $O(n)$ | Largest-stack greedy |
-| KtqBot | ktq1124298818 / GoodCoder666 | Yes | $O(n)$ | Single-focus local greedy |
-| XrzBot | xiaruize0911 | No | $O(n)$ | Focused random greedy |
-| ZlyBot | AppOfficer | Yes | $O(n)$ | Single-focus BFS heuristic |
-| ZlyBot v2 | AppOfficer | Yes | $O(n \log n)$ | Memory-aware weighted search |
-| ZlyBot v2.1 | AppOfficer | Yes | $O(n \log n)$ | Dual-focus defensive search |
-| SzlyBot | GoodCoder666 | Yes | $O(n)$ | Terrain-weighted BFS heuristic |
-| GcBot | GoodCoder666 | Yes | $O(n)$ | Adaptive heuristic BFS |
-| XiaruizeBot | xiaruize0911 | Yes | $O(kn^2)$ | Multi-source strategic search |
-| KutuBot | pinkHC | Yes | $O(n \log n)$ | Unified strategic objective planner |
-| LyBot | pinkHC | No | $O(n^2)$ | Multiplayer objective planner |
-| `oimbot` | oimasterkafuu | Yes | $O(n^2)$ | Memory-aware threat/objective planner |
+These names work in both Local Game and the simulator. Strategy descriptions and complexity estimates come from the project's [bot overview](https://github.com/SZXC-WG/LocalGen-new/blob/master/src/bots/README.md). They describe implementation approaches, not a strength ranking.
 
-The ten enabled runtime names are `SmartRandomBot`, `KtqBot`, `XiaruizeBot`, `SzlyBot`, `ZlyBot`, `ZlyBot v2`, `ZlyBot v2.1`, `GcBot`, `KutuBot`, and `oimbot`.
+| Bot | Author | Strategy | Estimated per-turn complexity |
+| --- | --- | --- | --- |
+| `SmartRandomBot` | AppOfficer / GoodCoder666 | Greedy moves from the largest army stack | O(n) |
+| `KtqBot` | ktq1124298818 / GoodCoder666 | Local greedy moves around one target | O(n) |
+| `ZlyBot` | AppOfficer | Single-focus BFS heuristic | O(n) |
+| `ZlyBot v2` | AppOfficer | Weighted search with memory | O(n log n) |
+| `ZlyBot v2.1` | AppOfficer | Defensive search with two focal points | O(n log n) |
+| `SzlyBot` | GoodCoder666 | BFS with terrain weights | O(n) |
+| `GcBot` | GoodCoder666 | Adaptive heuristic BFS | O(n) |
+| `XiaruizeBot` | xiaruize0911 | Strategic search from multiple sources | O(kn²) |
+| `KutuBot` | pinkHC | Unified strategic objective planning | O(n log n) |
+| `oimbot` | oimasterkafuu | Threat and objective planning with memory | O(n²) |
 
-## API contract
+Here, `n` is the number of map tiles and `k` is the number of candidate army stacks considered by a multi-source planner. These are rough worst-case estimates for one turn; typical maps may take less time.
 
-`BasicBot` inherits from `Player`. A concrete class must implement:
+Three other implementations remain in the source tree but are not included in the current build:
 
-```cpp
-void init(index_t playerId, const GameConstantsPack& constants) override;
-void requestMove(const BoardView& boardView,
-                 const std::vector<RankItem>& rank) override;
+| Bot | Author | Strategy | Estimated per-turn complexity |
+| --- | --- | --- | --- |
+| DummyBot | AppOfficer | Example heuristic greedy | O(n) |
+| XrzBot | xiaruize0911 | Focused random greedy | O(n) |
+| LyBot | pinkHC | Multiplayer objective planning | O(n²) |
+
+## Select a bot in the terminal
+
+Names are case-sensitive and retain spaces. Put names containing spaces in quotes:
+
+```bash
+./LocalGen-bot-simulator --games 20 --bots "ZlyBot v2.1" GcBot
 ```
 
-Moves are appended to the inherited queue. Bots may also consume game events through the optional `onWin`, `onCapture`, `onSurrender`, and `onText` hooks.
+The runtime name `oimbot` is entirely lowercase. If a name is unknown, the simulator prints the available names and exits. The [simulator guide]({{< relref "docs/simulator-guide" >}}) covers the full command-line interface.
 
-## Registration and build integration
+## How bots join the project
 
-Register a runtime name using `BotRegistrar`:
+Built-in bots inherit `BasicBot`, implement `init()` and `requestMove()`, and add actions to the inherited move queue. They can also receive events through `onWin`, `onCapture`, `onSurrender`, and `onText` hooks.
 
-```cpp
-static BotRegistrar<MyBot> myBotRegistrar("MyBot");
-```
+Each bot registers its name with `BotRegistrar` and is enabled through `LOCALGEN_BOT_SOURCES` in the top-level `CMakeLists.txt`. The desktop app and simulator share this list, so placing a file in `src/bots/` alone does not make it appear in the menu.
 
-Then add the source to `LOCALGEN_BOT_SOURCES`. That list is compiled into the desktop app and simulator. If a source exists under `src/bots/` but is absent from the list, it is not available at runtime.
-
-Bot names are used literally by `--bots`; capitalization and spaces must match. Passing an unknown name prints the available registry names and exits.
-
-Continue with the [Bot Contributions]({{< relref "docs/bot-contributions" >}}) checklist.
+To add your own strategy, follow [build and contribute a bot]({{< relref "docs/bot-contributions" >}}).

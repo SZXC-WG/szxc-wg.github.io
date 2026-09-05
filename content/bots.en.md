@@ -1,48 +1,41 @@
 ---
-title: "Bots"
-description: "Meet LocalGen's built-in C++ bots and learn how to add your own."
-date: 2026-04-06T17:54:16+08:00
+title: "Meet the bots"
+description: "Choose an opponent, explore different strategies, or write your first bot."
 draft: false
 weight: 60
 ---
 
-## How bots work today
+Bots are computer-controlled opponents. LocalGen includes them with the app: choose a name to add an opponent to your match, without installing models or setting up a service.
 
-LocalGen v6 supports **built-in C++ bots only**. Each bot is included in the desktop app and simulator, then created by name through `BotFactory`. External bot protocols, plug-ins, model downloads, and inference backends are not supported.
+For your first game, keep P1 set to `Human` in **Local Game** and choose bots for the other slots. To watch their strategies unfold, set P1 to a bot too and let the whole match play itself.
 
-## Built-in bot roster
+## Different opponents, different ideas
 
-The complexity values are rough per-turn worst-case estimates. Here, $n$ is the number of map tiles and $k$ is the number of candidate source stacks considered by a multi-source planner.
+The current development branch compiles these 10 bots. The descriptions summarize their approaches to help you choose an opponent or explore the source. Results depend on the map, opponents, and player count.
 
-| Bot / registry name | Enabled | Approx. cost | Strategy summary |
-| --- | --- | --- | --- |
-| DummyBot | No | $O(n)$ | Example heuristic greedy |
-| SmartRandomBot | Yes | $O(n)$ | Largest-stack greedy |
-| KtqBot | Yes | $O(n)$ | Single-focus local greedy |
-| XrzBot | No | $O(n)$ | Focused random greedy |
-| ZlyBot | Yes | $O(n)$ | Single-focus BFS heuristic |
-| ZlyBot v2 | Yes | $O(n \log n)$ | Memory-aware weighted search |
-| ZlyBot v2.1 | Yes | $O(n \log n)$ | Dual-focus defensive search |
-| SzlyBot | Yes | $O(n)$ | Terrain-weighted BFS heuristic |
-| GcBot | Yes | $O(n)$ | Adaptive heuristic BFS |
-| XiaruizeBot | Yes | $O(kn^2)$ | Multi-source strategic search |
-| KutuBot | Yes | $O(n \log n)$ | Unified strategic objective planner |
-| LyBot | No | $O(n^2)$ | Multiplayer objective planner |
-| `oimbot` | Yes | $O(n^2)$ | Memory-aware threat/objective planner |
+| Bot name | Approach | Author |
+| --- | --- | --- |
+| SmartRandomBot | Prefer moves from the largest army stack | AppOfficer / GoodCoder666 |
+| KtqBot | Make local greedy choices around one focus | ktq1124298818 / GoodCoder666 |
+| ZlyBot | Combine breadth-first search with heuristics | AppOfficer |
+| ZlyBot v2 | Use memory in a weighted search | AppOfficer |
+| ZlyBot v2.1 | Balance a dual-focus search with defense | AppOfficer |
+| SzlyBot | Account for terrain weights during search | GoodCoder666 |
+| GcBot | Adapt heuristic search to the current position | GoodCoder666 |
+| XiaruizeBot | Plan moves from multiple army sources | xiaruize0911 |
+| KutuBot | Evaluate and select strategic objectives together | pinkHC |
+| oimbot | Combine memory, threat assessment, and objective planning | oimasterkafuu |
 
-“Enabled” means the source file appears in `LOCALGEN_BOT_SOURCES` and is compiled into the current executables. Exact names matter on the simulator command line; `oimbot` is lowercase.
+DummyBot, XrzBot, and LyBot also have source files, but are not included in the current build list. Your downloaded version may have a different roster; check the choices in the app.
 
-## What a Bot needs
+## Find a strategy that suits your map
 
-A new built-in bot should:
+The [simulator]({{< relref "simulator" >}}) runs batches of matches and reports win rates, average rankings, kills, and optional decision timings. Trying several maps and opponent groups reveals more about a strategy than a single win or loss.
 
-1. use C++17 and live in one `src/bots/*.cpp` file;
-2. include `src/core/bot.h` and derive from `BasicBot`;
-3. implement `init(...)` and `requestMove(...)`;
-4. register a unique runtime name with `BotRegistrar<YourBot>`;
-5. add the file to `LOCALGEN_BOT_SOURCES` in `CMakeLists.txt`;
-6. include tests or simulator evidence and concise algorithm/performance notes in the pull request.
+Use the exact bot names from the table in simulator commands. Quote names containing spaces, such as `"ZlyBot v2.1"`; `oimbot` is all lowercase.
 
-Register new bots with `BotRegistrar`; the older `REGISTER_BOT` pattern is not supported.
+## Turn an idea into a bot
 
-Read the [detailed built-in bot reference]({{< relref "docs/built-in-bots" >}}), the [contribution workflow]({{< relref "docs/bot-contributions" >}}), or the [simulator guide]({{< relref "docs/simulator-guide" >}}).
+Current bots use **C++20** and compile directly into the desktop app and simulator. An implementation usually lives in one `src/bots/*.cpp` file, inherits from `BasicBot`, implements `init(...)` and `requestMove(...)`, registers with `BotRegistrar`, and joins `LOCALGEN_BOT_SOURCES` in `CMakeLists.txt`.
+
+There is no external bot process or Python client interface yet. Read the [built-in bot reference]({{< relref "docs/built-in-bots" >}}) to get started. When you are ready to share your work, the [bot contribution guide]({{< relref "docs/bot-contributions" >}}) explains how to present your algorithm and evaluation results.

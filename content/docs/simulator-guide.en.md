@@ -1,77 +1,100 @@
 ---
-title: "Simulator Guide"
-description: "Build and run LocalGen's threaded bot simulator with a complete option and output reference."
-date: 2026-04-06T17:55:08+08:00
-draft: false
-weight: 60
+title: "Evaluate bots"
+description: "Run repeated matches and use win rates, OpenSkill, and latency to understand a strategy."
+weight: 50
+doc_group: play
 ---
 
-For additional command-line notes, see the project's [simulator guide](https://github.com/SZXC-WG/LocalGen-new/blob/master/simulator/README.md).
+The simulator runs repeated bot matches without opening the graphical interface. It uses the same core board and game logic as the desktop app, making it useful for comparing strategies, checking performance, and testing maps.
 
-## Build and run
+## Run your first evaluation
 
-The normal CMake build creates `LocalGen-bot-simulator` alongside the desktop target:
+Build the project using [getting started]({{< relref "docs/getting-started" >}}), then run this from `build/Release`:
 
 ```bash
-cmake -B build -S . -G "Ninja Multi-Config" -DCMAKE_TOOLCHAIN_FILE=/path/to/qt.toolchain.cmake
-cmake --build build --config Release
-cd build/Release
 ./LocalGen-bot-simulator --games 10 --bots XiaruizeBot GcBot
 ```
 
-Use `LocalGen-bot-simulator.exe` on Windows.
+In Windows PowerShell, use `./LocalGen-bot-simulator.exe`. To rebuild only the simulator, run this from the source root:
 
-## Options
+```bash
+cmake --build build --config Release --target LocalGen-bot-simulator
+```
+
+By default, matches use random 20×20 maps and stop after at most 1000 half-turns each. The program prints individual outcomes followed by a summary table.
+
+## Useful examples
+
+Run ten matches on independently generated maps, with an explicit duration:
+
+```bash
+./LocalGen-bot-simulator --games 10 --width 20 --height 20 --steps 1000 --bots XiaruizeBot GcBot
+```
+
+Reuse one custom map. Replace this example path with your own `.lgmp`:
+
+```bash
+./LocalGen-bot-simulator --games 10 --map maps/arena01.lgmp --steps 1000 --bots XiaruizeBot GcBot
+```
+
+On macOS, bundled maps live inside the app. From `build/Release`, use `LocalGen-new.app/Contents/MacOS/maps/arena01.lgmp` for this example, or supply an absolute path to your own map.
+
+Run a multiplayer free-for-all with four workers and measure bot execution time:
+
+```bash
+./LocalGen-bot-simulator --games 100 --threads 4 --shuffle --latency --bots SmartRandomBot KtqBot "ZlyBot v2.1" GcBot
+```
+
+Print only the final summary:
+
+```bash
+./LocalGen-bot-simulator --games 50 --silent --bots XiaruizeBot GcBot
+```
+
+## Option reference
 
 | Option | Meaning | Default |
 | --- | --- | --- |
 | `--games N` | Number of independent matches | `8` |
 | `--width N` | Random-map width | `20` |
 | `--height N` | Random-map height | `20` |
-| `--map PATH` | Reuse one custom v6 `.lgmp` instead of random maps | unset |
-| `--threads N` | Worker threads | hardware concurrency, capped to game count |
-| `--steps N` | Maximum half-turns per match | `600` |
-| `--silent` | Suppress startup and per-game output | off |
-| `--shuffle` | Randomize bot-to-player-index mapping | off |
+| `--map PATH` | Use a custom v6 `.lgmp` map | unset |
+| `--threads N` | Worker thread count | automatic, capped at match count |
+| `--steps N` | Maximum half-turns per match | `1000` |
+| `--silent` | Print only the final table | off |
+| `--shuffle` | Randomize the bot-to-player-index mapping | off |
 | `--latency` | Measure average `requestMove()` latency | off |
-| `--bots A B ...` | Two or more registered runtime names | `XiaruizeBot GcBot` |
-| `--help`, `-h` | Print usage | — |
+| `--bots A B ...` | Two or more registered bot names | `XiaruizeBot GcBot` |
+| `--help` / `-h` | Display usage | — |
 
-Numeric values must be positive. `--map` supports `.lgmp` only; `.lg` and official JSON are rejected. A custom map ignores `--width` and `--height` and must have enough spawns or empty plain tiles.
+Numeric values must be positive. Bot names are case-sensitive; quote names that contain spaces. `--map` accepts `.lgmp` only, not legacy `.lg` or official JSON. With a custom map, `--width` and `--height` are ignored. The map needs enough spawn tiles or zero-army blank plains for every participant.
 
-## Examples
+## How matches run
 
-```bash
-# Ten two-bot games on independently generated 20×20 maps
-./LocalGen-bot-simulator --games 10 --width 20 --height 20 --steps 600 --bots XiaruizeBot GcBot
+Each bot receives its own team ID, so every match is free-for-all. `--shuffle` changes player-index assignment; it does not create allied teams.
 
-# Reuse one authored v6 map
-./LocalGen-bot-simulator --games 10 --map maps/arena01.lgmp --steps 600 --bots XiaruizeBot GcBot
+Independent matches run in parallel. Without `--threads`, the program chooses a worker count based on available CPU concurrency, using at least one worker and no more workers than matches. Per-game lines appear in completion order. Rating updates are then accumulated in game-number order, regardless of which match finished first.
 
-# Multi-bot FFA, four workers, latency column enabled
-./LocalGen-bot-simulator --games 100 --threads 4 --latency --bots SmartRandomBot KtqBot ZlyBot GcBot
+## Read the summary
 
-# Machine-readable-ish quiet log: final table only
-./LocalGen-bot-simulator --games 50 --silent --bots XiaruizeBot GcBot
-```
+| Column | What it means |
+| --- | --- |
+| OpenSkill / OS 95% CI | Mean rating for this free-for-all evaluation and its 95% interval |
+| Wins / Win Rate / Win 95% CI | Win count, win rate, and its 95% interval |
+| Avg Rank | Average final rank; lower places closer to first |
+| Avg Kill | Average kills per match |
+| Survived | Matches in which the bot remained alive at the end |
+| Avg Army / Avg Land | Average final army and land |
+| Avg Latency | Average microseconds per `requestMove()` call, when `--latency` is enabled |
 
-## Execution model
+The table sorts by OpenSkill mean, then wins. Ratings use the full ranking from each match. Win-rate intervals use the Wilson method; OpenSkill intervals are displayed as `mu ± 1.96 × sigma`.
 
-- Every bot receives a distinct team ID, so matches are FFA.
-- Independent games run in parallel; per-game lines appear in completion order.
-- Results are accumulated in game-number order before TrueSkill updates, keeping rating calculation order stable despite parallel completion.
-- `--shuffle` changes player-index mapping; it does not create teams.
+**At the half-turn limit, the bot ranked first is counted as the winner even if several bots remain alive.** The individual result says `leads at step limit` in that case. Include `--steps` when sharing comparisons so readers know how wins were determined.
 
-## Summary columns
+## Make comparisons useful
 
-The final table is sorted by TrueSkill, then wins. It reports Bot, TrueSkill, TrueSkill 95% CI, wins, win rate, win-rate 95% CI, average rank, average kills, survival count, average final army, and average final land. `--latency` adds average microseconds per `requestMove()` call.
+There is currently no command-line seed option. Reusing a custom map reduces terrain variation, but spawn assignments may still change, so repeated runs are not guaranteed to reproduce exactly.
 
-## Interpretation limits
+Try several map sizes, map types, opponent combinations, and player counts, with enough matches to see variation. Intervals help describe uncertainty in a sample; they do not remove the influence of your map and opponent choices. Publish the exact command, source revision, platform, and Release build details alongside results.
 
-- `--steps` counts half-turns. At the limit, the rank leader is counted as winner even if multiple bots survive.
-- No seed option exists; random maps and internal spawn choices are not reproducible across invocations.
-- A fixed custom map reduces map variation but does not make a run deterministic.
-- The tool prints text tables only; it does not export CSV, replays, or trained assets.
-- Confidence intervals describe the sampled run and do not remove map/opponent-selection bias.
-
-Record the exact command, source revision, platform, and build type with any published benchmark.
+The simulator currently produces text logs and tables, with no CSV, replay, or training-asset export. See the [simulator source and README](https://github.com/SZXC-WG/LocalGen-new/tree/master/simulator) for implementation details.

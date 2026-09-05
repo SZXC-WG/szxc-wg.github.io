@@ -14,6 +14,11 @@ summaryLength = 36
     dir = ':cacheDir/images'
 
 [markup]
+  [markup.highlight]
+    noClasses = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true

@@ -1,49 +1,16 @@
 [[main]]
-  name = 'Download'
-  pageRef = '/downloads'
-  weight = 10
-
-[[main]]
   name = 'Docs'
   pageRef = '/docs'
-  weight = 20
-
+  weight = 10
 [[main]]
-  name = 'Bots'
+  name = 'Bot'
   pageRef = '/bots'
-  weight = 30
-
+  weight = 20
 [[main]]
   name = 'Simulator'
   pageRef = '/simulator'
-  weight = 40
-
+  weight = 30
 [[main]]
   name = 'About'
   pageRef = '/about'
-  weight = 50
-
-[[main]]
-  name = 'Contribute'
-  pageRef = '/contribute'
-  weight = 60
-
-[[footer]]
-  name = 'Releases'
-  pageRef = '/releases'
-  weight = 10
-
-[[footer]]
-  name = 'Contributors'
-  pageRef = '/contributors'
-  weight = 20
-
-[[footer]]
-  name = 'FAQ'
-  pageRef = '/faq'
-  weight = 30
-
-[[footer]]
-  name = 'Disclaimer'
-  pageRef = '/disclaimer'
   weight = 40

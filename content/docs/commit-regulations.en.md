@@ -1,20 +1,13 @@
 ---
-title: "Commit Regulations"
-description: "Commit message, commit size, and collaboration expectations for LocalGen development."
-date: 2026-04-06T17:55:07+08:00
-draft: false
-weight: 30
+title: "Write clear commits"
+description: "Explain what changed and why, so reviewing and revisiting your work is easier."
+weight: 80
+doc_group: develop
 ---
 
-You can also [read the commit regulations on GitHub](https://github.com/SZXC-WG/LocalGen-new/blob/master/docs/commit-regulations.md).
+A good commit message helps someone understand a change without having followed the discussion. LocalGen uses a short subject with a type prefix. Add a body and related issue references when more context is useful.
 
-## Goal
-
-The project’s commit regulations exist to keep the history consistent, understandable, and maintainable.
-
-## Commit message structure
-
-Use the following commit-message layout:
+## Basic format
 
 ```text
 <type>(<scope>): <subject>
@@ -24,36 +17,40 @@ Use the following commit-message layout:
 <footer>
 ```
 
-### Common types
+The `scope` is optional, such as `ui`, `core`, or `bots`. Keep the subject under 72 characters and use an imperative verb to describe the change. Explain why and how in the body, wrapping lines at 72 characters. The footer can link an issue with `Closes #42` or describe an incompatible change with `BREAKING CHANGE:`.
 
-- `feat` — new feature
-- `upd` — update to an existing feature
-- `fix` — bug fix
-- `docs` — documentation change
-- `style` — formatting or style-only change
-- `refactor` — internal restructuring without feature change
-- `chore` — maintenance or dependency work
-- `test` — test additions or updates
-- `ci` — continuous integration changes
+## Choose a type
 
-## Subject-line guidance
+| Type | Use it for |
+| --- | --- |
+| `feat` | New features |
+| `upd` | Updates to existing features |
+| `fix` | Bug fixes |
+| `docs` | Documentation |
+| `style` | Formatting or style changes |
+| `refactor` | Internal restructuring without behavior changes |
+| `chore` | Build, dependency, or maintenance work |
+| `test` | New or updated tests |
+| `ci` | Continuous integration |
 
-- use the imperative mood
-- keep it concise and descriptive
-- avoid vague messages such as “Fix stuff”
-- prefer lowercase unless a proper noun requires otherwise
+## Be specific
 
-## Commit size and frequency
+Start the subject with a verb such as `add`, `fix`, `remove`, or `update`. Use lowercase except for proper nouns and acronyms. For example:
 
-The project prefers commits that are:
+```text
+fix(core): handle maps with too few spawn tiles
 
-- **small and focused**
-- **atomic**, so they can be reviewed or reverted independently
-- **frequent enough** to show progress without flooding the history with trivial noise
+Explain why the previous behavior failed and how this change handles it.
 
-## Additional practices
+Closes #42
+```
 
-- write meaningful commit messages
-- rebase before merging when appropriate
-- squash overly fragmented work before landing on the main branch
+The issue number here is an example; use a relevant issue in your actual commit. Avoid subjects such as `fix stuff` or `changes made` that do not identify the change.
 
+## Keep changes easy to review
+
+Aim for one related change per commit, with a result that can be checked or reverted independently. Break large features into clear steps and commit as you go. Before merging, combine fragments that belong together.
+
+Use rebase or squash as appropriate for the collaboration to keep the final history understandable. Current v6 development targets `master`; choose a destination that matches the version you are working on.
+
+See the project's [commit conventions](https://github.com/SZXC-WG/LocalGen-new/blob/master/docs/commit-regulations.md) for the full guidance.

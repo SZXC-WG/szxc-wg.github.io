@@ -1,56 +1,58 @@
 ---
-title: "FAQ"
-description: "Answers about LocalGen v6 gameplay, maps, bots, networking, replays, and builds."
-date: 2026-04-06T17:54:16+08:00
+title: "Frequently asked questions"
+description: "Common questions about installation, offline play, maps, and bots."
 draft: false
 weight: 90
 ---
 
-## Is LocalGen affiliated with generals.io?
+These answers cover the v6 development branch. If you use an older release, also check the notes on its download page.
 
-No. LocalGen is an independent, fan-made open-source project. It is not affiliated with, endorsed by, sponsored by, or connected to generals.io or its original developers.
+## Where should I start?
 
-## Which v6 features are available?
+Choose a package for your computer on the [download page]({{< relref "downloads" >}}), then extract or install it completely. Launch the app, choose **Local Game**, keep the first slot set to `Human`, and choose your bot opponents. The [local game guide]({{< relref "docs/local-game" >}}) explains the controls.
 
-Local Game, Map Creator, and the Bot simulator are available in `6.0.0-dev`. Web Game and Load Replay are still in development.
+## Do I need an internet connection?
 
-## Can I play over a LAN or through Web Game?
+Local matches, editing maps on your computer, and the simulator all work offline. Map Creator's optional **Import from Generals.io** feature fetches a map from the public map API, so that operation needs a connection.
 
-No. Web Game is not available yet, and LocalGen does not currently support LAN play.
+## Can I play with friends over a network or on one computer?
 
-## Can I load a replay?
+Current v6 does not have LAN or Web Game support. Local matches have 2–16 player slots, with only P1 offering a human player; the other slots use bots. You can also fill all slots with bots. Matches currently use free-for-all rules.
 
-Not yet. The visible Load Replay button does not currently open `.lgr` or `.lgra` files.
+## Why do Web Game and Load Replay not work?
 
-## How many humans can play a Local Game?
+Both features are still in development. Their buttons currently show a message explaining that they are not implemented. The app cannot load `.lgr` or `.lgra` replays yet.
 
-At most one. Only the first of 2–16 player slots offers `Human`; every other slot selects a built-in bot. Current local matches are free-for-all rather than team games.
+## How do I play a map I made?
 
-## Can I use my own map?
+Save it as `.lgmp` in Map Creator, place it in the `maps/` directory beside the executable, and reopen Local Game setup. It needs enough spawn points or empty plain tiles for the selected players.
 
-Yes. Local Game discovers valid `.lgmp` maps from the `maps/` directory beside the executable. Map Creator can open `.lg`, `.lgmp`, and official map JSON, but it saves only `.lg` or `.lgmp`. A selected map must provide enough spawn points or empty plain tiles for all players.
+Map Creator can also read legacy `.lg` files and generals.io map JSON, but it saves only `.lg` or `.lgmp`. Choose `.lgmp` for current local matches. See [Map Creator]({{< relref "docs/map-creator" >}}) and [file formats]({{< relref "docs/associated-files" >}}).
 
-## Does LocalGen require internet access?
+## What if the app reports missing fonts?
 
-Offline gameplay, local map editing, and the simulator do not. Map Creator's optional “Import from Generals.io” action sends a request to the public map API and therefore needs internet access.
+Check that you extracted the whole package and kept `fonts/` beside the executable. The app reads three Quicksand font files from that folder. Keep `maps/` too. For a DMG or AppImage, preserve the application bundle's internal structure.
 
-## Can I write a bot in Python or run an external bot process?
+## What if the Linux AppImage reports a missing OpenGL runtime?
 
-No. LocalGen currently supports built-in C++17 Bots only; Python clients and external Bot processes are not supported.
+On Debian or Ubuntu, install `libopengl0`. For other distributions, use the equivalent OpenGL runtime package. If the error continues, include the full message, distribution, and processor architecture in your report.
 
-## Are simulator runs reproducible?
+## Can I write a bot in Python?
 
-Not exactly. The CLI has no seed option and obtains map seeds from system randomness. Record all options and run enough games, but do not describe two invocations as deterministic reproductions.
+Current bots use C++20 and compile with the app. There is no Python client or external bot process interface yet. Start with [Meet the bots]({{< relref "bots" >}}) and the [bot contribution guide]({{< relref "docs/bot-contributions" >}}).
 
-## Where are v6 settings stored?
+## Will two simulator runs produce the same results?
 
-Settings are not saved between launches yet. Local Game choices apply until you close the app.
+Usually not. The current CLI has no option for choosing a random seed, and random map seeds come from system randomness. Recording your source version, full command, map, and environment—and running more games—helps comparison, but does not guarantee match-by-match reproduction.
 
-## Where should I report a bug or propose a feature?
+## Are settings saved? Does the sound option work?
 
-- [GitHub Issues](https://github.com/SZXC-WG/LocalGen-new/issues)
-- [GitHub Discussions](https://github.com/SZXC-WG/LocalGen-new/discussions)
-- [Contribution guide]({{< relref "contribute" >}})
-- [Code of Conduct]({{< relref "docs/code-of-conduct" >}})
-- [Commit regulations]({{< relref "docs/commit-regulations" >}})
-- [Bot contribution workflow]({{< relref "docs/bot-contributions" >}})
+Current v6 does not persist settings between launches. You will need to configure them again after restarting. The **Enable sounds** option is visible, but sound playback is not connected yet.
+
+## Is LocalGen an official generals.io project?
+
+No. It is an independent community open-source project with no official affiliation to generals.io or its developers. Read the [disclaimer]({{< relref "disclaimer" >}}) for details.
+
+## Where can I ask for help?
+
+Report bugs or ideas in [GitHub Issues](https://github.com/SZXC-WG/LocalGen-new/issues). Include your app version, operating system, reproduction steps, and screenshots when useful. To help improve the project yourself, see [Contribute]({{< relref "contribute" >}}).

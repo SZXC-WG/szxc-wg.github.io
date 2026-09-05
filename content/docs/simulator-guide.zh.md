@@ -1,77 +1,100 @@
 ---
-title: "模拟器指南"
-description: "构建并运行 LocalGen 多线程 Bot 模拟器，查看完整参数与输出参考。"
-date: 2026-04-06T17:55:08+08:00
-draft: false
-weight: 60
+title: "用模拟器评测 Bot"
+description: "批量运行 Bot 对局，用胜率、OpenSkill 和延迟理解策略表现。"
+weight: 50
+doc_group: play
 ---
 
-更多命令行说明请参阅项目的[模拟器指南](https://github.com/SZXC-WG/LocalGen-new/blob/master/simulator/README.md)。
+模拟器让你在不打开图形界面的情况下，连续运行多场 Bot 对战。它使用与桌面应用相同的核心棋盘和游戏逻辑，适合比较策略、检查性能，以及验证地图。
 
-## 构建与运行
+## 先运行一组对战
 
-常规 CMake 构建会在桌面目标之外生成 `LocalGen-bot-simulator`：
+按[快速开始]({{< relref "docs/getting-started" >}})构建项目后，在 `build/Release` 中运行：
 
 ```bash
-cmake -B build -S . -G "Ninja Multi-Config" -DCMAKE_TOOLCHAIN_FILE=/path/to/qt.toolchain.cmake
-cmake --build build --config Release
-cd build/Release
 ./LocalGen-bot-simulator --games 10 --bots XiaruizeBot GcBot
 ```
 
-Windows 请使用 `LocalGen-bot-simulator.exe`。
-
-## 参数
-
-| 参数 | 含义 | 默认值 |
-| --- | --- | --- |
-| `--games N` | 独立比赛数量 | `8` |
-| `--width N` | 随机地图宽度 | `20` |
-| `--height N` | 随机地图高度 | `20` |
-| `--map PATH` | 重复使用一张 v6 `.lgmp`，不生成随机地图 | 未设置 |
-| `--threads N` | 工作线程数 | CPU 并发数，不超过比赛数 |
-| `--steps N` | 每局最大半回合数 | `600` |
-| `--silent` | 隐藏启动与逐局输出 | 关闭 |
-| `--shuffle` | 随机调整 Bot 与玩家编号的映射 | 关闭 |
-| `--latency` | 测量平均 `requestMove()` 延迟 | 关闭 |
-| `--bots A B ...` | 两个或更多已注册运行时名称 | `XiaruizeBot GcBot` |
-| `--help`、`-h` | 打印用法 | — |
-
-数值参数必须为正数。`--map` 只支持 `.lgmp`，会拒绝 `.lg` 与官方 JSON。自定义地图会忽略 `--width` 和 `--height`，并且必须有足够的出生格或空白平地。
-
-## 示例
+Windows PowerShell 中使用 `./LocalGen-bot-simulator.exe`。如果只需要重新构建模拟器，可在源码根目录运行：
 
 ```bash
-# 在独立生成的 20×20 地图上运行十局双 Bot 比赛
-./LocalGen-bot-simulator --games 10 --width 20 --height 20 --steps 600 --bots XiaruizeBot GcBot
+cmake --build build --config Release --target LocalGen-bot-simulator
+```
 
-# 重复使用一张手工 v6 地图
-./LocalGen-bot-simulator --games 10 --map maps/arena01.lgmp --steps 600 --bots XiaruizeBot GcBot
+默认对局使用 20×20 随机地图，每局最多推进 1000 个半回合。程序会输出逐局结果，以及最终统计表。
 
-# 多 Bot 自由混战，四个线程，并输出延迟列
-./LocalGen-bot-simulator --games 100 --threads 4 --latency --bots SmartRandomBot KtqBot ZlyBot GcBot
+## 常用示例
 
-# 安静日志：只保留最终表格
+在独立生成的随机地图上运行十局，并显式设置时长：
+
+```bash
+./LocalGen-bot-simulator --games 10 --width 20 --height 20 --steps 1000 --bots XiaruizeBot GcBot
+```
+
+重复使用一张自定义地图。请把示例路径替换为自己的 `.lgmp`：
+
+```bash
+./LocalGen-bot-simulator --games 10 --map maps/arena01.lgmp --steps 1000 --bots XiaruizeBot GcBot
+```
+
+macOS 的随附地图位于应用包内。从 `build/Release` 运行时，示例路径应改为 `LocalGen-new.app/Contents/MacOS/maps/arena01.lgmp`；也可以使用自己地图的绝对路径。
+
+运行多人混战，使用四个工作线程并记录 Bot 思考耗时：
+
+```bash
+./LocalGen-bot-simulator --games 100 --threads 4 --shuffle --latency --bots SmartRandomBot KtqBot "ZlyBot v2.1" GcBot
+```
+
+只保留最终统计表：
+
+```bash
 ./LocalGen-bot-simulator --games 50 --silent --bots XiaruizeBot GcBot
 ```
 
-## 执行模型
+## 参数参考
 
-- 每个 Bot 都会获得独立队伍编号，因此比赛是自由混战。
-- 独立比赛并行运行；逐局结果按完成顺序出现。
-- 在更新 TrueSkill 前，结果会按局号顺序汇总，因此即使并行完成，评分计算顺序仍保持稳定。
-- `--shuffle` 只会改变玩家编号映射，不会创建队伍。
+| 参数 | 含义 | 默认值 |
+| --- | --- | --- |
+| `--games N` | 独立对局数量 | `8` |
+| `--width N` | 随机地图宽度 | `20` |
+| `--height N` | 随机地图高度 | `20` |
+| `--map PATH` | 使用指定 v6 `.lgmp` 地图 | 未设置 |
+| `--threads N` | 工作线程数 | 自动选择，不超过对局数 |
+| `--steps N` | 每局最多推进的半回合数 | `1000` |
+| `--silent` | 只输出最终表格 | 关闭 |
+| `--shuffle` | 随机调整 Bot 与玩家编号的映射 | 关闭 |
+| `--latency` | 测量 `requestMove()` 平均延迟 | 关闭 |
+| `--bots A B ...` | 两个或更多已注册 Bot 名称 | `XiaruizeBot GcBot` |
+| `--help` / `-h` | 显示用法 | — |
 
-## 汇总列
+数值参数应为正数。Bot 名称区分大小写，带空格的名称需要引号。`--map` 只接受 `.lgmp`，不接受旧版 `.lg` 或官方 JSON；指定地图后会忽略 `--width` 和 `--height`。地图需为所有参与者提供足够的出生点或零兵力空白平地。
 
-最终表格先按 TrueSkill、再按胜场排序。列包括 Bot、TrueSkill、TrueSkill 95% 置信区间、胜场、胜率、胜率 95% 置信区间、平均排名、平均击杀、存活次数、平均最终兵力与平均最终领地。`--latency` 会增加每次 `requestMove()` 调用的平均微秒数。
+## 理解执行过程
 
-## 解读限制
+每个 Bot 都有独立队伍编号，因此模拟器运行自由混战。`--shuffle` 改变编号映射，不会创建盟友队伍。
 
-- `--steps` 计算半回合。达到上限时，即使仍有多个 Bot 存活，排名领先者也会被计为胜者。
-- 当前没有种子参数；随机地图与内部出生分配无法跨调用复现。
-- 固定自定义地图只能减少地图差异，并不能让实验变成确定性运行。
-- 工具只输出文本表格，不导出 CSV、回放或训练资产。
-- 置信区间只描述本次样本，无法消除地图与对手选择偏差。
+独立对局会并行运行。未指定 `--threads` 时，程序根据 CPU 并发数自动选择线程数量，至少一个，最多等于比赛数。逐局结果按完成顺序输出；评分则按局号顺序汇总更新，不受完成先后影响。
 
-发布基准时，请同时记录完整命令、源码版本、平台与构建类型。
+## 读懂统计表
+
+| 列 | 表示什么 |
+| --- | --- |
+| OpenSkill / OS 95% CI | 本次自由混战评分均值及其 95% 区间 |
+| Wins / Win Rate / Win 95% CI | 胜场、胜率及胜率的 95% 区间 |
+| Avg Rank | 平均最终排名，越小越靠前 |
+| Avg Kill | 平均击杀数 |
+| Survived | 结束时仍存活的对局数 |
+| Avg Army / Avg Land | 结束时的平均兵力和领地 |
+| Avg Latency | 启用 `--latency` 后，每次 `requestMove()` 的平均微秒数 |
+
+表格先按 OpenSkill 均值排序，再按胜场排序。评分使用每局完整排名，胜率区间使用 Wilson 方法；OpenSkill 区间按 `mu ± 1.96 × sigma` 展示。
+
+**达到半回合上限时，当前排名第一的 Bot 也会计为胜者，即使场上仍有多个存活 Bot。** 逐局日志会将这种情况写为 `leads at step limit`。因此，比较结果时请同时记录 `--steps`。
+
+## 让评测更有参考价值
+
+当前没有可指定的随机种子参数。重复使用同一张地图可以减少地形差异，但出生分配仍可能变化，无法保证每次运行完全复现。
+
+比较策略时，尝试不同地图尺寸、地图类型、对手组合和玩家数量，运行足够多的比赛。区间能帮助理解样本的不确定性，但不能消除地图与对手选择的影响。发布结果时，请一并记录完整命令、源码版本、平台和 Release 构建信息。
+
+模拟器目前输出文本日志与表格，不提供 CSV、回放或训练资产导出。更多实现说明可查看[模拟器源码与 README](https://github.com/SZXC-WG/LocalGen-new/tree/master/simulator)。

@@ -1,40 +1,46 @@
 ---
-title: "模拟器"
-description: "通过命令行，在随机地图或 v6 地图上并行评测 LocalGen 已注册 Bot。"
-date: 2026-04-06T17:54:16+08:00
+title: "Bot 模拟器"
+description: "让 Bot 多打几局，用结果理解和改进你的策略。"
 draft: false
 weight: 70
 ---
 
-## 不启动桌面界面的 Bot 评测
+一个 Bot 赢下一局之后，你也许会想：换一张地图呢？对手更多时呢？**LocalGen-bot-simulator** 可以批量运行 Bot 对局，把这些问题变成可以比较的结果。
 
-`LocalGen-bot-simulator` 与桌面应用共用棋盘、游戏、地图加载器和内置 Bot 注册表。它会通过多个工作线程运行自由混战，并输出逐局结果与最终汇总表。
+模拟器与桌面应用共用游戏核心、地图加载器和 Bot 注册表。它通过命令行运行，无需打开游戏界面，并能利用多个 CPU 工作线程同时进行独立对局。
 
-完成 Release 构建后，在 `build/Release` 中运行：
+## 先跑一组对局
+
+按照[安装与构建指南]({{< relref "docs/getting-started" >}})完成 Release 构建后，在 `build/Release` 中运行：
 
 ```bash
-./LocalGen-bot-simulator --games 10 --width 20 --height 20 --steps 600 --bots XiaruizeBot GcBot
-./LocalGen-bot-simulator --games 10 --map maps/arena01.lgmp --steps 600 --bots XiaruizeBot GcBot
-./LocalGen-bot-simulator --games 50 --silent --bots XiaruizeBot GcBot
+./LocalGen-bot-simulator --games 10 --width 20 --height 20 --steps 1000 --bots XiaruizeBot GcBot
 ```
 
-Windows 使用 `LocalGen-bot-simulator.exe`，选项保持不变。
+Windows PowerShell 使用 `./LocalGen-bot-simulator.exe`，后面的参数相同。这个例子让两个 Bot 在随机地图上交手 10 局，每局最多运行 1000 个半回合。
 
-## 汇总表包含什么
+想换成自己的地图，或只看最后的汇总，可以这样运行：
 
-- FFA TrueSkill 评分与 95% 置信区间
-- 胜场、胜率及胜率置信区间
-- 平均排名、击杀、最终兵力与最终领地
-- 存活次数
-- 启用 `--latency` 后的平均 `requestMove()` 延迟
+```bash
+./LocalGen-bot-simulator --games 20 --map maps/arena01.lgmp --bots XiaruizeBot GcBot
+./LocalGen-bot-simulator --games 50 --silent --latency --bots XiaruizeBot GcBot
+```
 
-## 重要语义
+macOS 的随附地图位于应用包内。从 `build/Release` 运行时，示例路径应改为 `LocalGen-new.app/Contents/MacOS/maps/arena01.lgmp`；也可以使用自己地图的绝对路径。
 
-- 默认运行 8 局、使用 20×20 随机地图、上限 600 个**半回合**、自动选择线程数，并让 `XiaruizeBot GcBot` 对战。
-- `--map` 只接受 v6 `.lgmp`；指定后会忽略 `--width` 与 `--height`。
-- 至少需要两个有效的已注册 Bot 名称，且运行时名称区分大小写。
-- `--silent` 只保留最终汇总。不启用时，对局会在完成后立即输出，所以显示顺序可能与局号不同。
-- 达到步数上限时，即使仍有多个 Bot 存活，当前领先者也会被报告并计为胜者。
-- 当前命令行**无法复现实验随机性**：它没有种子选项，地图种子来自系统随机源。
+`--map` 接受 v6 `.lgmp` 文件；使用它时，随机地图的宽高参数会被忽略。地图路径相对于当前命令行工作目录。Bot 名称区分大小写，带空格的名称需要加引号。
 
-发布基准结果前，请先阅读[完整参数参考]({{< relref "docs/simulator-guide" >}})。
+## 结果能告诉你什么
+
+汇总表包含 OpenSkill 评分及其 95% 区间、胜场、胜率及其 95% 区间，以及平均排名、击杀、最终兵力、最终领地和存活次数。加上 `--latency` 后，还会显示每次 `requestMove()` 的平均耗时。
+
+这些结果用于比较本次实验中的表现。地图、参赛 Bot、对局数量与步数上限都会影响结论；较少的样本或单一地图，很难代表所有情境。
+
+## 比较结果前，记住这几件事
+
+- 默认运行 8 局，地图为 20×20，每局上限为 **1000 个半回合**，对手为 `XiaruizeBot GcBot`，线程数自动选择。
+- 对局均为自由混战。达到步数上限时，即使场上还有多个 Bot 存活，当前排名第一的 Bot 仍会计为本局胜者。
+- 每局完成后立即输出结果，因此屏幕上的完成顺序可能与局号不同。`--silent` 会只保留汇总表。
+- `--shuffle` 可以打乱玩家编号映射。当前没有命令行随机种子选项，不能保证两次调用逐局复现。
+
+准备分享评测时，请记录源码版本、完整命令、地图和运行环境。更多参数与统计口径见[模拟器完整指南]({{< relref "docs/simulator-guide" >}})；准备贡献新策略时，可以继续阅读[Bot 贡献流程]({{< relref "docs/bot-contributions" >}})。

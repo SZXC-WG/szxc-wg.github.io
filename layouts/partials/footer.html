@@ -1,44 +1,56 @@
 <footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <h2>{{ .Site.Params.projectName }}</h2>
-      <p>{{ i18n "footer_tagline" }}</p>
-      <p class="muted">{{ i18n "disclaimer_short" }}</p>
-      <p class="muted footer-license"><a href="{{ "website-license/" | relLangURL }}">{{ i18n "website_license" }}</a> · {{ i18n "website_license_summary" }}</p>
-      <div class="label-row footer-labels">
-        {{ range hugo.Data.project.built_with }}
-          <span class="label">{{ . }}</span>
-        {{ end }}
-        <span class="label">{{ hugo.Data.project.version_line }}</span>
-      </div>
-    </div>
-    <div>
-      <h3>{{ i18n "quick_links" }}</h3>
-      <ul class="footer-links">
-        {{ range .Site.Menus.footer }}
-          {{ $href := .URL }}
-          {{ with .Page }}
-            {{ $href = .RelPermalink }}
-          {{ end }}
-          <li><a href="{{ $href }}">{{ .Name }}</a></li>
-        {{ end }}
-      </ul>
-    </div>
-    <div>
-      <h3>{{ i18n "repo_links" }}</h3>
-      <ul class="footer-links">
-        <li><a href="{{ .Site.Params.sourceRepo }}">{{ i18n "source_repository" }}</a></li>
-        <li><a href="{{ .Site.Params.websiteRepo }}">{{ i18n "website_repository" }}</a></li>
-        <li><a href="{{ "website-license/" | relLangURL }}">{{ i18n "website_license" }}</a></li>
-        <li><a href="{{ .Site.Params.releasesUrl }}">{{ i18n "releases_label" }}</a></li>
-        <li><a href="{{ .Site.Params.issuesUrl }}">{{ i18n "issues_label" }}</a></li>
-        <li><a href="{{ .Site.Params.actionsUrl }}">{{ i18n "github_actions_label" }}</a></li>
-      </ul>
-      <p class="muted footer-contact">{{ i18n "contact_label" }}: <a href="mailto:{{ .Site.Params.communityEmail }}">{{ .Site.Params.communityEmail }}</a></p>
-    </div>
-  </div>
-  <div class="container footer-meta">
-    <span>© {{ now.Year }} {{ .Site.Params.copyright }}</span>
-    <a href="#top">{{ i18n "back_to_top" }}</a>
-  </div>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-about">
+<a class="brand" href="{{ .Site.Home.RelPermalink }}">
+<span class="brand-symbol">{{ partial "icon.html" "crown" }}</span>
+<strong>LocalGen</strong>
+</a>
+<p>{{ i18n "footer_tagline" }}</p>
+<p class="footer-disclaimer">{{ i18n "disclaimer_short" }}</p>
+</div>
+<div>
+<p class="footer-heading">{{ i18n "explore" }}</p>
+<ul class="footer-links">
+<li>
+<a href="{{ "docs/" | relLangURL }}">{{ i18n "project_docs" }}</a>
+</li>
+<li>
+<a href="{{ "downloads/" | relLangURL }}">{{ i18n "project_downloads" }}</a>
+</li>
+<li>
+<a href="{{ "releases/" | relLangURL }}">{{ i18n "release_notes" }}</a>
+</li>
+<li>
+<a href="{{ "faq/" | relLangURL }}">{{ i18n "faq_label" }}</a>
+</li>
+</ul>
+</div>
+<div>
+<p class="footer-heading">{{ i18n "community" }}</p>
+<ul class="footer-links">
+<li>
+<a href="{{ .Site.Params.sourceRepo }}">GitHub ↗</a>
+</li>
+<li>
+<a href="{{ "contribute/" | relLangURL }}">{{ i18n "join_project" }}</a>
+</li>
+<li>
+<a href="{{ "contributors/" | relLangURL }}">{{ i18n "contributors_title" }}</a>
+</li>
+<li>
+<a href="{{ .Site.Params.issuesUrl }}">{{ i18n "issues_label" }}</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="footer-meta">
+<span>© {{ now.Year }} SZXC Work Group</span>
+<div>
+<a href="{{ "disclaimer/" | relLangURL }}">{{ i18n "disclaimer_label" }}</a>
+<a href="{{ "website-license/" | relLangURL }}">{{ i18n "website_license" }}</a>
+<a href="{{ .Site.Params.websiteRepo }}">{{ i18n "website_repository" }} ↗</a>
+</div>
+</div>
+</div>
 </footer>

@@ -1,56 +1,58 @@
 ---
 title: "常见问题"
-description: "解答 LocalGen v6 的玩法、地图、Bot、联机、回放与构建问题。"
-date: 2026-04-06T17:54:16+08:00
+description: "关于安装、离线游玩、地图和 Bot 的常见疑问。"
 draft: false
 weight: 90
 ---
 
-## LocalGen 和 generals.io 官方有关系吗？
+这里的回答针对 v6 开发分支。若你使用的是旧版，请同时查看下载页面附带的版本说明。
 
-没有。LocalGen 是一个独立的粉丝开源项目，不隶属于 generals.io 或其原始开发者，也未获得其认可、赞助或官方合作。
+## 第一次使用，应该从哪里开始？
 
-## v6 目前有哪些可用功能？
+先在[下载页]({{< relref "downloads" >}})选择适合电脑的程序包，完整解压或安装。启动后点击 **Local Game**，保留第一个位置为 `Human`，选择 Bot 对手，再开始游戏。操作方法见[本地对局指南]({{< relref "docs/local-game" >}})。
 
-`6.0.0-dev` 已提供本地对局、地图编辑器与 Bot 模拟器；Web Game 与 Load Replay 仍在开发中。
+## 需要连接互联网吗？
 
-## 可以通过局域网或 Web Game 联机吗？
+本地对局、编辑电脑上的地图和运行模拟器都可以离线完成。地图编辑器的 **Import from Generals.io** 是可选的联网功能：它通过公开地图 API 获取地图，因此导入时需要网络。
 
-暂不支持。点击 Web Game 会显示“尚不可用”，v6 目前也不能通过局域网联机。
+## 可以和朋友联机，或者在同一台电脑上一起玩吗？
 
-## 可以加载回放吗？
+当前 v6 还没有局域网或 Web Game 联机功能。本地对局有 2–16 个玩家位置，只有 P1 可以选择人类，其余位置由 Bot 控制；也可以将所有位置都设为 Bot。目前采用自由混战模式。
 
-暂时不行。Load Replay 目前只是占位入口，尚不能打开 `.lgr` 或 `.lgra` 回放。
+## 为什么 Web Game 和 Load Replay 按钮不能用？
 
-## 一局本地游戏可以有几名人类玩家？
+这两个入口仍在开发。当前点击后会显示功能尚未实现的提示，也不能加载 `.lgr` 或 `.lgra` 回放。
 
-最多一名。2–16 个玩家槽位中，只有第一个可以选择 `Human`，其他槽位只能选择内置 Bot。当前本地对局是自由混战，不是组队模式。
+## 自己制作的地图怎么加入游戏？
 
-## 可以使用自己的地图吗？
+使用地图编辑器保存为 `.lgmp`，将文件放在可执行文件旁的 `maps/` 目录，然后重新打开本地对局配置。地图需要有足够的出生点或空白平地，才能容纳所选玩家。
 
-可以。本地对局会从可执行文件旁的 `maps/` 目录发现有效 `.lgmp`。地图编辑器可以打开 `.lg`、`.lgmp` 与官方地图 JSON，但只能保存为 `.lg` 或 `.lgmp`。所选地图必须为所有玩家提供足够的出生点或空白平地。
+地图编辑器还能读取旧版 `.lg` 和 generals.io 地图 JSON，但只能保存为 `.lg` 或 `.lgmp`。想用于当前本地对局时，选择 `.lgmp`。详见[地图编辑器]({{< relref "docs/map-creator" >}})和[文件格式]({{< relref "docs/associated-files" >}})。
 
-## LocalGen 需要联网吗？
+## 启动时提示找不到字体，怎么办？
 
-离线对局、本地地图编辑与模拟器都不需要。地图编辑器中可选的 “Import from Generals.io” 操作会请求公开地图 API，因此该操作需要网络。
+先检查程序包是否完整解压，`fonts/` 是否仍和可执行文件放在一起。应用会从这里读取三个 Quicksand 字体文件。`maps/` 也请一起保留。对于 DMG 或 AppImage，保持应用包的内部结构即可。
 
-## 可以用 Python 编写 Bot，或运行外部 Bot 进程吗？
+## Linux AppImage 提示缺少 OpenGL 运行库，怎么办？
 
-暂不支持。v6 目前只支持随 LocalGen 提供的 C++17 Bot，不支持 Python 客户端或外部 Bot 进程。
+在 Debian 或 Ubuntu 上，可以安装 `libopengl0`。其他发行版请按系统的包管理方式安装对应 OpenGL 运行库。若问题仍然存在，反馈时附上完整报错、发行版和处理器架构。
 
-## 模拟器实验可以复现吗？
+## 可以用 Python 写 Bot 吗？
 
-不能精确复现。当前命令行没有种子选项，地图种子来自系统随机源。你可以记录全部选项并运行足够多的比赛，但不应把两次调用描述为确定性复现。
+当前版本使用与应用一起编译的 C++20 Bot，还没有 Python 客户端或外部 Bot 进程接口。[Bot 介绍]({{< relref "bots" >}})和[贡献指南]({{< relref "docs/bot-contributions" >}})可以帮助你开始。
 
-## v6 设置保存在什么位置？
+## 两次模拟器实验会得到相同结果吗？
 
-v6 目前不会保存设置，重新启动后需要再次配置。本地对局选项只在本次运行中有效。
+通常不会。当前命令行没有设置随机种子的选项，随机地图种子来自系统随机源。记录源码版本、完整命令、地图和运行环境，增加对局数量，有助于比较实验，但不能保证逐局复现。
 
-## 应该去哪里报告 Bug 或提出功能建议？
+## 设置会在重启后保留吗？声音选项有效吗？
 
-- [GitHub Issues](https://github.com/SZXC-WG/LocalGen-new/issues)
-- [GitHub Discussions](https://github.com/SZXC-WG/LocalGen-new/discussions)
-- [贡献指南]({{< relref "contribute" >}})
-- [行为准则]({{< relref "docs/code-of-conduct" >}})
-- [提交规范]({{< relref "docs/commit-regulations" >}})
-- [Bot 贡献流程]({{< relref "docs/bot-contributions" >}})
+当前 v6 尚未实现设置持久化，重新启动后需要再次配置。界面虽有 **Enable sounds** 选项，声音播放也尚未接入。
+
+## LocalGen 是 generals.io 官方项目吗？
+
+不是。LocalGen 是独立的社区开源项目，与 generals.io 及其开发者没有官方关系。相关说明见[免责声明]({{< relref "disclaimer" >}})。
+
+## 还有问题，去哪里反馈？
+
+欢迎在 [GitHub Issues](https://github.com/SZXC-WG/LocalGen-new/issues)提交 Bug 或建议。带上应用版本、操作系统、复现步骤和截图，会让问题更容易得到帮助。想直接参与改进，可以阅读[参与贡献]({{< relref "contribute" >}})。

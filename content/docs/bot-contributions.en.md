@@ -1,57 +1,77 @@
 ---
-title: "Bot Contributions"
-description: "Add, test, and propose a built-in C++ Bot for LocalGen v6."
-date: 2026-04-06T17:55:07+08:00
-draft: false
-weight: 20
+title: "Build and contribute a bot"
+description: "Connect your strategy to LocalGen, test it in matches and the simulator, and prepare a contribution."
+weight: 70
+doc_group: develop
 ---
 
-Before you begin, read [`CONTRIBUTING.md`](https://github.com/SZXC-WG/LocalGen-new/blob/master/CONTRIBUTING.md) and the [Bot guide](https://github.com/SZXC-WG/LocalGen-new/blob/master/src/bots/README.md).
+You can add a new bot, improve an existing strategy, fix a bug, or reduce calculation time. Current v6 bots are C++ implementations compiled directly into the program. The same implementation runs in Local Game and the simulator.
 
-## Supported integration today
+First complete a build using [getting started]({{< relref "docs/getting-started" >}}), then read the project's [contribution guide](https://github.com/SZXC-WG/LocalGen-new/blob/master/CONTRIBUTING.md) and [bot directory guide](https://github.com/SZXC-WG/LocalGen-new/blob/master/src/bots/README.md). Some older instructions are still being updated; the API and registration method below follow the current source.
 
-LocalGen v6 currently accepts **Bots built directly into the application**. External executables, arbitrary-language clients, and network Bot protocols are not supported yet.
+## Create an implementation file
 
-A built-in bot is available to both Local Game and `LocalGen-bot-simulator` because both targets compile the same `LOCALGEN_BOT_SOURCES` list.
-
-## Build your Bot
-
-1. Create one uniquely named `src/bots/MyBot.cpp` file using C++17.
-2. Include `src/core/bot.h`.
-3. Derive your class from `BasicBot`.
-4. Implement both required methods:
-   - `init(index_t playerId, const GameConstantsPack& constants)`
-   - `requestMove(const BoardView& boardView, const std::vector<RankItem>& rank)`
-5. Register a unique runtime name with the current pattern:
+Create a uniquely named `.cpp` under `src/bots/` and keep your implementation in that file. The project currently requires **C++20**. Inherit from `BasicBot` and implement both required methods:
 
 ```cpp
+#include "core/bot.h"
+#include "core/game.hpp"
+
+class MyBot : public BasicBot {
+public:
+    void init(index_t playerId,
+              const GameConstantsPack& constants) override {
+        // Store the player identity and initialize this match's state.
+    }
+
+    void requestMove(const BoardView& boardView,
+                     const std::vector<RankItem>& rank) override {
+        // Use the current view and ranking to add actions to moveQueue.
+    }
+};
+
 static BotRegistrar<MyBot> myBotRegistrar("MyBot");
 ```
 
-6. Add `src/bots/MyBot.cpp` to `LOCALGEN_BOT_SOURCES` in the top-level `CMakeLists.txt`.
-7. Build both Debug and Release configurations.
+This skeleton demonstrates the interface; it does not yet contain a strategy. `core/bot.h` resolves to `src/core/bot.h` through the project's existing include directories.
 
-Use `BotRegistrar` to register a Bot; the older `REGISTER_BOT` pattern is no longer supported.
+`init()` receives the player ID and rule constants for the match. `requestMove()` receives the current board view and ranking. Add planned moves to the inherited `moveQueue`. To handle game events, you can also override `onWin`, `onCapture`, `onSurrender`, and `onText`.
 
-## Evaluate before proposing
+## Register and include it in the build
 
-Test on multiple map sizes, authored maps, opponent combinations, and player counts. A useful report includes:
+Register a unique runtime name with `BotRegistrar`. The current API has no `REGISTER_BOT` macro. Capitalization and spaces in the registered name are preserved in menus and command-line arguments.
 
-- exact simulator command lines;
-- number of games and half-turn limit;
-- random versus named `.lgmp` maps;
-- win rate, TrueSkill, average rank, and kills;
-- `--latency` results for performance-sensitive logic;
-- known failure modes and memory/per-turn complexity.
+Add your source to `LOCALGEN_BOT_SOURCES` in the top-level `CMakeLists.txt`, keeping the existing entries:
 
-Simulator runs are not seed-reproducible today, so use enough games and avoid presenting a single batch as deterministic proof.
+```cmake
+set(LOCALGEN_BOT_SOURCES
+    # Keep the existing bot source files here.
+    src/bots/MyBot.cpp
+)
+```
 
-## Pull request expectations
+The desktop app and simulator share this list. After rebuilding, check that `MyBot` appears in Local Game, then run an evaluation:
 
-- Explain the strategy and rough worst-case per-turn complexity.
-- Keep code readable, documented where needed, and within C++17.
-- Avoid a pure random-move placeholder.
-- Verify long matches do not show obvious leaks or unbounded work.
-- Update the bot roster documentation when enabling the new source.
+```bash
+./LocalGen-bot-simulator --games 50 --steps 1000 --latency --bots MyBot GcBot
+```
 
-See [Built-in Bots]({{< relref "docs/built-in-bots" >}}) for the current roster and [Simulator Guide]({{< relref "docs/simulator-guide" >}}) for all evaluation options.
+## Test your strategy
+
+Build both Debug and Release, and use Release for performance comparisons. Alongside default random maps, try different dimensions, custom maps, several opponents, and different player counts. Check memory use and calculation time in long games so state does not grow without bounds.
+
+A useful evaluation report includes:
+
+- the exact command, source revision, and build environment;
+- match count, half-turn limit, and map dimensions or the chosen `.lgmp`;
+- win rate, OpenSkill, average rank, and kills;
+- execution time measured with `--latency`;
+- known failure cases, worst-case per-turn complexity, and memory needs.
+
+The simulator has no seed option, and a fixed map does not guarantee identical runs. Use several sufficiently large batches when describing a strategy. The [simulator guide]({{< relref "docs/simulator-guide" >}}) explains the output in detail.
+
+## Prepare a pull request
+
+Describe the problem your strategy addresses, its main approach, and your test results. Keep the code readable and explain decisions where they are difficult to infer. Update the bot roster documentation too. The project welcomes deliberate strategies; a random-move placeholder is not suitable as a finished bot contribution.
+
+Development contributions target the v6 `master` branch. External executable bots, arbitrary-language clients, and network bot protocols are not yet connected in this version.

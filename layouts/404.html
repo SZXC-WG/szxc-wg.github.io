@@ -1,0 +1,10 @@
+{{ define "main" }}
+<section class="container not-found">
+<p class="eyebrow">404</p>
+<h1>{{ i18n "not_found_title" }}</h1>
+<p class="lead">{{ i18n "not_found_summary" }}</p>
+<div class="hero-actions">
+<a class="button button-primary" href="{{ .Site.Home.RelPermalink }}">{{ i18n "return_home" }}</a>
+<a class="button button-text" href="{{ "docs/" | relLangURL }}">{{ i18n "explore_docs" }} ↗</a>
+</div>
+</section>{{ end }}

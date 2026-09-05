@@ -1,55 +1,44 @@
-{{ $title := cond .IsHome .Site.Title (printf "%s · %s" .Title .Site.Title) }}
-{{ $description := .Description | default .Summary | default .Site.Params.description }}
+{{ $title := cond .IsHome .Title (printf "%s · %s" .Title .Site.Title) }}
+{{ $description := .Description | default (.Summary | plainify) | default .Site.Params.description }}
 {{ $style := resources.Get "css/main.css" | minify | fingerprint }}
 {{ $script := resources.Get "js/site.js" | minify | fingerprint }}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{{ $description }}">
-<meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#101318">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff">
 <script>
-	(() => {
-		try {
-			const stored = localStorage.getItem("localgen-theme");
-			const theme = stored || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-			document.documentElement.dataset.theme = theme;
-			document.documentElement.style.colorScheme = theme;
-		} catch (_) {
-			document.documentElement.dataset.theme = "dark";
-		}
-	})();
+  (() => {
+    let theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    try {
+      const stored = localStorage.getItem("localgen-theme");
+      if (stored === "light" || stored === "dark") theme = stored;
+    } catch {}
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    document.querySelector('meta[name="theme-color"]').content = theme === "dark" ? "#14171e" : "#ffffff";
+  })();
 </script>
 <title>{{ $title }}</title>
 <link rel="canonical" href="{{ .Permalink }}">
+{{ $defaultURL := .Site.Home.Permalink }}
 {{ range .AllTranslations }}
 <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+{{ if eq .Language.Lang "en" }}{{ $defaultURL = .Permalink }}{{ end }}
 {{ end }}
-{{ $defaultSite := index (sort hugo.Sites "Language.Weight") 0 }}
-<link rel="alternate" hreflang="x-default" href="{{ $defaultSite.Home.Permalink }}">
+<link rel="alternate" hreflang="x-default" href="{{ $defaultURL }}">
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
-<link rel="alternate icon" href="{{ "favicon.png" | relURL }}" type="image/png">
 <link rel="apple-touch-icon" href="{{ "favicon.png" | relURL }}">
 <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
-{{ if strings.Contains .RawContent "$" }}
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    };
-  </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-{{ end }}
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:locale" content="{{ replace (.Site.Language.Locale | default .Site.Language.Lang) "-" "_" }}">
+<meta property="og:locale" content="{{ replace .Site.Language.Locale "-" "_" }}">
 <meta name="twitter:card" content="summary">
+<noscript><style>
+.theme-toggle,.nav-toggle{display:none!important}
+@media(max-width:800px){.site-header{height:auto;position:static}.header-inner{flex-wrap:wrap;padding-top:20px;gap:0}.header-actions{display:block;position:static;padding:8px 0 20px;box-shadow:none;border:0;max-height:none;width:100%;flex-basis:100%}.main-nav{flex-direction:row;flex-wrap:wrap;gap:22px}.utility-cluster{margin-top:0}}
+</style></noscript>
 <script defer src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>

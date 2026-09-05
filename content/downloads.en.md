@@ -1,38 +1,39 @@
 ---
-title: "Downloads"
-description: "Download LocalGen for your platform or build the Qt app yourself."
-date: 2026-04-06T17:54:16+08:00
+title: "Download LocalGen"
+description: "Find the right build for your computer and start your first local match."
 draft: false
+layout: downloads
 weight: 20
 ---
 
-## Published builds
+Release notes and downloads live on [GitHub Releases](https://github.com/SZXC-WG/LocalGen-new/releases). Choose a release, then find the file for your operating system and processor under **Assets**.
 
-Find the latest LocalGen release notes and downloads on GitHub Releases:
+**Check the version if you want the features described here.** This site covers the v6 development branch; older releases can have different interfaces and file formats. Versions marked `-dev` or labeled as prereleases are still in development. You can also browse this site's [release history]({{< relref "releases" >}}).
 
-- [Open LocalGen Releases on GitHub](https://github.com/SZXC-WG/LocalGen-new/releases)
-- [Browse the release timeline on this site]({{< relref "releases" >}})
+## Choose a file
 
-Read the notes attached to a release before downloading. `6.0.0-dev` is the in-progress development version, not a stable installer.
+| System | Processor | File type |
+| --- | --- | --- |
+| Windows | x86_64 for most Intel / AMD PCs; ARM64 for ARM PCs | `.zip` |
+| macOS | x86_64 for Intel; ARM64 for Apple silicon | `.dmg` |
+| Linux | x86_64 or ARM64, matching your system | `.AppImage` |
 
-## Build targets
+These are the current continuous-integration packaging targets; **individual releases may offer only some of them**. Windows builds may also distinguish MSVC, MinGW, and LLVM-MinGW. Follow the asset names and release notes.
 
-| Platform | Current packaging targets |
-| --- | --- |
-| Linux | x86_64 and ARM64 AppImage |
-| macOS | Intel and Apple silicon DMG |
-| Windows | x86_64 and ARM64 MSVC ZIP; x86_64 MinGW and LLVM-MinGW ZIP |
+To play the game, choose an application package. GitHub's automatic **Source code** archives require you to compile the project yourself.
 
-Availability varies by release, so check the file list before downloading. If a Linux AppImage reports a missing OpenGL runtime on Debian or Ubuntu, install `libopengl0`.
+## Open the app
 
-## After extracting or installing
+- **Windows:** Extract the whole ZIP and run `LocalGen-new.exe`. Keep its dependency files and the `maps/` and `fonts/` folders together.
+- **macOS:** Open the DMG, copy the application to your computer as indicated, and launch it.
+- **Linux:** Give the AppImage execute permission, then run it. If Debian or Ubuntu reports a missing OpenGL runtime, install `libopengl0`.
 
-Keep the packaged `maps/` and `fonts/` directories beside the desktop executable. Local Game discovers `.lgmp` files from that `maps/` directory, and the app expects the bundled Quicksand font files at startup.
+In v6, choose **Local Game** to set up an offline match. [Your first local game]({{< relref "docs/local-game" >}}) introduces the maps, players, and controls.
 
-With v6 you can start an offline local match or open Map Creator. Web Game and replay loading are not ready yet, even though their buttons are visible.
+## Use a development build
 
-## Build the development version
+The source repository's [Qt Build workflow](https://github.com/SZXC-WG/LocalGen-new/actions/workflows/qt-build.yml) builds the development branch and uploads packages after successful runs. These artifacts reflect a particular commit and are managed separately from published releases.
 
-Building requires Qt 6.7+, CMake 3.19+, Ninja 1.10+, and a C++17 compiler. See [Getting Started]({{< relref "docs/getting-started" >}}) for the exact configure, build, run, and packaging commands.
+To build locally, prepare a C++20 compiler, Qt 6.7+, CMake 3.19+, and Ninja 1.10+, then follow [Installation and building]({{< relref "docs/getting-started" >}}). **Build from source for the bot simulator too:** the current CI desktop packages do not include its executable.
 
-For current feature answers before downloading, read the [FAQ]({{< relref "faq" >}}).
+For launch or version problems, check the [FAQ]({{< relref "faq" >}}). If you need help, report your operating system, app version, and error details in [GitHub Issues](https://github.com/SZXC-WG/LocalGen-new/issues).

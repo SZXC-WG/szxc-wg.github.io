@@ -1,49 +1,16 @@
 [[main]]
-  name = '下载'
-  pageRef = '/downloads'
-  weight = 10
-
-[[main]]
   name = '文档'
   pageRef = '/docs'
-  weight = 20
-
+  weight = 10
 [[main]]
   name = 'Bot'
   pageRef = '/bots'
-  weight = 30
-
+  weight = 20
 [[main]]
   name = '模拟器'
   pageRef = '/simulator'
-  weight = 40
-
-[[main]]
-  name = '项目简介'
-  pageRef = '/about'
-  weight = 50
-
-[[main]]
-  name = '参与贡献'
-  pageRef = '/contribute'
-  weight = 60
-
-[[footer]]
-  name = '版本发布'
-  pageRef = '/releases'
-  weight = 10
-
-[[footer]]
-  name = '贡献者'
-  pageRef = '/contributors'
-  weight = 20
-
-[[footer]]
-  name = '常见问题'
-  pageRef = '/faq'
   weight = 30
-
-[[footer]]
-  name = '免责声明'
-  pageRef = '/disclaimer'
+[[main]]
+  name = '关于'
+  pageRef = '/about'
   weight = 40

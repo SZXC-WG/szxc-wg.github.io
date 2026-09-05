@@ -1,222 +1,77 @@
 {{ define "main" }}
-{{ $project := hugo.Data.project }}
-{{ $releases := hugo.Data.releases.items | default (slice) }}
-{{ $contributors := hugo.Data.contributors.items | default (slice) }}
-{{ $downloadsURL := "downloads/" | relLangURL }}
-{{ $buildURL := "docs/getting-started/" | relLangURL }}
-
-<section class="hero-section">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <div class="label-row">
-        <span class="label label-accent">{{ i18n "label_offline_first" }}</span>
-        <span class="label">Qt 6.7+</span>
-        <span class="label">{{ $project.version | default .Site.Params.projectVersion }}</span>
-      </div>
-      <p class="eyebrow">{{ i18n "hero_kicker" }}</p>
-      <h1>{{ i18n "hero_title" }}</h1>
-      <p class="lead">{{ i18n "hero_summary" }}</p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="{{ $downloadsURL }}">{{ i18n "download_now" }}</a>
-        <a class="button button-secondary" href="{{ $buildURL }}">{{ i18n "build_from_source" }}</a>
-      </div>
-      <dl class="stat-grid metric-strip">
-        <div class="stat-card"><dt>{{ i18n "stats_version" }}</dt><dd>{{ $project.version | default .Site.Params.projectVersion }}</dd></div>
-        <div class="stat-card"><dt>{{ i18n "stats_bot_count" }}</dt><dd>{{ $project.bot_count }}</dd></div>
-        <div class="stat-card"><dt>{{ i18n "stats_map_count" }}</dt><dd>{{ $project.map_count }}</dd></div>
-        <div class="stat-card"><dt>{{ i18n "stats_license" }}</dt><dd title="{{ $project.license }}">GPLv3+</dd></div>
-      </dl>
-    </div>
-
-    <aside class="game-preview-card" aria-label="{{ i18n "game_preview_alt" }}">
-      <div class="game-preview-bar">
-        <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-        <strong>LocalGen</strong>
-        <span class="status-pill status-available">{{ i18n "status_available" }}</span>
-      </div>
-      <div class="game-preview-stage">
-        <div class="board-grid" aria-hidden="true">
-          {{ range $index := seq 0 34 }}
-            {{ $class := "tile-neutral" }}
-            {{ if in (slice 1 2 7 8 9) $index }}{{ $class = "tile-blue" }}{{ end }}
-            {{ if in (slice 18 23 24 29 30) $index }}{{ $class = "tile-teal" }}{{ end }}
-            {{ if in (slice 4 11 15 26 33) $index }}{{ $class = "tile-mountain" }}{{ end }}
-            <span class="board-tile {{ $class }}">{{ if eq $index 8 }}42{{ else if eq $index 24 }}31{{ else if eq $index 16 }}12{{ end }}</span>
-          {{ end }}
-        </div>
-        <div class="game-preview-sidebar">
-          <span class="preview-turn">{{ i18n "preview_turn" }} 86</span>
-          <ol class="preview-scoreboard">
-            <li><i class="player-dot teal"></i><span>{{ i18n "human_label" }}</span><strong>128</strong></li>
-            <li><i class="player-dot blue"></i><span>GcBot</span><strong>104</strong></li>
-            <li><i class="player-dot orange"></i><span>KtqBot</span><strong>91</strong></li>
-          </ol>
-          <div class="preview-chart" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-        </div>
-      </div>
-      <p>{{ i18n "game_preview_summary" }}</p>
-    </aside>
-  </div>
+<section class="hero container">
+<div class="hero-copy">
+<p class="eyebrow">
+<span class="status-dot">
+</span> {{ i18n "hero_kicker" }}</p>
+<h1>{{ i18n "hero_line_one" }}<br>
+<span>{{ i18n "hero_line_two" }}</span>
+</h1>
+<p class="hero-description">{{ i18n "hero_summary" }}</p>
+<div class="hero-actions">
+<a class="button button-primary" href="{{ "downloads/" | relLangURL }}">{{ i18n "download_now" }} {{ partial "icon.html" "download" }}</a>
+<a class="button button-text" href="{{ "docs/" | relLangURL }}">{{ i18n "explore_docs" }} <span aria-hidden="true">↗</span>
+</a>
+</div>
+<p class="platform-note">Windows <span>·</span> macOS <span>·</span> Linux</p>
+</div>
+  {{ partial "game-board.html" . }}
 </section>
-
-<section class="page-section section-muted">
-  <div class="container">
-    <div class="section-heading status-heading">
-      <div>
-        <p class="eyebrow">{{ i18n "status_kicker" }}</p>
-        <h2>{{ i18n "status_title" }}</h2>
-      </div>
-      <p>{{ i18n "status_summary" }}</p>
-    </div>
-    <div class="status-grid">
-      <article class="status-card">
-        <span class="status-pill status-available">{{ i18n "status_available" }}</span>
-        <h3>{{ i18n "status_local_game" }}</h3>
-        <p>{{ i18n "status_local_game_summary" }}</p>
-      </article>
-      <article class="status-card">
-        <span class="status-pill status-available">{{ i18n "status_available" }}</span>
-        <h3>{{ i18n "status_map_creator" }}</h3>
-        <p>{{ i18n "status_map_creator_summary" }}</p>
-      </article>
-      <article class="status-card">
-        <span class="status-pill status-available">{{ i18n "status_available" }}</span>
-        <h3>{{ i18n "status_simulator" }}</h3>
-        <p>{{ i18n "status_simulator_summary" }}</p>
-      </article>
-      <article class="status-card status-card-muted">
-        <span class="status-pill status-planned">{{ i18n "status_not_available" }}</span>
-        <h3>{{ i18n "status_web_game" }}</h3>
-        <p>{{ i18n "status_web_game_summary" }}</p>
-      </article>
-      <article class="status-card status-card-muted">
-        <span class="status-pill status-planned">{{ i18n "status_not_available" }}</span>
-        <h3>{{ i18n "status_replays" }}</h3>
-        <p>{{ i18n "status_replays_summary" }}</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="page-section">
-  <div class="container">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">{{ i18n "project_sections" }}</p>
-        <h2>{{ i18n "choose_path" }}</h2>
-      </div>
-    </div>
-    <div class="path-grid">
-      <a class="path-card" href="{{ $downloadsURL }}">
-        <span class="path-index">01</span>
-        <h3>{{ i18n "project_downloads" }}</h3>
-        <p>{{ i18n "project_downloads_summary" }}</p>
-        <span class="path-link">{{ i18n "open_downloads" }} →</span>
-      </a>
-      <a class="path-card" href="{{ $buildURL }}">
-        <span class="path-index">02</span>
-        <h3>{{ i18n "getting_started" }}</h3>
-        <p>{{ i18n "getting_started_summary" }}</p>
-        <span class="path-link">{{ i18n "read_guide" }} →</span>
-      </a>
-      <a class="path-card" href="{{ "bots/" | relLangURL }}">
-        <span class="path-index">03</span>
-        <h3>{{ i18n "project_bots" }}</h3>
-        <p>{{ i18n "project_bots_summary" }}</p>
-        <span class="path-link">{{ i18n "view_bots" }} →</span>
-      </a>
-      <a class="path-card" href="{{ "simulator/" | relLangURL }}">
-        <span class="path-index">04</span>
-        <h3>{{ i18n "project_simulator" }}</h3>
-        <p>{{ i18n "project_simulator_summary" }}</p>
-        <span class="path-link">{{ i18n "open_simulator_docs" }} →</span>
-      </a>
-    </div>
-    {{ with .Content }}
-      <div class="home-intro prose">{{ . }}</div>
+<div class="container">
+<div class="project-strip">
+<span>{{ i18n "project_identity" }}</span>
+<span>C++20 <i>/</i> Qt 6 <i>/</i> {{ i18n "open_source" }}</span>
+<a href="{{ .Site.Params.sourceRepo }}">GitHub {{ partial "icon.html" "arrow-up-right" }}</a>
+</div>
+</div>
+<section class="container home-features">
+<div class="section-heading">
+<div>
+<p class="eyebrow">{{ i18n "possibilities" }}</p>
+<h2>{{ i18n "possibilities_title" }}</h2>
+</div>
+<p>{{ i18n "possibilities_summary" }}</p>
+</div>
+<div class="feature-grid">
+    {{ range slice (dict "number" "01" "icon" "flag" "title" "feature_play_title" "summary" "feature_play_summary" "link" "feature_play_link" "href" "docs/local-game/") (dict "number" "02" "icon" "grid" "title" "feature_map_title" "summary" "feature_map_summary" "link" "feature_map_link" "href" "docs/map-creator/") (dict "number" "03" "icon" "terminal" "title" "feature_bot_title" "summary" "feature_bot_summary" "link" "feature_bot_link" "href" "simulator/") }}
+    <a class="feature-card" href="{{ .href | relLangURL }}">
+<div class="feature-top">{{ partial "icon.html" .icon }}<span>{{ .number }}</span>
+</div>
+<h3>{{ i18n .title }}</h3>
+<p>{{ i18n .summary }}</p>
+<span class="text-link">{{ i18n .link }} <span aria-hidden="true">→</span>
+</span>
+</a>
     {{ end }}
   </div>
 </section>
-
-<section class="page-section section-muted">
-  <div class="container route-grid">
-    <article class="route-card">
-      <p class="eyebrow">{{ i18n "current_source" }}</p>
-      <h2>{{ i18n "branch_v6_title" }}</h2>
-      <p>{{ i18n "branch_v6_summary" }}</p>
-      <ul class="feature-list compact">
-        <li>Qt 6.7+ · CMake 3.19+ · Ninja 1.10+</li>
-        <li>{{ i18n "branch_v6_feature_bots" }}</li>
-        <li>{{ i18n "branch_v6_feature_platforms" }}</li>
-      </ul>
-      <a class="button button-secondary" href="{{ $buildURL }}">{{ i18n "build_from_source" }}</a>
-    </article>
-    <article class="route-card">
-      <p class="eyebrow">{{ i18n "published_builds" }}</p>
-      <h2>{{ i18n "releases_route_title" }}</h2>
-      <p>{{ i18n "releases_route_summary" }}</p>
-      <ul class="feature-list compact">
-        <li>{{ i18n "branch_release" }}</li>
-        <li>{{ i18n "linux_opengl_note" }}</li>
-        <li>{{ i18n "branch_v5" }}</li>
-      </ul>
-      <a class="button button-secondary" href="{{ "releases/" | relLangURL }}">{{ i18n "all_releases" }}</a>
-    </article>
-  </div>
+<section class="guide-band">
+<div class="container guide-band-inner">
+<div>
+<p class="eyebrow">{{ i18n "start_here" }}</p>
+<h2>{{ i18n "guide_band_title" }}</h2>
+<p>{{ i18n "guide_band_summary" }}</p>
+</div>
+<div class="guide-steps">{{ range slice (dict "n" "1" "title" "step_download" "href" "downloads/") (dict "n" "2" "title" "step_play" "href" "docs/local-game/") (dict "n" "3" "title" "step_explore" "href" "docs/") }}<a href="{{ .href | relLangURL }}">
+<span>{{ .n }}</span>
+<strong>{{ i18n .title }}</strong>{{ partial "icon.html" "arrow-right" }}</a>{{ end }}</div>
+</div>
 </section>
-
-<section class="page-section">
-  <div class="container">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">{{ i18n "featured_releases" }}</p>
-        <h2>{{ i18n "release_notes" }}</h2>
-      </div>
-      <a href="{{ "releases/" | relLangURL }}">{{ i18n "all_releases" }}</a>
-    </div>
-    {{ if gt (len $releases) 0 }}
-      <div class="card-grid">
-        {{ range first 3 $releases }}
-          <article class="card release-card compact">
-            <div class="card-meta">
-              <span class="badge {{ if .prerelease }}badge-preview{{ else }}badge-stable{{ end }}">{{ if .prerelease }}{{ i18n "release_prerelease" }}{{ else }}{{ i18n "release_stable" }}{{ end }}</span>
-              <span>{{ .tag_name }}</span>
-            </div>
-            <h3>{{ .name }}</h3>
-            <p class="muted">{{ time.Format ":date_medium" (time.AsTime .published_at) }}</p>
-            <p class="release-notes-preview">{{ partial "release-notes-preview.html" (.body | default .summary) | truncate 170 }}</p>
-            <a href="{{ .html_url }}">{{ i18n "release_notes" }}</a>
-          </article>
-        {{ end }}
-      </div>
-    {{ else }}
-      <p>{{ i18n "release_empty" }}</p>
-    {{ end }}
-  </div>
-</section>
-
-<section class="page-section section-muted">
-  <div class="container">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">{{ i18n "community" }}</p>
-        <h2>{{ i18n "contributors_title" }}</h2>
-      </div>
-      <a href="{{ "contributors/" | relLangURL }}">{{ i18n "all_contributors" }}</a>
-    </div>
-    {{ if gt (len $contributors) 0 }}
-      <div class="contributor-grid contributor-grid-compact">
-        {{ range first 6 $contributors }}
-          <article class="contributor-card">
-            <img src="{{ .avatar_url }}" alt="{{ printf (i18n "contributor_avatar") .login }}" loading="lazy">
-            <h3 class="contributor-name"><a href="{{ .html_url }}">{{ .login }}</a></h3>
-            <p>{{ .contributions }} {{ i18n "contributions_label" }}</p>
-          </article>
-        {{ end }}
-      </div>
-    {{ else }}
-      <p>{{ i18n "contributors_empty" }}</p>
-    {{ end }}
-  </div>
+<section class="container home-community">
+<div>
+<p class="eyebrow">{{ i18n "community" }}</p>
+<h2>{{ i18n "community_title" }}</h2>
+<p>{{ i18n "community_summary" }}</p>
+<div class="hero-actions">
+<a class="text-link" href="{{ "contribute/" | relLangURL }}">{{ i18n "join_project" }} <span aria-hidden="true">→</span>
+</a>
+<a class="subtle-link" href="{{ "contributors/" | relLangURL }}">{{ i18n "all_contributors" }}</a>
+</div>
+</div>
+<div class="community-note">
+<span class="note-mark" aria-hidden="true">{ }</span>
+<p>{{ i18n "community_note" }}</p>
+<a class="text-link" href="{{ .Site.Params.sourceRepo }}">SZXC-WG / LocalGen-new {{ partial "icon.html" "arrow-up-right" }}</a>
+</div>
 </section>
 {{ end }}

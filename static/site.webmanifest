@@ -1,23 +1,17 @@
 {
-  "name": "Local Generals.io",
+  "name": "LocalGen",
   "short_name": "LocalGen",
-  "description": "Play generals.io completely offline!",
+  "description": "Offline strategy, map making, and bot experiments.",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
-    },
-    {
-      "src": "/favicon.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
     }
   ],
-  "theme_color": "#101318",
-  "background_color": "#101318",
-  "display": "standalone",
-  "start_url": "/"
+  "theme_color": "#3d5fe3",
+  "background_color": "#ffffff",
+  "display": "browser",
+  "start_url": "./"
 }

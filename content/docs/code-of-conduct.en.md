@@ -1,78 +1,48 @@
 ---
-title: "Code of Conduct"
-description: "Community standards adapted from the Contributor Covenant for the LocalGen project."
-date: 2026-04-06T17:55:07+08:00
-draft: false
-weight: 10
+title: "Community guidelines"
+description: "Make room for everyone to ask questions, discuss ideas, and contribute with confidence."
+weight: 100
+doc_group: develop
 ---
 
-You can also [read the Code of Conduct on GitHub](https://github.com/SZXC-WG/LocalGen-new/blob/master/CODE_OF_CONDUCT.md).
+Whether this is your first question or you have maintained LocalGen for years, you should be treated with respect. This page explains the project's community standards. The complete policy is the [Code of Conduct on GitHub](https://github.com/SZXC-WG/LocalGen-new/blob/master/CODE_OF_CONDUCT.md).
 
-## Our pledge
+## Our commitment
 
-Members, contributors, and leaders of the LocalGen community pledge to make participation a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, appearance, race, religion, or sexual identity and orientation.
+Members, contributors, and maintainers commit to a harassment-free community for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, experience, education, socio-economic background, nationality, appearance, race, religion, or sexual identity and orientation.
 
-We aim to build an open, welcoming, diverse, inclusive, and healthy community.
+We want this community to remain open, welcoming, diverse, inclusive, and healthy.
 
-## Expected behavior
+## How we work together
 
-Positive community behavior includes:
+- Treat others with empathy and kindness, and respect different viewpoints and experiences.
+- Offer constructive feedback and give others' suggestions fair consideration.
+- Take responsibility for mistakes, apologize to those affected, and learn from the experience.
+- Consider the interests of the wider community when discussing decisions.
 
-- showing empathy and kindness
-- respecting different viewpoints and experiences
-- accepting constructive feedback gracefully
-- taking responsibility for mistakes and learning from them
-- focusing on what is best for the community as a whole
+Sexualized language or imagery and unwanted sexual attention are unacceptable, as are trolling, insults, personal or political attacks, and public or private harassment. Do not disclose private information, including addresses or email addresses, without explicit permission. Other behavior reasonably considered inappropriate in a professional setting is also covered.
 
-## Unacceptable behavior
+## Scope and moderation
 
-The project does not accept:
+The policy applies in all project community spaces and when officially representing the community in public. Examples include using an official email address or social account, or attending an online or offline event as an appointed representative.
 
-- sexualized language or imagery
-- trolling, insults, or personal or political attacks
-- public or private harassment
-- publishing another person’s private information without permission
-- other behavior that would reasonably be considered inappropriate in a professional setting
+Community leaders explain and enforce these standards. They may remove, edit, or reject comments, code, commits, issues, wiki edits, and other contributions that conflict with the policy, and communicate their reasons when appropriate.
 
-## Enforcement responsibilities
+## Report a concern
 
-Community leaders are responsible for clarifying and enforcing these standards. They may remove, edit, or reject comments, commits, code, wiki edits, issues, or other contributions that conflict with this code of conduct.
+Report harassment, abuse, or other unacceptable behavior to **`lzhang0903@outlook.com`**. Community leaders will review and investigate complaints promptly and fairly, and must respect the reporter's privacy and security.
 
-## Scope
+## How violations are handled
 
-This code of conduct applies inside project spaces and when someone is representing the community in public spaces.
+Leaders consider the impact of the behavior when deciding on a response:
 
-## Reporting
-
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to:
-
-- `lzhang0903@outlook.com`
-
-Complaints will be reviewed and investigated promptly and fairly, with respect for the reporter’s privacy and security.
-
-## Enforcement ladder
-
-### 1. Correction
-
-- **Impact:** minor inappropriate behavior
-- **Consequence:** a private written warning and clarification
-
-### 2. Warning
-
-- **Impact:** a more serious or repeated violation
-- **Consequence:** a formal warning and temporary restrictions on interaction
-
-### 3. Temporary ban
-
-- **Impact:** serious misconduct or sustained inappropriate behavior
-- **Consequence:** a temporary ban from community interaction
-
-### 4. Permanent ban
-
-- **Impact:** a pattern of serious violations, harassment, or aggression toward individuals or classes of people
-- **Consequence:** permanent removal from community interaction
+| Level | Situation | Response |
+| --- | --- | --- |
+| Correction | Unprofessional or unwelcome language or behavior | A private written warning explaining the concern; a public apology may be requested |
+| Warning | A violation through one incident or a series of actions | A formal warning and a specified period without interaction with those involved, including outside channels; further violations may lead to a ban |
+| Temporary ban | Serious or sustained misconduct | No public or private interaction with the community or those involved for a specified period; further violations may lead to a permanent ban |
+| Permanent ban | A pattern of serious violations, harassment, or hostility toward groups | Permanent exclusion from public community interaction |
 
 ## Attribution
 
-This policy is adapted from the **Contributor Covenant**, version 2.0.
-
+The project adopts **Contributor Covenant 2.0**, with enforcement levels informed by Mozilla's enforcement ladder. The complete project policy links to the original text, FAQs, and translations.

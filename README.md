@@ -1,53 +1,90 @@
 # LocalGen project website
 
-This repository hosts the bilingual **Hugo** website and English/Chinese guides for **Local Generals.io (LocalGen)**.
+The project overview, downloads, and English/Chinese documentation for **LocalGen**, built with **Hugo** and deployed to [GitHub Pages](https://szxc-wg.github.io/) through **GitHub Actions**.
 
-Repository:
+The guides cover [LocalGen v6](https://github.com/SZXC-WG/LocalGen-new) and were checked against source commit `34b2a5c`. Feature descriptions follow the implementation; check each release's notes for differences in packaged builds.
 
-- <https://github.com/SZXC-WG/szxc-wg.github.io>
+## Local preview
 
-Published site:
+Install **Hugo Extended 0.165.0**. GitHub Actions is pinned to the same version as the current local installation.
 
-- <https://szxc-wg.github.io/>
-
-## What the site includes
-
-- English and Chinese content through Hugo bilingual mode
-- a feature overview with clear notes about tools still in development
-- download, source-build, first-game, controls, and Map Creator guides
-- the current built-in Bot roster and complete simulator reference
-- a compact release archive and contributor roster
-- GitHub Pages deployment workflow
-
-## Local development
-
-Hugo is required locally. Once installed, run:
-
-```text
+```sh
 hugo server
 ```
 
-or build a production version with:
+Open the address printed in your terminal. The English homepage is at `/`, and the Chinese homepage is at `/zh/`. The language switch opens the translation of the current page.
 
-```text
-hugo build --gc --minify
+## Build and validate
+
+```sh
+hugo build --gc --minify --panicOnWarning --printI18nWarnings --printPathWarnings
+python scripts/check_site.py public
 ```
 
-## Data refresh
+Generated files go into `public/` and should not be committed. The checker uses only the Python standard library and runs without network access. It checks internal links, anchors, local assets, duplicate IDs, and reciprocal English/Chinese translations. Visual layout and interactions still need browser review.
 
-Release and contributor data is generated into the `data/` directory by:
+## Project structure
 
-- `scripts/sync_localgen.py`
+| Location | Purpose |
+| --- | --- |
+| `content/` | Homepage, downloads, bots, simulator, about, and community pages |
+| `content/docs/` | User and developer guides, with matching `.en.md` and `.zh.md` files |
+| `layouts/` | Hugo page templates and shared components |
+| `assets/css/main.css` | Themes, responsive layouts, article typography, and print styles |
+| `assets/js/site.js` | Theme switching, mobile navigation, the docs menu, and code copying |
+| `i18n/` | English and Chinese interface text |
+| `data/` | Project, release, contributor, and bot snapshots |
+| `static/` | Icons and local fonts, including the font license |
 
-The site ships with seeded public data for local development. On GitHub Actions, the workflow runs the sync script with `GITHUB_TOKEN` so the published site stays fresh.
+## Writing documentation
 
-For authenticated local refreshes, copy `.env.example` to `.env` and set either `GITHUB_TOKEN` or `GH_TOKEN` before running the sync script.
+Organize guides around what readers want to do. Add both language versions under the same base filename, with front matter such as:
 
-## Workflows
+```yaml
+---
+title: "Your guide title"
+description: "Explain what this guide helps the reader accomplish."
+doc_group: play
+weight: 35
+---
+```
 
-- `hugo.yaml` — builds and deploys the site to the root `szxc-wg.github.io` GitHub Pages environment
-- `sync-localgen-data.yaml` — refreshes project metadata on demand or on a schedule
+Use one of these `doc_group` values:
 
-## GitHub Pages setup
+- `start`: getting started.
+- `play`: playing and exploring the tools.
+- `develop`: contributing to the project.
 
-In the repository settings for `SZXC-WG/szxc-wg.github.io`, set **Pages → Source** to **GitHub Actions**. The committed workflow then handles the full build and deployment process.
+The `weight` sets the order within each group and the previous/next navigation. Keep weights increasing across the three groups.
+
+Use Hugo's `relref` for internal links so the build can catch missing targets. Give frequently linked headings an explicit ID, such as `## Prepare a build environment {#build}`, to keep their anchors stable when titles change.
+
+Write clear, friendly instructions. Start with the steps readers need, then explain parameters, behavior, and limitations. Describe unfinished features as unfinished.
+
+## Refreshing project data
+
+Normal builds use committed snapshots and do not call the GitHub API. To refresh them:
+
+```sh
+python scripts/sync_localgen.py
+```
+
+The script updates GitHub release and contributor metadata while preserving manually checked facts about the project version, toolchain, maps, and bots. It changes files and timestamps only when the underlying data changes.
+
+For authenticated requests, set `GITHUB_TOKEN` or `GH_TOKEN` in your terminal's environment. The script does not load `.env` automatically. Keep tokens out of the repository.
+
+The downloads page selects the release GitHub marks as latest and creates platform and architecture links from its actual assets. Preview labels check both GitHub's prerelease flag and version markers such as alpha, beta, rc, preview, and dev.
+
+## Deployment with GitHub Actions
+
+In the repository settings, select **Settings → Pages → Source → GitHub Actions**.
+
+- `hugo.yaml` builds and validates pull requests targeting `main`. Pushes to `main` and manual runs on `main` also deploy the validated site to GitHub Pages.
+- `sync-localgen-data.yaml` refreshes metadata every Monday at 03:00 UTC, or on demand. When data changes, it commits to `main` and explicitly triggers deployment. Unchanged data produces no commit.
+- The sync workflow uses the repository's `GITHUB_TOKEN` with `contents: write` and `actions: write`. If branch protection prevents direct bot pushes, adapt the update process to the repository's policy.
+
+The site uses `https://szxc-wg.github.io/`. If the domain or deployment subpath changes, update `baseURL` in `config/_default/hugo.toml` and pass the same URL to the checker through `--base-url`.
+
+## Licensing
+
+This website repository does not currently declare a repository-wide license. The LocalGen application source uses GPL-3.0-or-later, and the bundled Quicksand fonts use SIL OFL 1.1. These licenses do not automatically cover all website content. See the website's license page and individual resource notices.

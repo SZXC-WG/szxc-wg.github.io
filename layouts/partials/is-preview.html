@@ -1,0 +1,2 @@
+{{- $tag := .tag_name | default "" -}}
+{{- return (or .prerelease (gt (len (findRE "(?i)(^|[._-])(alpha|beta|rc|preview|dev)($|[._0-9-])" $tag)) 0)) -}}

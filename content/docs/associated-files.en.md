@@ -1,46 +1,42 @@
 ---
-title: "Associated Files"
-description: "A guide to LocalGen map, replay, and settings files."
-date: 2026-04-06T17:55:07+08:00
-draft: false
-weight: 50
+title: "Maps and other files"
+description: "Find your map folder, convert older formats, and check what v6 can read and save."
+weight: 60
+doc_group: play
 ---
 
-For additional format notes, see the project's [associated-files reference](https://github.com/SZXC-WG/LocalGen-new/blob/master/docs/associated-files.md).
+Use **`.lgmp`** when creating or sharing a new map. It is the native v6 format, keeps both terrain and map information, and works directly in Local Game and the simulator.
 
-## File support in v6
+## Supported files
 
-| File | Role | Support |
+| File | Purpose | Current v6 support |
 | --- | --- | --- |
-| `.lgmp` | Native v6 map | Read/write in Map Creator; readable by Local Game and simulator |
-| `.lg` | Legacy v5 map | Read/write in Map Creator; metadata is not preserved; not listed directly in Local Game |
-| Official `.json` | generals.io map interchange | Read/import in Map Creator; no JSON export; not directly playable |
-| `.lgr` | Standard replay | Replay format; loading and saving are not available yet |
-| `.lgra` | Advanced replay | Advanced replay format; loading and saving are not available yet |
-| `settings.lgsts` | v5 settings | Legacy reference only |
-| `settings.json` | v6 settings | Documented filename; current app does not persist settings |
+| `.lgmp` | Native v6 map | Editor reads and writes; Local Game and simulator read |
+| `.lg` | v5 map | Editor reads and writes; not listed directly in Local Game |
+| Official `.json` | generals.io map exchange | Editor imports; cannot export or start a match directly |
+| `.lgr` | Standard replay | Reserved format name; loading and saving are not implemented |
+| `.lgra` | Advanced replay | Reserved format name; loading and saving are not implemented |
+| `settings.lgsts` | v5 settings | Historical reference |
+| `settings.json` | v6 settings filename | Documented name; the app does not yet persist settings |
 
-## Native v6 `.lgmp`
+## Where maps go
 
-`.lgmp` is a binary Qt data-stream format, not JSON. It stores:
+Place valid `.lgmp` files in `maps/` beside the `LocalGen-new` executable, then reopen the Local Game dialog. The app scans this folder and displays map titles, falling back to filenames for empty titles and adding filenames for duplicates.
 
-- a format magic value;
-- title, author, creation datetime, and description;
-- map width and height;
-- compressed tile records containing tile type, the globally visible “light” bit, and army or spawn-team value.
+Windows and Linux portable folders usually contain the executable and `maps/` together. On macOS, the location is inside the application bundle: `LocalGen-new.app/Contents/MacOS/maps/`.
 
-Map Creator supports dimensions from 1×1 through 100×100. A map used for play must contain enough spawn tiles or empty plain tiles for every participant.
+The simulator's `--map PATH` can read a `.lgmp` from the location you specify; it does not need to be in this folder.
 
-## Legacy `.lg`
+## Convert an older map
 
-The current editor reads and writes the v5 board encoding. It synthesizes a title and creation time when opening a file, but saving `.lg` discards v6 metadata. Use `.lgmp` for new authored maps.
+Open a `.lg` or official map `.json` in the [map editor]({{< relref "docs/map-creator" >}}). Check the terrain, add a title and author, and save as `.lgmp`.
 
-## Official map JSON
+Legacy `.lg` stores only board encoding. The editor generates a title and creation time when opening it, and saving back to `.lg` discards v6 metadata. Official JSON needs valid `width`, `height`, `map`, `title`, and ISO-8601 `created_at` fields; author and description are optional. The editor can also fetch public maps with this structure by name while online.
 
-The editor accepts an official map object with valid `width`, `height`, `map`, `title`, and `created_at` data, plus optional author/description fields. It can also fetch the same form from the public generals.io map API by title. After import, save a local `.lgmp` copy if you want it available to LocalGen.
+## Inside a `.lgmp`
 
-## Making a map playable
+The format uses a Qt binary data stream, so it cannot be edited as JSON. It contains a format identifier, title, author, creation date and time, description, dimensions, and compressed tile records. Each tile includes its type, globally visible “lit” flag, and an army value or spawn-team label.
 
-Place a valid `.lgmp` file in the `maps/` directory beside `LocalGen-new`. The picker reads that directory when the Local Game dialog opens and uses map metadata for its display name.
+The editor supports width and height from 1–100. A map that opens successfully may still be too small for your chosen player count: starting a match also requires enough spawn tiles or zero-army blank plains.
 
-Replay loading and saved settings are not available yet in v6.
+The project's [associated-file reference](https://github.com/SZXC-WG/LocalGen-new/blob/master/docs/associated-files.md) also documents planned replay and settings filenames. Map files are currently usable; the **Load Replay** menu entry still displays a message that it is not implemented.

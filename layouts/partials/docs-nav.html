@@ -1,16 +1,16 @@
-{{ $page := . }}
+{{ $page := . }}{{ $docs := .Site.GetPage "/docs" }}
 <nav class="docs-nav" aria-label="{{ i18n "docs_navigation" }}">
-  <a class="docs-nav-home {{ if .IsSection }}is-active{{ end }}" href="{{ "docs/" | relLangURL }}" {{ if .IsSection }}aria-current="page"{{ end }}>
-    <span>{{ i18n "project_docs" }}</span>
-    <small>{{ len .CurrentSection.RegularPages }}</small>
-  </a>
-  <ol>
-    {{ range .CurrentSection.RegularPages.ByWeight }}
-      <li>
-        <a href="{{ .RelPermalink }}" class="{{ if eq .RelPermalink $page.RelPermalink }}is-active{{ end }}" {{ if eq .RelPermalink $page.RelPermalink }}aria-current="page"{{ end }}>
-          <span>{{ .Title }}</span>
-        </a>
-      </li>
-    {{ end }}
-  </ol>
+<a class="docs-nav-home {{ if eq .RelPermalink $docs.RelPermalink }}is-active{{ end }}" href="{{ $docs.RelPermalink }}" {{ if eq .RelPermalink $docs.RelPermalink }}aria-current="page"{{ end }}>{{ i18n "docs_overview" }}</a>
+{{ range slice "start" "play" "develop" }}{{ $group := . }}
+<div class="docs-nav-group">
+<p>{{ i18n (printf "docs_group_%s" $group) }}</p>
+<ul>{{ range where $docs.RegularPages.ByWeight "Params.doc_group" $group }}
+<li>
+<a href="{{ .RelPermalink }}" {{ if eq .RelPermalink $page.RelPermalink }}class="is-active" aria-current="page"{{ end }}>{{ .Title }}</a>
+</li>{{ end }}</ul>
+</div>{{ end }}
+<div class="docs-nav-help">
+<p>{{ i18n "docs_help" }}</p>
+<a href="{{ "faq/" | relLangURL }}">{{ i18n "docs_help_link" }} ↗</a>
+</div>
 </nav>

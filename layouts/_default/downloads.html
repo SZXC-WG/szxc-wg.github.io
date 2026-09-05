@@ -1,0 +1,47 @@
+{{ define "main" }}
+{{ $releases := hugo.Data.releases.items | default (slice) }}{{ $release := dict }}{{ range first 1 $releases }}{{ $release = . }}{{ end }}{{ range where $releases "is_latest" true }}{{ $release = . }}{{ end }}
+<section class="page-hero">
+<div class="container">
+<p class="eyebrow">{{ i18n "start_here" }}</p>
+<h1>{{ .Title }}</h1>
+<p class="lead">{{ .Description }}</p>{{ with $release }}
+<div class="download-version">
+<a class="badge" href="{{ .html_url }}">{{ .tag_name }} ↗</a>
+<time datetime="{{ .published_at }}">{{ time.Format "2006.01.02" (time.AsTime .published_at) }}</time>{{ if partial "is-preview.html" . }}<span>{{ i18n "release_prerelease" }}</span>{{ end }}</div>{{ end }}</div>
+</section>
+<section class="container download-section" aria-label="{{ i18n "download_choose" }}">
+<p class="download-intro">{{ i18n "download_intro" }}</p>
+<div class="download-grid">
+{{ range slice (dict "name" "Windows" "match" "windows" "format" "ZIP" "icon" "⊞") (dict "name" "macOS" "match" "macos" "format" "DMG" "icon" "⌘") (dict "name" "Linux" "match" "linux" "format" "AppImage" "icon" ">_") }}{{ $platform := . }}
+<article class="download-card">
+<div class="download-card-top">
+<span aria-hidden="true">{{ .icon }}</span>
+<span class="file-format">{{ .format }}</span>
+</div>
+<h2>{{ .name }}</h2>
+<div class="download-assets">{{ $found := false }}{{ range $release.assets }}{{ if strings.Contains (lower .name) $platform.match }}{{ $found = true }}{{ $arch := "x86_64" }}{{ if or (strings.Contains (lower .name) "arm64") (strings.Contains (lower .name) "aarch64") }}{{ $arch = "ARM64" }}{{ end }}{{ $toolchain := "" }}{{ if strings.Contains (lower .name) "llvm-mingw" }}{{ $toolchain = "LLVM-MinGW" }}{{ else if strings.Contains (lower .name) "mingw" }}{{ $toolchain = "MinGW" }}{{ else if strings.Contains (lower .name) "msvc" }}{{ $toolchain = "MSVC" }}{{ end }}<a href="{{ .browser_download_url }}" title="{{ .name }}">
+<span>
+<strong>{{ $arch }}{{ with $toolchain }} <small>{{ . }}</small>{{ end }}</strong>
+<small>{{ .size_human }}</small>
+</span>{{ partial "icon.html" "download" }}</a>{{ end }}{{ end }}{{ if not $found }}
+<p>{{ i18n "download_no_assets" }}</p>
+<a href="{{ $.Site.Params.releasesUrl }}">{{ i18n "download_more" }} ↗</a>{{ end }}</div>
+</article>{{ end }}
+</div>
+<div class="download-footnote">
+<span>{{ i18n "download_snapshot" }} {{ with hugo.Data.releases.synced_at }}{{ time.Format "2006-01-02" (time.AsTime .) }}{{ end }}</span>
+<a href="{{ "releases/" | relLangURL }}">{{ i18n "download_more" }} ↗</a>
+</div>
+<a class="source-banner" href="{{ "docs/getting-started/" | relLangURL }}#build">
+<span>{{ partial "icon.html" "terminal" }}</span>
+<div>
+<h2>{{ i18n "download_source" }}</h2>
+<p>{{ i18n "download_source_summary" }}</p>
+</div>{{ partial "icon.html" "arrow-right" }}</a>
+</section>
+<div class="container general-layout">
+<article class="prose">{{ .Content }}</article>
+<aside class="docs-toc">
+<p>{{ i18n "on_this_page" }}</p>{{ .TableOfContents }}</aside>
+</div>
+{{ end }}

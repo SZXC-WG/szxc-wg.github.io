@@ -7,9 +7,15 @@ on:
 
 permissions:
   contents: write
+  actions: write
+
+concurrency:
+  group: sync-localgen-metadata
+  cancel-in-progress: false
 
 jobs:
   sync:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -17,25 +23,28 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Configure Git
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
       - name: Sync metadata
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/sync_localgen.py
 
-      - name: Generate visual assets
-        run: python3 scripts/generate_visual_assets.py
-
       - name: Commit changes
+        id: commit
         run: |
-          if git diff --quiet; then
+          git add data/project.json data/releases.json data/contributors.json
+          if git diff --cached --quiet; then
             echo "No metadata changes detected."
             exit 0
           fi
-          git add data/project.json data/releases.json data/contributors.json static/favicon.svg static/site.webmanifest static/img/generated
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "chore(data): sync localgen metadata"
-          git push
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy refreshed metadata
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run hugo.yaml --ref main

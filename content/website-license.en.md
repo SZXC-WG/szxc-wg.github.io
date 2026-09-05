@@ -1,32 +1,24 @@
 ---
 title: "Website license"
-description: "Licensing details for this website, LocalGen, bundled fonts, project data, and trademarks."
-date: 2026-04-06T17:54:16+08:00
+description: "Find the licensing notices for this website, the app, and bundled resources."
 draft: false
-weight: 90
+weight: 110
 ---
 
-## Website repository status
+This website and the LocalGen application have separate repositories. The application's open-source license does not automatically cover all of this site's code, writing, or images.
 
-This site does not currently publish a repository-wide license for its code, prose, or website artwork. Check the repository for a license or file-specific notice before reusing site material.
+## Materials and their notices
 
-That absence does not place the work under GPL automatically. Unless a particular file carries its own notice, do not assume permission to copy, modify, or redistribute the website's layouts, styles, scripts, prose, or artwork. Ask the repository owners or wait for an explicit site license.
-
-## Separate materials, separate terms
-
-| Material | Licensing/status |
+| Material | License or source |
 | --- | --- |
-| `SZXC-WG/LocalGen-new` application source | GPL-3.0-or-later |
-| Bundled Quicksand fonts | SIL Open Font License 1.1 |
-| GitHub project data | factual data from the LocalGen GitHub project; attribution still applies |
-| `generals.io` name, logo, and related assets | property of their respective owners; descriptive reference is not endorsement |
-| This website's own code and artwork | no repository-wide license currently declared |
+| LocalGen application source | GPL-3.0-or-later; see the [application repository](https://github.com/SZXC-WG/LocalGen-new) and file notices |
+| Bundled Quicksand fonts | SIL Open Font License 1.1; license text is included with the fonts |
+| Website layouts, styles, scripts, and documentation | No repository-wide license is currently declared for the website |
+| Release and contributor information | From the LocalGen project on GitHub, with links to the corresponding sources |
+| `generals.io` name, logo, and related assets | Property of their respective owners |
 
-## Before reusing material
+## Reusing site material
 
-1. Identify whether the item comes from this website, LocalGen, a font package, GitHub data, or a third party.
-2. Read the notice attached to that exact item and its source repository.
-3. Preserve attribution and trademark boundaries.
-4. If no permission is stated for website-owned material, request it rather than inferring GPL coverage from the game.
+Check the [website repository](https://github.com/SZXC-WG/szxc-wg.github.io) and the specific file for a licensing notice. Where no license is provided, contact the repository maintainers about permission for that material instead of applying the application's GPL license to it.
 
-For the game's license and source, visit [LocalGen-new](https://github.com/SZXC-WG/LocalGen-new) and the [About page]({{< relref "about" >}}). See the [disclaimer]({{< relref "disclaimer" >}}) for project and trademark boundaries.
+Fonts, third-party assets, and imported content retain their own notices and terms. See the [disclaimer]({{< relref "disclaimer" >}}) for the project's relationship to generals.io.

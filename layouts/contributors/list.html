@@ -1,43 +1,22 @@
 {{ define "main" }}
-  {{ $contributors := hugo.Data.contributors.items | default (slice) }}
-  <section class="page-hero">
-    <div class="container page-hero-grid">
-      <div>
-        <p class="eyebrow">{{ i18n "community" }}</p>
-        <h1>{{ .Title }}</h1>
-        {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
-      </div>
-      {{ partial "page-sidecar.html" . }}
-    </div>
-  </section>
-  <section class="page-section">
-    <div class="container">
-      <article class="prose prose-panel">
-        {{ .Content }}
-      </article>
-    </div>
-  </section>
-  <section class="page-section section-muted">
-    <div class="container">
-      {{ if gt (len $contributors) 0 }}
-        <div class="contributor-grid">
-          {{ range $contributors }}
-            <article class="contributor-card detailed">
-              <img src="{{ .avatar_url }}" alt="{{ printf (i18n "contributor_avatar") .login }}" loading="lazy">
-              <h2 class="contributor-name"><a href="{{ .html_url }}">{{ .login }}</a></h2>
-              <p class="contributor-handle">@{{ .login }}</p>
-              {{ if .contributions }}
-                <p>{{ .contributions }} {{ i18n "contributions_label" }}</p>
-              {{ else }}
-                <p>{{ i18n "community_contributor" }}</p>
-              {{ end }}
-              {{ with .role }}<p class="muted">{{ . }}</p>{{ else }}{{ with .type }}<p class="muted">{{ . }}</p>{{ end }}{{ end }}
-            </article>
-          {{ end }}
-        </div>
-      {{ else }}
-        <p>{{ i18n "contributors_empty" }}</p>
-      {{ end }}
-    </div>
-  </section>
-{{ end }}
+<section class="page-hero">
+<div class="container">
+<p class="eyebrow">{{ i18n "community" }}</p>
+<h1>{{ .Title }}</h1>
+<p class="lead">{{ .Description }}</p>
+</div>
+</section>
+<section class="page-section">
+<div class="container">
+<div class="prose prose-panel">{{ .Content }}</div>
+<div class="contributor-grid">{{ range hugo.Data.contributors.items }}<a class="contributor-card" href="{{ .html_url }}">
+<img src="{{ .avatar_url }}" alt="" width="56" height="56" loading="lazy">
+<div>
+<h2>{{ .login }}</h2>
+<p>{{ .contributions }} {{ i18n "contributions_label" }}</p>
+</div>
+<span aria-hidden="true">↗</span>
+</a>{{ else }}
+<p>{{ i18n "contributors_empty" }}</p>{{ end }}</div>
+</div>
+</section>{{ end }}

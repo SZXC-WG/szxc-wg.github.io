@@ -1,26 +1,24 @@
 ---
 title: "免责声明"
-description: "说明 LocalGen 社区项目的独立性、商标、支持渠道与网络功能边界。"
-date: 2026-04-06T17:54:17+08:00
+description: "LocalGen 的项目独立性、使用范围与支持渠道。"
 draft: false
 weight: 100
 ---
 
-**Local Generals.io（LocalGen）** 是由 SZXC-WG 社区开发的独立、粉丝自制开源项目。
+**Local Generals.io（LocalGen）** 是由 SZXC-WG 社区开发的独立、粉丝自制开源项目。它不隶属于 generals.io 或其原始开发者，也未获得其认可、赞助或官方合作。
 
-LocalGen **不隶属于、不代表、未获得 generals.io 或其原始开发者的认可、赞助或官方合作**。`generals.io` 的名称、标志及相关资产仍归各自权利人所有。
+`generals.io` 的名称、标志及相关资产归各自权利人所有。本站对它们的提及用于介绍项目背景，不表示官方关系或背书。
 
-## 预期用途
+## 项目的使用范围
 
-LocalGen 面向本地游玩、离线实验、教学与内置 Bot 开发。它不会赋予用户访问官方 generals.io 服务的权限、特权或身份，也不是这些服务的替代客户端。
+LocalGen 面向本地游玩、离线实验、教学和 Bot 开发。使用 LocalGen 不会获得官方 generals.io 平台上的访问权限、特权或身份。
 
-当前本地对局与 Bot 模拟不依赖官方后端。地图编辑器包含一项可选联网操作：按标题导入公开地图时会请求 generals.io 地图 API。这一有限导入不应被理解为游戏服务器集成、官方关系或背书。
+本地对局与 Bot 模拟器不依赖官方游戏后端。地图编辑器提供可选的公开地图导入功能，会请求 generals.io 地图 API；该功能不代表游戏服务器集成或官方合作。使用官方平台及其公开服务时，请遵守相应的适用条款。
 
-## 支持与责任
+## 问题反馈
 
-- 请把 LocalGen 的 Bug 与功能建议提交到 [LocalGen Issue 跟踪器](https://github.com/SZXC-WG/LocalGen-new/issues)，不要联系 generals.io 官方支持。
-- 使用官方平台或其公开服务时，请遵守 generals.io 的适用条款。
-- 再分发源码、字体、地图、美术、网站材料或第三方资产前，请核实相应许可证与授权。
-- LocalGen 按其许可证条款提供，不附带担保。
+LocalGen 的 Bug 和功能建议请提交到 [LocalGen Issues](https://github.com/SZXC-WG/LocalGen-new/issues)，由项目社区处理。generals.io 官方支持不负责 LocalGen 的使用问题。
 
-本站仓库的独立授权状态见[网站许可证]({{< relref "website-license" >}})。
+## 许可说明
+
+LocalGen 按随源码提供的许可证条款发布，不附带担保。应用源码、字体和第三方素材各自适用对应许可；本站材料的说明见[网站许可证]({{< relref "website-license" >}})。

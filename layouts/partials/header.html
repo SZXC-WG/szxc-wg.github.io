@@ -1,31 +1,16 @@
 <header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="{{ .Site.Home.RelPermalink }}">
-      <img class="brand-mark" src="{{ "favicon.png" | relURL }}" alt="{{ i18n "brand_image_alt" }}" width="44" height="44">
-      <span>
-        <strong>{{ .Site.Params.projectShortName }}</strong>
-        <small>{{ .Site.Params.organization }}</small>
-      </span>
-    </a>
-    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-navigation">
-      <span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span></span>
-      <span class="sr-only">{{ i18n "menu_label" }}</span>
-    </button>
-    <div class="header-actions" id="site-navigation" data-site-navigation>
-      <nav class="main-nav" aria-label="{{ i18n "main_navigation" }}">
-        {{ range .Site.Menus.main }}
-          {{ $href := .URL }}
-          {{ with .Page }}
-            {{ $href = .RelPermalink }}
-          {{ end }}
-          {{ $active := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
-          <a href="{{ $href }}" class="{{ if $active }}is-active{{ end }}" {{ if $active }}aria-current="page"{{ end }}>{{ .Name }}</a>
-        {{ end }}
-      </nav>
-      <div class="utility-cluster">
-        {{ partial "theme-toggle.html" . }}
-        {{ partial "language-switcher.html" . }}
-      </div>
-    </div>
-  </div>
+<div class="container header-inner">
+<a class="brand" href="{{ .Site.Home.RelPermalink }}">
+<span class="brand-symbol">{{ partial "icon.html" "crown" }}</span>
+<strong>LocalGen</strong>
+</a>
+<button class="nav-toggle icon-button" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-navigation" aria-label="{{ i18n "menu_label" }}">{{ partial "icon.html" "menu" }}</button>
+<div class="header-actions" id="site-navigation" data-site-navigation>
+<nav class="main-nav" aria-label="{{ i18n "main_navigation" }}">
+{{ range .Site.Menus.main }}{{ $active := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}<a href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL }}{{ end }}" {{ if $active }}class="is-active" aria-current="page"{{ end }}>{{ .Name }}</a>{{ end }}
+</nav>
+<div class="utility-cluster">{{ partial "language-switcher.html" . }}{{ partial "theme-toggle.html" . }}<a class="button button-small button-primary" href="{{ "downloads/" | relLangURL }}">{{ i18n "download_short" }} {{ partial "icon.html" "arrow-down" }}</a>
+</div>
+</div>
+</div>
 </header>

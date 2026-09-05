@@ -1,0 +1,8 @@
+<header class="article-header">
+<nav class="breadcrumbs" aria-label="{{ i18n "breadcrumbs" }}">
+<a href="{{ .Site.Home.RelPermalink }}">{{ i18n "home_label" }}</a>
+<span aria-hidden="true">/</span>
+<a href="{{ "docs/" | relLangURL }}">{{ i18n "project_docs" }}</a>{{ with .Params.doc_group }}<span aria-hidden="true">/</span>
+<span>{{ i18n (printf "docs_group_%s" .) }}</span>{{ end }}</nav>
+<h1>{{ .Title }}</h1>{{ with .Description }}
+<p class="lead">{{ . }}</p>{{ end }}</header>

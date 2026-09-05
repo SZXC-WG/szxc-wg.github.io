@@ -1,23 +1,32 @@
 ---
-title: "Getting Started"
-description: "Download or build LocalGen v6, locate both executables, and verify the required maps and fonts."
-date: 2026-07-10T00:00:00+08:00
-draft: false
-weight: 5
+title: "Getting started"
+description: "Download LocalGen and play an offline match, then build from source when you are ready."
+weight: 10
+doc_group: start
 ---
 
-## Choose a published build or source build
+To play your first match, download a release package for your system. Qt, CMake, and a compiler are only needed when building from source.
 
-For a packaged version, start at [GitHub Releases](https://github.com/SZXC-WG/LocalGen-new/releases) and read that release's notes and file list. To try or contribute to the latest development work, build `6.0.0-dev` from the `master` branch.
+## Download and play
 
-## Source prerequisites
+1. Visit [GitHub Releases](https://github.com/SZXC-WG/LocalGen-new/releases), read the notes for your chosen version, and download the matching system package.
+2. Extract or install it as described in the release. For portable packages, keep the complete folder, including `maps/`, `fonts/`, and the bundled runtime libraries.
+3. Launch LocalGen and choose **Local Game**. Start with a `Standard` 20×20 map at speed 1, leave P1 set to `Human`, and choose a bot opponent.
 
-- Qt 6.7 or newer, including Widgets, SVG, Network, and Charts
-- CMake 3.19 or newer
-- Ninja 1.10 or newer
-- a C++17 compiler
+Continue to [your first match]({{< relref "docs/local-game" >}}) for movement and camera controls.
 
-Make sure `cmake` and `ninja` are on `PATH`, and locate Qt's toolchain file, usually:
+The rest of this page covers building Qt-based v6 from source. These instructions follow `6.0.0-dev`; packaged releases may have different features, as described in their release notes.
+
+## Prepare a build environment {#build}
+
+| Tool | Requirement |
+| --- | --- |
+| Qt | 6.7 or newer, with Widgets, SVG, Network, and Charts |
+| CMake | 3.19 or newer |
+| Ninja | 1.10 or newer |
+| C++ compiler | C++20 support, compatible with your Qt toolchain |
+
+Make sure your terminal can find `cmake`, `ninja`, and the compiler tools. Download or clone the [source repository](https://github.com/SZXC-WG/LocalGen-new), then locate your Qt toolchain file. It is usually at:
 
 ```text
 $QT_ROOT_DIR/lib/cmake/Qt6/qt.toolchain.cmake
@@ -25,25 +34,25 @@ $QT_ROOT_DIR/lib/cmake/Qt6/qt.toolchain.cmake
 
 ## Configure and build
 
-From the repository root:
+Run these commands from the source root, replacing the example path with your actual Qt toolchain path:
 
 ```bash
 cmake -B build -S . -G "Ninja Multi-Config" -DCMAKE_TOOLCHAIN_FILE=/path/to/qt.toolchain.cmake
 cmake --build build --config Release
 ```
 
-Use `--config Debug` when diagnosing code. Contributors should test both Debug and Release; performance comparisons should use Release.
+Use `--config Debug` to investigate problems. Before contributing code, check both Debug and Release builds; use Release for bot performance comparisons.
 
-The build creates two targets:
+A normal build creates two programs:
 
-| Target | Purpose |
+| Program | Purpose |
 | --- | --- |
-| `LocalGen-new` | Qt desktop app: Local Game and Map Creator |
-| `LocalGen-bot-simulator` | Command-line built-in-bot evaluator |
+| `LocalGen-new` | Desktop app for local matches and map editing |
+| `LocalGen-bot-simulator` | Command-line tool for repeated bot evaluations |
 
-## Run the desktop app
+## Find the build output
 
-Release outputs are normally under `build/Release`:
+With the commands above, Release outputs are located at:
 
 ```text
 Windows: build\Release\LocalGen-new.exe
@@ -51,23 +60,20 @@ Linux:   build/Release/LocalGen-new
 macOS:   build/Release/LocalGen-new.app
 ```
 
-The post-build step copies `maps/` and `fonts/` beside the desktop executable. Do not separate them: the Local Game picker scans `maps/*.lgmp`, while startup loads the three bundled Quicksand font files.
+The build copies `maps/` and `fonts/` beside the desktop executable. On macOS, that executable is inside `.app/Contents/MacOS/`. The app looks there for maps and loads three bundled Quicksand font files. If a font warning appears, first check that those files are present.
 
-To confirm the simulator build:
+To check that the simulator runs, execute this from `build/Release`:
 
 ```bash
-cd build/Release
 ./LocalGen-bot-simulator --games 8 --bots XiaruizeBot GcBot
 ```
 
-On Windows, use `LocalGen-bot-simulator.exe`.
+In Windows PowerShell, use `./LocalGen-bot-simulator.exe`. See the [simulator guide]({{< relref "docs/simulator-guide" >}}) for more options.
 
-## Packaging notes
+## Packaging and startup help
 
-- **Windows:** run Qt's `windeployqt` after building if you need a portable folder.
-- **macOS:** use `bash scripts/package-macos-dmg.sh build/Release/LocalGen-new.app LocalGen-new.dmg`; avoid `macdeployqt ... -dmg` because it can produce an invalid app signature for this project.
-- **Linux:** if a packaged AppImage fails because OpenGL is missing on Debian/Ubuntu, install `libopengl0`.
+- **Windows:** use Qt's `windeployqt` after building to package the runtime libraries. Keep the map and font directories too.
+- **macOS:** use the project script: `bash scripts/package-macos-dmg.sh build/Release/LocalGen-new.app LocalGen-new.dmg`. It handles framework deployment, package cleanup, and ad-hoc signing. The project README advises against using `macdeployqt ... -dmg` directly because it can leave the copied app with an invalid signature.
+- **Linux:** if an AppImage fails on Debian/Ubuntu because the OpenGL runtime is missing, install `libopengl0` with `sudo apt install libopengl0`.
 
-## What to expect on launch
-
-Local Game and Map Creator are functional. Web Game and Load Replay currently display “not available yet.” Sound playback is also unavailable. Continue with [First Local Game & Controls]({{< relref "docs/local-game" >}}).
+In v6, **Web Game** and **Load Replay** currently display a message that the feature is not implemented. Local Game and Map Creator are ready to use.

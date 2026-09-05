@@ -1,57 +1,77 @@
 ---
-title: "Bot 贡献指南"
-description: "为 LocalGen v6 添加、测试并提交内置 C++ Bot。"
-date: 2026-04-06T17:55:07+08:00
-draft: false
-weight: 20
+title: "编写并贡献 Bot"
+description: "把自己的策略接入 LocalGen，在本地对局和模拟器中测试，再提交贡献。"
+weight: 70
+doc_group: develop
 ---
 
-开始之前，请阅读 [`CONTRIBUTING.md`](https://github.com/SZXC-WG/LocalGen-new/blob/master/CONTRIBUTING.md) 与 [Bot 指南](https://github.com/SZXC-WG/LocalGen-new/blob/master/src/bots/README.md)。
+你可以编写一个新的 Bot，也可以改进现有策略、修复问题或缩短思考时间。当前 v6 使用直接编译进程序的 C++ Bot，同一个实现可以在本地对局和模拟器中运行。
 
-## 当前支持的集成方式
+开始前先按[快速开始]({{< relref "docs/getting-started" >}})完成一次构建，再阅读项目的[贡献指南](https://github.com/SZXC-WG/LocalGen-new/blob/master/CONTRIBUTING.md)和 [Bot 目录说明](https://github.com/SZXC-WG/LocalGen-new/blob/master/src/bots/README.md)。其中部分旧说明仍在整理，下面的接口和注册方式以当前源码为准。
 
-LocalGen v6 目前只接受**直接构建进应用的 Bot**。外部可执行程序、任意语言客户端与网络 Bot 协议暂不受支持。
+## 创建一个实现文件
 
-内置 Bot 会同时出现在本地对局与 `LocalGen-bot-simulator` 中，因为两个目标共用同一份 `LOCALGEN_BOT_SOURCES` 列表。
-
-## 构建你的 Bot
-
-1. 创建一个名称唯一、使用 C++17 的 `src/bots/MyBot.cpp` 文件。
-2. 包含 `src/core/bot.h`。
-3. 让 Bot 类继承 `BasicBot`。
-4. 实现两个必需方法：
-   - `init(index_t playerId, const GameConstantsPack& constants)`
-   - `requestMove(const BoardView& boardView, const std::vector<RankItem>& rank)`
-5. 使用当前模式注册唯一运行时名称：
+在 `src/bots/` 下创建名称唯一的 `.cpp` 文件，将实现放在这个文件中。当前工程要求 **C++20**。Bot 类继承 `BasicBot`，并实现两个必需方法：
 
 ```cpp
+#include "core/bot.h"
+#include "core/game.hpp"
+
+class MyBot : public BasicBot {
+public:
+    void init(index_t playerId,
+              const GameConstantsPack& constants) override {
+        // 保存玩家身份，并初始化本局使用的状态。
+    }
+
+    void requestMove(const BoardView& boardView,
+                     const std::vector<RankItem>& rank) override {
+        // 根据当前视野与排行榜，将计划动作加入 moveQueue。
+    }
+};
+
 static BotRegistrar<MyBot> myBotRegistrar("MyBot");
 ```
 
-6. 将 `src/bots/MyBot.cpp` 加入顶层 `CMakeLists.txt` 的 `LOCALGEN_BOT_SOURCES`。
-7. 同时构建 Debug 与 Release 配置。
+这个骨架只展示接口，还没有策略。`core/bot.h` 对应源码中的 `src/core/bot.h`，可以通过项目已有的包含目录找到。
 
-注册 Bot 时请使用 `BotRegistrar`；旧说明中的 `REGISTER_BOT` 不适用于当前版本。
+`init()` 接收本局玩家编号和规则常量；`requestMove()` 接收当前视野与排行榜。移动放入继承的 `moveQueue`。如果策略需要处理游戏事件，还可以覆写 `onWin`、`onCapture`、`onSurrender` 和 `onText`。
 
-## 提交前评测
+## 注册并加入构建
 
-请在多种地图尺寸、手工地图、对手组合与玩家数量下测试。一个有用的报告应包含：
+使用 `BotRegistrar` 注册唯一运行时名称。当前接口没有 `REGISTER_BOT` 宏；名称的大小写与空格会原样用于菜单和命令行。
 
-- 完整模拟器命令；
-- 对局数与半回合上限；
-- 随机地图或指定 `.lgmp` 地图；
-- 胜率、TrueSkill、平均排名与击杀；
-- 对性能敏感逻辑给出 `--latency` 结果；
-- 已知失败场景，以及内存/单回合复杂度。
+接着把源文件加入顶层 `CMakeLists.txt` 中的 `LOCALGEN_BOT_SOURCES`，例如：
 
-当前模拟器无法通过种子复现，因此应运行足够多的比赛，不要把单批结果描述为确定性证明。
+```cmake
+set(LOCALGEN_BOT_SOURCES
+    # 保留已有 Bot 源文件。
+    src/bots/MyBot.cpp
+)
+```
 
-## Pull Request 期望
+这份列表由桌面应用和模拟器共用。重新构建后，检查本地对局菜单中是否出现 `MyBot`，再跑一组模拟器对战：
 
-- 说明策略与粗略单回合最坏情况复杂度。
-- 保持代码可读，在必要处添加文档，并限制在 C++17。
-- 避免提交纯随机移动的占位 Bot。
-- 验证长局中没有明显泄漏或无限增长的工作量。
-- 启用新源文件时同步更新 Bot 阵容文档。
+```bash
+./LocalGen-bot-simulator --games 50 --steps 1000 --latency --bots MyBot GcBot
+```
 
-当前阵容见[内置 Bot]({{< relref "docs/built-in-bots" >}})，所有评测选项见[模拟器指南]({{< relref "docs/simulator-guide" >}})。
+## 测试你的策略
+
+请同时构建 Debug 和 Release，使用 Release 进行性能比较。除了默认随机地图，也试试不同尺寸、自定义地图、多个对手和不同玩家数量。检查长局中的内存使用与计算量，避免状态无限增长。
+
+一份有用的评测报告应包含：
+
+- 完整命令、源码版本和构建环境；
+- 对局数、半回合上限、地图尺寸或所用 `.lgmp`；
+- 胜率、OpenSkill、平均排名和击杀；
+- `--latency` 得到的思考耗时；
+- 已知失败场景，以及单回合最坏情况复杂度与内存需求。
+
+模拟器没有种子参数，固定地图也不能保证完全复现。因此请用多组、足量比赛描述策略表现。更多输出含义见[模拟器指南]({{< relref "docs/simulator-guide" >}})。
+
+## 准备 Pull Request
+
+在说明中介绍策略想解决的问题、主要做法和测试结果。保持代码可读，在不容易理解的地方解释原因；同时更新 Bot 阵容说明。项目欢迎有明确策略的实现，纯随机移动的占位代码不适合作为正式 Bot 提交。
+
+开发工作面向 v6 的 `master` 分支。外部可执行 Bot、任意语言客户端和网络 Bot 协议尚未接入当前版本。

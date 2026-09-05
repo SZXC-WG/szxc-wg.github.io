@@ -1,54 +1,42 @@
 ---
-title: "About"
-description: "Learn what you can do with LocalGen v6, which tools it includes, and what is still in development."
-date: 2026-04-06T17:54:16+08:00
+title: "About LocalGen"
+description: "A strategy game on your own computer, with room to create maps and explore bot ideas."
 draft: false
 weight: 10
 ---
 
-## A local strategy game and bot workbench
+**Local Generals.io**, or **LocalGen**, is an open-source desktop project maintained by the SZXC-WG community. It brings generals.io-style territory strategy to your computer: build your army, explore the map, protect your general, and find an opening in your opponent's defenses.
 
-**Local Generals.io (LocalGen)** brings generals.io-style territory strategy to a local, open-source desktop app. Version 6 uses C++17 and Qt 6 and includes the `LocalGen-new` game and the `LocalGen-bot-simulator` command-line evaluator.
+Play offline against built-in bots, create a map, or write your own bot to see how a strategy behaves in a real match.
 
-The current development version is **`6.0.0-dev`**. A few visible menu items are still in development and are not available yet.
+## Three ways to start
 
-## What you can use today
+### Play a match
 
-| Available now | Still in development |
-| --- | --- |
-| Offline local FFA against built-in bots | LAN or Web Game networking |
-| Random maps and installed `.lgmp` maps | Replay loading or playback |
-| Map Creator with `.lg`, `.lgmp`, and official JSON import | External bot executables or a bot network protocol |
-| Chat/event log, leaderboard, and optional analysis chart | Sound playback and persisted v6 settings |
-| Parallel bot simulator with aggregate statistics | Seeded/reproducible simulator runs from the CLI |
+Choose a map and opponents in **Local Game**. Take a player slot yourself, or fill every slot with a bot and watch them play. The leaderboard and optional analysis charts help you follow changes in army size and territory.
 
-Only the first player slot can be human, so the current desktop UI supports one human at most. Every participant is assigned a distinct team, making local games and simulator matches free-for-all.
+[Learn about local matches]({{< relref "docs/local-game" >}})
 
-## Technology and platform reach
+### Make a map
 
-- **Language:** C++17
-- **UI/runtime:** Qt 6.7+ (`Widgets`, `Svg`, `Network`, and `Charts`)
-- **Build:** CMake 3.19+ with Ninja 1.10+
-- **CI targets:** Linux x86_64/ARM64, macOS Intel/Apple silicon, and Windows x86_64/ARM64
-- **Source license:** GPL-3.0-or-later; bundled Quicksand fonts use SIL OFL-1.1
+**Map Creator** lets you edit, import, and save maps. Start with an empty board or change an existing map, then place the saved `.lgmp` file in the app's map directory to play it.
 
-## Files in everyday use
+[Start creating maps]({{< relref "docs/map-creator" >}})
 
-- **`.lgmp`** is the current v6 binary map format. It stores title, author, creation time, description, dimensions, and compressed tile data.
-- **`.lg`** is the legacy v5 map format. The current editor can open and save its board data, but it cannot preserve v6 metadata.
-- **Official `.json`** maps can be opened or imported into the editor, then saved as `.lg` or `.lgmp`; JSON export is not implemented.
-- Replay files (`.lgr` and `.lgra`) cannot be opened yet, and app settings are not saved between launches.
+### Try a strategy
 
-## Bots are compiled code, not downloadable models
+Built-in bots compile with the game. The companion command-line simulator runs batches of matches and reports win rates, rankings, and optional decision timings, giving you a way to test ideas and improve algorithms.
 
-LocalGen's bots are built-in C++ opponents registered through `BotFactory`. The game does not use downloadable neural models, plug-ins, or external bot processes.
+[Meet the bots]({{< relref "bots" >}}) · [Use the simulator]({{< relref "simulator" >}})
 
-## Explore next
+## What is available
 
-- [Download a published build]({{< relref "downloads" >}})
-- [Compare published releases]({{< relref "releases" >}})
-- [Build from source]({{< relref "docs/getting-started" >}})
-- [Browse the documentation]({{< relref "docs" >}})
-- [Review file formats]({{< relref "docs/associated-files" >}})
-- [Read the project disclaimer]({{< relref "disclaimer" >}})
-- [Visit the project repository](https://github.com/SZXC-WG/LocalGen-new)
+This site's documentation covers the v6 development version on the source repository's `master` branch. Local matches, Map Creator, and the bot simulator are available. **LAN play, Web Game, and replay loading are not implemented yet.** Local matches have 2–16 player slots, with at most one human player, and use free-for-all rules.
+
+Published releases can differ from the development branch. Read the relevant [release notes]({{< relref "releases" >}}) before downloading, or visit the [FAQ]({{< relref "faq" >}}) for common questions.
+
+## Open source, built by a community
+
+LocalGen uses C++20, Qt 6, CMake, and Ninja, with continuous integration for Windows, macOS, and Linux. The application source uses GPL-3.0-or-later; the bundled Quicksand fonts have a separate SIL Open Font License 1.1.
+
+The project is independent of generals.io and its developers. Read the [disclaimer]({{< relref "disclaimer" >}}), or visit the [GitHub repository](https://github.com/SZXC-WG/LocalGen-new) to explore the code, report a problem, or contribute.

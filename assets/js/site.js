@@ -1,222 +1,129 @@
-const STORAGE_KEY = "localgen-theme";
-const root = document.documentElement;
-const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-
-function resolvedTheme() {
-  let stored = null;
-  try {
-    stored = window.localStorage.getItem(STORAGE_KEY);
-  } catch (_) {
-    // Storage can be unavailable in privacy-restricted contexts.
-  }
-  if (stored === "light" || stored === "dark") {
-    return stored;
-  }
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
-
-function applyTheme(theme) {
-  root.dataset.theme = theme;
-  root.style.colorScheme = theme;
-  if (themeColorMeta) {
-    themeColorMeta.setAttribute("content", theme === "light" ? "#f4f6f5" : "#101318");
-  }
-
-  const toggle = document.querySelector("[data-theme-toggle]");
-  if (!toggle) {
-    return;
-  }
-
-  const icon = toggle.querySelector("[data-theme-icon]");
-  const text = toggle.querySelector("[data-theme-text]");
-  const label = theme === "dark" ? toggle.dataset.labelDark : toggle.dataset.labelLight;
-  const iconGlyph = theme === "dark" ? "🌙" : "☀️";
-  const toggleLabel = toggle.dataset.toggleLabel || toggle.getAttribute("aria-label") || "Toggle theme";
-
-  toggle.setAttribute("aria-pressed", String(theme === "dark"));
-  toggle.setAttribute("aria-label", `${toggleLabel} (${label})`);
-  toggle.setAttribute("title", `${toggleLabel} (${label})`);
-  if (icon) {
-    icon.textContent = iconGlyph;
-  }
-  if (text) {
-    text.textContent = label;
-  }
-}
-
-function initThemeToggle() {
-  const toggle = document.querySelector("[data-theme-toggle]");
-  if (!toggle) {
-    return;
-  }
-
-  toggle.addEventListener("click", () => {
-    const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+(() => {
+  "use strict";
+  const root = document.documentElement;
+  const themeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const themeToggle = document.querySelector("[data-theme-toggle]");
+  const storageKey = "localgen-theme";
+  function savedTheme() {
     try {
-      window.localStorage.setItem(STORAGE_KEY, nextTheme);
-    } catch (_) {
-      // The theme still applies for the current page view.
+      const value = localStorage.getItem(storageKey);
+      return ["light", "dark"].includes(value) ? value : null;
+    } catch {
+      return null;
     }
-    applyTheme(nextTheme);
-  });
-}
-
-function initRevealAnimations() {
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const revealTargets = document.querySelectorAll(
-    ".game-preview-card, .status-card, .path-card, .route-card, .panel, .card, .stat-card, .sidebar-card, .release-card, .release-index-card, .contributor-card, .docs-card, .page-sidecar, .prose-panel, .metric-strip"
-  );
-
-  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-    revealTargets.forEach((element) => element.classList.add("is-visible"));
-    return;
   }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.16,
-      rootMargin: "0px 0px -8% 0px",
+  function applyTheme(theme) {
+    root.dataset.theme = theme;
+    root.style.colorScheme = theme;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", theme === "dark" ? "#14171e" : "#ffffff");
+    if (themeToggle) {
+      const label =
+        theme === "dark"
+          ? themeToggle.dataset.labelDark
+          : themeToggle.dataset.labelLight;
+      themeToggle.setAttribute("aria-pressed", String(theme === "dark"));
+      themeToggle.setAttribute(
+        "aria-label",
+        themeToggle.dataset.toggleLabel + " (" + label + ")",
+      );
+      themeToggle.title = themeToggle.getAttribute("aria-label");
     }
-  );
-
-  revealTargets.forEach((element, index) => {
-    element.classList.add("reveal-item");
-    element.style.setProperty("--reveal-delay", `${Math.min(index % 8, 6) * 70}ms`);
-    observer.observe(element);
-  });
-}
-
-function initLanguageMenu() {
-  const menu = document.querySelector("[data-language-menu]");
-  if (!menu) {
-    return;
   }
-
-  document.addEventListener("click", (event) => {
-    if (!menu.open) {
-      return;
+  applyTheme(savedTheme() || (themeQuery.matches ? "dark" : "light"));
+  themeToggle?.addEventListener("click", () => {
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    try {
+      localStorage.setItem(storageKey, next);
+    } catch {
+      /* The current page still updates. */
     }
-
-    if (!menu.contains(event.target)) {
-      menu.open = false;
-    }
+    applyTheme(next);
+  });
+  themeQuery.addEventListener("change", (event) => {
+    if (!savedTheme()) applyTheme(event.matches ? "dark" : "light");
+  });
+  window.addEventListener("storage", (event) => {
+    if (event.key === storageKey)
+      applyTheme(savedTheme() || (themeQuery.matches ? "dark" : "light"));
   });
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      menu.open = false;
-    }
-  });
-}
-
-function initNavigation() {
-  const toggle = document.querySelector("[data-nav-toggle]");
+  const navToggle = document.querySelector("[data-nav-toggle]");
   const navigation = document.querySelector("[data-site-navigation]");
-  if (!toggle || !navigation) {
-    return;
+  function closeNavigation(restoreFocus = false) {
+    const wasOpen = navigation?.classList.contains("is-open");
+    navigation?.classList.remove("is-open");
+    navToggle?.setAttribute("aria-expanded", "false");
+    if (restoreFocus && wasOpen) navToggle?.focus();
   }
-
-  const closeNavigation = () => {
-    navigation.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
-    document.body.classList.remove("nav-open");
-  };
-
-  toggle.addEventListener("click", () => {
-    const isOpen = navigation.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(isOpen));
-    document.body.classList.toggle("nav-open", isOpen);
+  navToggle?.addEventListener("click", () => {
+    const open = navigation.classList.toggle("is-open");
+    navToggle.setAttribute("aria-expanded", String(open));
   });
-
-  navigation.addEventListener("click", (event) => {
-    if (event.target.closest("a")) {
-      closeNavigation();
-    }
+  navigation?.addEventListener("click", (event) => {
+    if (event.target.closest("a")) closeNavigation();
   });
-
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeNavigation();
-    }
+    if (event.key === "Escape") closeNavigation(true);
   });
-
   document.addEventListener("click", (event) => {
-    if (!navigation.classList.contains("is-open")) {
-      return;
-    }
-    if (!navigation.contains(event.target) && !toggle.contains(event.target)) {
+    if (
+      !navigation?.contains(event.target) &&
+      !navToggle?.contains(event.target)
+    )
       closeNavigation();
-    }
   });
-
-  const desktopQuery = window.matchMedia("(min-width: 961px)");
-  const handleDesktopChange = (event) => {
-    if (event.matches) {
-      closeNavigation();
-    }
-  };
-  if (typeof desktopQuery.addEventListener === "function") {
-    desktopQuery.addEventListener("change", handleDesktopChange);
-  } else if (typeof desktopQuery.addListener === "function") {
-    desktopQuery.addListener(handleDesktopChange);
-  }
-}
-
-function initCodeCopy() {
-  const copyLabel = document.body.dataset.copyLabel || "Copy";
-  const copiedLabel = document.body.dataset.copiedLabel || "Copied";
-
-  document.querySelectorAll(".prose pre").forEach((block) => {
-    const code = block.querySelector("code");
-    if (!code) {
-      return;
-    }
-
-    let container = block.closest(".highlight");
-    if (!container) {
-      container = document.createElement("div");
-      container.className = "code-block";
-      block.before(container);
-      container.appendChild(block);
-    }
-
-    if (container.querySelector(":scope > .code-copy-button")) {
-      return;
-    }
-
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "code-copy-button";
-    button.textContent = copyLabel;
-    button.setAttribute("aria-label", copyLabel);
-    button.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(code.textContent || "");
-        button.textContent = copiedLabel;
-        window.setTimeout(() => {
-          button.textContent = copyLabel;
-        }, 1600);
-      } catch (_) {
-        button.textContent = copyLabel;
-      }
+  window
+    .matchMedia("(min-width: 801px)")
+    .addEventListener("change", (event) => {
+      if (event.matches) closeNavigation();
     });
-    container.appendChild(button);
-  });
-}
 
-window.addEventListener("DOMContentLoaded", () => {
-  applyTheme(resolvedTheme());
-  initThemeToggle();
-  initNavigation();
-  initLanguageMenu();
-  initRevealAnimations();
-  initCodeCopy();
-});
+  const docsMenu = document.querySelector(".docs-sidebar-disclosure");
+  if (docsMenu) {
+    const mobile = window.matchMedia("(max-width: 600px)");
+    const updateMenu = () => {
+      docsMenu.open = !mobile.matches;
+    };
+    updateMenu();
+    mobile.addEventListener("change", updateMenu);
+  }
+
+  if (navigator.clipboard?.writeText) {
+    document.querySelectorAll(".prose pre").forEach((pre) => {
+      const code = pre.querySelector("code");
+      if (!code) return;
+      let wrapper = pre.closest(".highlight");
+      if (!wrapper) {
+        wrapper = document.createElement("div");
+        wrapper.className = "code-block";
+        pre.before(wrapper);
+        wrapper.append(pre);
+      }
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "code-copy-button";
+      button.textContent = document.body.dataset.copyLabel;
+      button.setAttribute("aria-label", document.body.dataset.copyLabel);
+      const status = document.createElement("span");
+      status.className = "sr-only";
+      status.setAttribute("role", "status");
+      button.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(code.textContent);
+          button.textContent = document.body.dataset.copiedLabel;
+          status.textContent = document.body.dataset.copiedLabel;
+        } catch {
+          button.textContent = document.body.dataset.copyFailedLabel;
+          status.textContent = document.body.dataset.copyFailedLabel;
+        }
+        window.setTimeout(() => {
+          button.textContent = document.body.dataset.copyLabel;
+          status.textContent = "";
+        }, 2000);
+      });
+      wrapper.append(button, status);
+    });
+  }
+})();
