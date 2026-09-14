@@ -64,7 +64,7 @@
           "name": "LocalGen-v6.0.0-beta.3-windows-x86_64.zip",
           "size": 15190902,
           "size_human": "14.5 MB",
-          "download_count": 19,
+          "download_count": 30,
           "content_type": "application/x-zip-compressed",
           "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v6.0.0-beta.3/LocalGen-v6.0.0-beta.3-windows-x86_64.zip",
           "updated_at": "2026-07-12T08:32:09Z"
@@ -90,7 +90,7 @@
           "name": "LocalGen-v6.0.0-beta.2-macos-arm64.dmg",
           "size": 27495909,
           "size_human": "26.2 MB",
-          "download_count": 3,
+          "download_count": 4,
           "content_type": "application/octet-stream",
           "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v6.0.0-beta.2/LocalGen-v6.0.0-beta.2-macos-arm64.dmg",
           "updated_at": "2026-07-07T04:21:28Z"
@@ -99,7 +99,7 @@
           "name": "LocalGen-v6.0.0-beta.2-windows-x86_64.zip",
           "size": 15198304,
           "size_human": "14.5 MB",
-          "download_count": 15,
+          "download_count": 16,
           "content_type": "application/x-zip-compressed",
           "browser_download_url": "https://github.com/SZXC-WG/LocalGen-new/releases/download/v6.0.0-beta.2/LocalGen-v6.0.0-beta.2-windows-x86_64.zip",
           "updated_at": "2026-07-07T14:18:38Z"
@@ -910,5 +910,5 @@
       ]
     }
   ],
-  "synced_at": "2026-09-07T07:47:28.661461+00:00"
+  "synced_at": "2026-09-14T08:27:23.729981+00:00"
 }
